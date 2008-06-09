@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<package version="2.1" xmlns="http://pear.php.net/dtd/package-2.1" xmlns:tasks="http://pear.php.net/dtd/tasks-1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pear.php.net/dtd/tasks-1.0     http://pear.php.net/dtd/tasks-1.0.xsd     http://pear.php.net/dtd/package-2.1     http://pear.php.net/dtd/package-2.1.xsd">
+ <name>PEAR2_Console_CommandLine</name>
+ <channel>pear2.php.net</channel>
+ <summary>PEAR2_Console_CommandLine is a full featured package for managing command-line
+</summary>
+ <description>options and arguments highly inspired from python optparse module, it allows
+the developer to easily build complex command line interfaces.
+
+Main features:
+* handles sub commands (ie. $ myscript.php -q subcommand -f file),
+* can be completely built from an xml definition file,
+* generate --help and --version options automatically,
+* can be completely customized,
+* builtin support for i18n,
+* and much more...
+
+</description>
+ <lead>
+  <name>David JEAN LOUIS</name>
+  <user>izi</user>
+  <email>izi@php.net</email>
+  <active>yes</active>
+ </lead>
+ <date>2008-06-08</date>
+ <time>21:20:56</time>
+ <version>
+  <release>0.1.0</release>
+  <api>0.1.0</api>
+ </version>
+ <stability>
+  <release>devel</release>
+  <api>alpha</api>
+ </stability>
+ <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
+ <notes>Initial port of PEAR Console_CommandLine to PEAR2.
+</notes>
+ <contents>
+  <dir name="/">
+   <dir name="data" baseinstalldir="/">
+    <file role="data" name="xmlschema.rng"/>
+   </dir>
+   <dir name="examples">
+    <file role="doc" name="ex1.php"/>
+    <file role="doc" name="ex2.php"/>
+    <file role="doc" name="ex2.xml"/>
+   </dir>
+   <dir name="src" baseinstalldir="PEAR2">
+    <dir name="Console">
+     <dir name="CommandLine">
+      <dir name="Action">
+       <file role="php" name="Callback.php"/>
+       <file role="php" name="Counter.php"/>
+       <file role="php" name="Help.php"/>
+       <file role="php" name="Password.php"/>
+       <file role="php" name="StoreArray.php"/>
+       <file role="php" name="StoreFalse.php"/>
+       <file role="php" name="StoreFloat.php"/>
+       <file role="php" name="StoreInt.php"/>
+       <file role="php" name="StoreString.php"/>
+       <file role="php" name="StoreTrue.php"/>
+       <file role="php" name="Version.php"/>
+      </dir>
+      <dir name="MessageProvider">
+       <file role="php" name="Default.php"/>
+      </dir>
+      <dir name="Outputter">
+       <file role="php" name="Default.php"/>
+      </dir>
+      <dir name="Renderer">
+       <file role="php" name="Default.php"/>
+      </dir>
+      <file role="php" name="Action.php"/>
+      <file role="php" name="Argument.php"/>
+      <file role="php" name="Command.php"/>
+      <file role="php" name="Element.php"/>
+      <file role="php" name="Exception.php"/>
+      <file role="php" name="MessageProvider.php"/>
+      <file role="php" name="Option.php"/>
+      <file role="php" name="Outputter.php"/>
+      <file role="php" name="Renderer.php"/>
+      <file role="php" name="Result.php"/>
+      <file role="php" name="XmlParser.php"/>
+     </dir>
+     <file role="php" name="CommandLine.php"/>
+    </dir>
+   </dir>
+   <dir name="tests" baseinstalldir="/">
+    <file role="test" name="AllTests.php"/>
+    <file role="test" name="console_commandline_accept.phpt"/>
+    <file role="test" name="console_commandline_addargument.phpt"/>
+    <file role="test" name="console_commandline_addcommand.phpt"/>
+    <file role="test" name="console_commandline_addoption.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_1.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_2.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_3.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_4.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_5.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_6.phpt"/>
+    <file role="test" name="console_commandline_addoption_errors_7.phpt"/>
+    <file role="test" name="console_commandline_fromxmlfile.phpt"/>
+    <file role="test" name="console_commandline_fromxmlfile_error.phpt"/>
+    <file role="test" name="console_commandline_fromxmlstring.phpt"/>
+    <file role="test" name="console_commandline_parse_1.phpt"/>
+    <file role="test" name="console_commandline_parse_2.phpt"/>
+    <file role="test" name="console_commandline_parse_3.phpt"/>
+    <file role="test" name="console_commandline_parse_4.phpt"/>
+    <file role="test" name="console_commandline_parse_5.phpt"/>
+    <file role="test" name="console_commandline_parse_6.phpt"/>
+    <file role="test" name="console_commandline_parse_7.phpt"/>
+    <file role="test" name="console_commandline_parse_8.phpt"/>
+    <file role="test" name="console_commandline_parse_9.phpt"/>
+    <file role="test" name="console_commandline_parse_10.phpt"/>
+    <file role="test" name="console_commandline_parse_11.phpt"/>
+    <file role="test" name="console_commandline_parse_12.phpt"/>
+    <file role="test" name="console_commandline_parse_13.phpt"/>
+    <file role="test" name="console_commandline_parse_14.phpt"/>
+    <file role="test" name="console_commandline_parse_15.phpt"/>
+    <file role="test" name="console_commandline_parse_16.phpt"/>
+    <file role="test" name="test.xml"/>
+    <file role="test" name="tests.inc.php"/>
+   </dir>
+  </dir>
+ </contents>
+ <dependencies>
+  <required>
+   <php>
+    <min>5.2.0</min>
+   </php>
+   <pearinstaller>
+    <min>2.0.0a1</min>
+   </pearinstaller>
+  </required>
+ </dependencies>
+ <phprelease/>
+</package>
