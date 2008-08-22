@@ -21,8 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'Console/CommandLine/Renderer.php';
-
 /**
  * PEAR2_Console_CommandLine default renderer.
  *

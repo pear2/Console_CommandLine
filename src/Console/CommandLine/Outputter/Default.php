@@ -21,7 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'Console/CommandLine/Outputter.php';
 
 /**
  * PEAR2_Console_CommandLine default Outputter.
@@ -49,7 +48,11 @@ class PEAR2_Console_CommandLine_Outputter_Default implements PEAR2_Console_Comma
      */
     public function stdout($msg)
     {
-        fwrite(STDOUT, $msg);
+        if (defined('STDOUT')) {
+            fwrite(STDOUT, $msg);
+        } else {
+            echo $msg;
+        }
     }
 
     // }}}
@@ -65,7 +68,11 @@ class PEAR2_Console_CommandLine_Outputter_Default implements PEAR2_Console_Comma
      */
     public function stderr($msg)
     {
-        fwrite(STDERR, $msg);
+        if (defined('STDERR')) {
+            fwrite(STDERR, $msg);
+        } else {
+            echo $msg;
+        }
     }
 
     // }}}

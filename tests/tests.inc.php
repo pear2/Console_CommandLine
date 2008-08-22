@@ -20,10 +20,11 @@
 // ensure that errors will be printed
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors',true);
+set_include_path(get_include_path() . PATH_SEPARATOR . dirname(__FILE__). '/../src/');
 
 // uncomment this when package won't be in the SandBox anymore
 // $basedir = __DIR__ . '/../..';
-$basedir = __DIR__ . '/../../..';
+$basedir = dirname(__FILE__) . '/../../..';
 
 require_once $basedir . '/autoload.php';
 

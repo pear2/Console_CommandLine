@@ -21,8 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'Console/CommandLine.php';
-
 /**
  * Class that represent a command with option and arguments.
  *

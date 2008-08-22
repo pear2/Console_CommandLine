@@ -1,20 +1,19 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() method (special cases 2).
+Test for Console_CommandLine::parse() method (user argc/argv 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
---ARGS--
--t foo bar -f 2>&1
 --FILE--
 <?php
 
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
+$argv = array('somename', '-t', '-f', '--float=1.2', 'foo', 'bar');
+$argc = count($argv);
 try {
     $parser = buildParser1();
-    $parser->force_posix = true;
-    $result = $parser->parse();
+    $result = $parser->parse($argc, $argv);
     var_dump($result);
-} catch (PEAR2_Console_CommandLine_Exception $exc) {
+} catch (Console_CommandLine_Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
@@ -26,11 +25,11 @@ object(PEAR2_Console_CommandLine_Result)#21 (4) {
     ["true"]=>
     bool(true)
     ["false"]=>
-    NULL
+    bool(false)
     ["int"]=>
     int(1)
     ["float"]=>
-    float(1)
+    float(1.2)
     ["string"]=>
     NULL
     ["counter"]=>
@@ -51,11 +50,9 @@ object(PEAR2_Console_CommandLine_Result)#21 (4) {
     ["simple"]=>
     string(3) "foo"
     ["multiple"]=>
-    array(2) {
+    array(1) {
       [0]=>
       string(3) "bar"
-      [1]=>
-      string(2) "-f"
     }
   }
   ["command_name"]=>

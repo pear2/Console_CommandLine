@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() method (errors 1).
+Test for Console_CommandLine::parse() method (errors 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -7,8 +7,7 @@ Test for PEAR2_Console_CommandLine::parse() method (errors 1).
 --FILE--
 <?php
 
-require_once 'Console/CommandLine.php' ;
-require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 try {
     $parser = buildParser1();
@@ -19,5 +18,5 @@ try {
 
 ?>
 --EXPECT--
-Error: unknown option "-d".
+Error: Unknown option "-d".
 Type "some_program -h" to get help.

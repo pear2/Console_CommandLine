@@ -251,8 +251,12 @@ class PEAR2_Console_CommandLine
     {
         if (isset($params['name'])) {
             $this->name = $params['name'];
-        } else {
+        } else if (isset($argv) && count($argv) > 0) {
+            $this->name = $argv[0];
+        } else if (isset($_SERVER['argv']) && count($_SERVER['argv']) > 0) {
             $this->name = $_SERVER['argv'][0];
+        } else if (isset($_SERVER['SCRIPT_NAME'])) {
+            $this->name = basename($_SERVER['SCRIPT_NAME']);
         }
         if (isset($params['description'])) {
             $this->description = $params['description'];
@@ -320,7 +324,6 @@ class PEAR2_Console_CommandLine
      *
      * Example:
      * <code>
-     * require_once 'Console/CommandLine.php';
      * $parser = PEAR2_Console_CommandLine::fromXmlFile('path/to/file.xml');
      * $result = $parser->parse();
      * </code>
@@ -344,7 +347,6 @@ class PEAR2_Console_CommandLine
      *
      * Example:
      * <code>
-     * require_once 'Console/CommandLine.php';
      * $xmldata = '<?xml version="1.0" encoding="utf-8" standalone="yes"?>
      * <command>
      *   <description>Compress files</description>
@@ -663,9 +665,6 @@ class PEAR2_Console_CommandLine
      * // and in the result we will have:
      * // $result->options['range']: array(1, 5)
      *
-     * require_once 'Console/CommandLine.php';
-     * require_once 'Console/CommandLine/Action.php';
-     *
      * class ActionRange extends PEAR2_Console_CommandLine_Action
      * {
      *     public function execute($value=false, $params=array())
@@ -754,52 +753,39 @@ class PEAR2_Console_CommandLine
      * @access public
      * @throws Exception on user errors
      */
-    public function parse($userArgc=null, $userArgv=null, $beginAt=0)
+    public function parse($userArgc=null, $userArgv=null)
     {
-        // add "auto" options help and version if needed
-        if ($this->add_help_option) {
-            $this->addOption('help', array(
-                'short_name'  => '-h',    
-                'long_name'   => '--help',
-                'description' => 'show this help message and exit',
-                'action'      => 'Help'   
-            ));
+        $this->addBuiltinOptions();
+        if ($userArgc !== null && $userArgv !== null) {
+            $argc = $userArgc;
+            $argv = $userArgv;
+        } else {
+            list($argc, $argv) = $this->getArgcArgv();
         }
-        if ($this->add_version_option && !empty($this->version)) {
-            $this->addOption('version', array(
-                'long_name'   => '--version',
-                'description' => 'show the program version and exit',
-                'action'      => 'Version'   
-            ));
+        // build an empty result
+        include_once 'Console/CommandLine/Result.php';
+        $result = new PEAR2_Console_CommandLine_Result();
+        if (!$argc || empty($argv)) {
+            return $result;
         }
-        $argc = ($userArgc === null) ?
-            (isset($argc) ? $argc : $_SERVER['argc']) : $userArgc;
-        $argv = ($userArgv === null) ?
-            (isset($argv) ? $argv : $_SERVER['argv']) : $userArgv;
-        // case of a subcommand, skip main program args
-        for ($i=0; $i<$beginAt; $i++) {
-            $argc--;
+        if (!($this instanceof PEAR2_Console_CommandLine_Command)) {
+            // remove script name if we're not in a subcommand
             array_shift($argv);
+            $argc--;
         }
-        // remove script name
-        array_shift($argv);
-        $argc--;
         // will contain aruments
         $args = array();
-        // build an empty result
-        $result = new PEAR2_Console_CommandLine_Result();
         foreach ($this->options as $name=>$option) {
             $result->options[$name] = $option->default;
         }
         // parse command line tokens
-        $i = 0;
-        while (++$i && $argc--) {
+        while ($argc--) {
             $token = array_shift($argv);
             try {
                 if (isset($this->commands[$token])) {
                     $result->command_name = $token;
-                    $result->command      = $this->commands[$token]->parse(null,
-                        null, $i);
+                    $result->command      = $this->commands[$token]->parse($argc,
+                        $argv);
                     break;
                 } else {
                     $this->parseToken($token, $result, $args, $argc);
@@ -999,6 +985,96 @@ class PEAR2_Console_CommandLine
             }
             $args[] = $token;
         }
+    }
+
+    // }}}
+    // addBuiltinOptions() {{{
+
+    /**
+     * Add the builtin "Help" and "Version" options if needed.
+     *
+     * @return void
+     * @access protected 
+     */
+    public function addBuiltinOptions()
+    {
+        if ($this->add_help_option) {
+            $helpOptionParams = array(
+                'long_name'   => '--help',
+                'description' => 'show this help message and exit',
+                'action'      => 'Help'   
+            );
+            if (!$this->findOption('-h')) {
+                // short name is available, take it
+                $helpOptionParams['short_name'] = '-h';
+            }
+            $this->addOption('help', $helpOptionParams);
+        }
+        if ($this->add_version_option && !empty($this->version)) {
+            $versionOptionParams = array(
+                'long_name'   => '--version',
+                'description' => 'show the program version and exit',
+                'action'      => 'Version'   
+            );
+            if (!$this->findOption('-v')) {
+                // short name is available, take it
+                $versionOptionParams['short_name'] = '-v';
+            }
+            $this->addOption('version', $versionOptionParams);
+        }
+    } 
+
+    // }}}
+    // getArgcArgv() {{{
+
+    /**
+     * Try to return an array containing argc and argv, or trigger an error
+     * if it fails to get them.
+     *
+     * @return array
+     * @access protected
+     * @throws Exception 
+     */
+    protected function getArgcArgv()
+    {
+        if (php_sapi_name() != 'cli') {
+            // we have a web request
+            $argv = array($this->name);
+            if (isset($_REQUEST)) {
+                foreach ($_REQUEST as $key => $value) {
+                    if (!is_array($value)) {
+                        $value = array($value);
+                    }
+                    $opt = $this->findOption($key);
+                    if ($opt instanceof PEAR2_Console_CommandLine_Option) {
+                        // match a configured option
+                        $argv[] = $opt->short_name ? 
+                            $opt->short_name : $opt->long_name;
+                        foreach($value as $v) {
+                            if ($opt->expectsArgument()) {
+                                $argv[] = isset($_GET[$key]) ? urldecode($v) : $v;
+                            } else if ($v == '0' || $v == 'false') {
+                                array_pop($argv);
+                            }
+                        }
+                    } else if (isset($this->args[$key])) {
+                        // match a configured argument
+                        foreach($value as $v) {
+                            $argv[] = isset($_GET[$key]) ? urldecode($v) : $v;
+                        }
+                    }
+                }
+            }
+            return array(count($argv), $argv);
+        }
+        if (isset($argc) && isset($argv)) {
+            // case of register_argv_argc = 1
+            return array($argc, $argv);
+        }
+        if (isset($_SERVER['argc']) && isset($_SERVER['argv'])) {
+            return array($_SERVER['argc'], $_SERVER['argv']);
+        }
+        return array(0, array());
     }
 
     // }}}

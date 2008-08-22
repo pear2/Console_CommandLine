@@ -21,8 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'PEAR/Exception.php';
-
 /**
  * Class for exceptions raised by the PEAR2_Console_CommandLine package.
  *

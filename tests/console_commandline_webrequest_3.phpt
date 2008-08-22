@@ -1,11 +1,7 @@
 --TEST--
-Test for Console_CommandLine::parse() method (password option).
---SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
---ARGS--
--p -- foo bar
---STDIN--
-secretpass
+Test for Console_CommandLine::parse() with a web request 3
+--POST--
+true=1&false=1&string=foo&int=3&float=4.0&callback=somestring&-a[]=foo&-a[]=bar&-a[]=baz&simple=foo&multiple=bar
 --FILE--
 <?php
 
@@ -18,25 +14,32 @@ var_dump($result->args);
 
 ?>
 --EXPECT--
-Password: array(11) {
+array(11) {
   ["true"]=>
-  NULL
+  bool(true)
   ["false"]=>
-  NULL
+  bool(false)
   ["int"]=>
-  int(1)
+  int(3)
   ["float"]=>
-  float(1)
+  float(4)
   ["string"]=>
-  NULL
+  string(3) "foo"
   ["counter"]=>
   NULL
   ["callback"]=>
-  NULL
+  string(20) "foo__fbzrfgevat__bar"
   ["array"]=>
-  NULL
+  array(3) {
+    [0]=>
+    string(3) "foo"
+    [1]=>
+    string(3) "bar"
+    [2]=>
+    string(3) "baz"
+  }
   ["password"]=>
-  string(10) "secretpass"
+  NULL
   ["help"]=>
   NULL
   ["version"]=>

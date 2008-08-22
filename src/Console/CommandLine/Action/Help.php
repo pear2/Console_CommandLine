@@ -21,8 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'Console/CommandLine/Action.php';
-
 /**
  * Class that represent the Help action, a special action that displays the
  * help message, telling the user how to use the program.

@@ -1,9 +1,7 @@
 --TEST--
-Test for Console_CommandLine::parse() method (--help).
---SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
---ARGS--
---help 2>&1
+Test for Console_CommandLine::parse() with a web request 2
+--GET--
+help
 --FILE--
 <?php
 

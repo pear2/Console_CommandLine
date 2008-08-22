@@ -21,9 +21,6 @@
  * @since     File available since release 0.1.0
  */
 
-// require_once 'Console/CommandLine.php';
-// require_once 'Console/CommandLine/Element.php';
-
 /**
  * Class that represent a commandline option.
  *

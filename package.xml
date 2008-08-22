@@ -117,6 +117,11 @@ Main features:
     <file role="test" name="console_commandline_parse_14.phpt"/>
     <file role="test" name="console_commandline_parse_15.phpt"/>
     <file role="test" name="console_commandline_parse_16.phpt"/>
+    <file role="test" name="console_commandline_parse_17.phpt"/>
+    <file role="test" name="console_commandline_parse_18.phpt"/>
+    <file role="test" name="console_commandline_webrequest_1.phpt"/>
+    <file role="test" name="console_commandline_webrequest_2.phpt"/>
+    <file role="test" name="console_commandline_webrequest_3.phpt"/>
     <file role="test" name="test.xml"/>
     <file role="test" name="tests.inc.php"/>
    </dir>
@@ -125,7 +130,7 @@ Main features:
  <dependencies>
   <required>
    <php>
-    <min>5.2.0</min>
+    <min>5.3.0</min>
    </php>
    <pearinstaller>
     <min>2.0.0a1</min>
