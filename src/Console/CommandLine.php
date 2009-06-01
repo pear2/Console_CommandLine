@@ -763,7 +763,6 @@ class PEAR2_Console_CommandLine
             list($argc, $argv) = $this->getArgcArgv();
         }
         // build an empty result
-        include_once 'Console/CommandLine/Result.php';
         $result = new PEAR2_Console_CommandLine_Result();
         if (!$argc || empty($argv)) {
             return $result;
