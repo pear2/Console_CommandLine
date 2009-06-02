@@ -1003,7 +1003,7 @@ class PEAR2_Console_CommandLine
                 'description' => 'show this help message and exit',
                 'action'      => 'Help'   
             );
-            if (!$this->findOption('-h')) {
+            if (!($option = $this->findOption('-h')) || $option->action == 'Help') {
                 // short name is available, take it
                 $helpOptionParams['short_name'] = '-h';
             }
