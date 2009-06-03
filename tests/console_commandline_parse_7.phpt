@@ -7,7 +7,6 @@ Test for PEAR2_Console_CommandLine::parse() method (special cases 1).
 --FILE--
 <?php
 
-require_once 'Console/CommandLine.php' ;
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 try {

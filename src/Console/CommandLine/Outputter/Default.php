@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 
@@ -28,7 +29,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -39,12 +40,11 @@ class PEAR2_Console_CommandLine_Outputter_Default implements PEAR2_Console_Comma
     // stdout() {{{
 
     /**
-     * Writes the message $msg to STDOUT
+     * Writes the message $msg to STDOUT.
      *
-     * @param string $msg the message to output
+     * @param string $msg The message to output
      *
      * @return void
-     * @access public
      */
     public function stdout($msg)
     {
@@ -59,12 +59,11 @@ class PEAR2_Console_CommandLine_Outputter_Default implements PEAR2_Console_Comma
     // stderr() {{{
 
     /**
-     * Writes the message $msg to STDERR
+     * Writes the message $msg to STDERR.
      *
-     * @param string $msg the message to output
+     * @param string $msg The message to output
      *
      * @return void
-     * @access public
      */
     public function stderr($msg)
     {
@@ -77,5 +76,3 @@ class PEAR2_Console_CommandLine_Outputter_Default implements PEAR2_Console_Comma
 
     // }}}
 }
-
-?>

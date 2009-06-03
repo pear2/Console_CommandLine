@@ -14,7 +14,7 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -27,7 +27,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -38,18 +38,23 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // Properties {{{
 
     /**
-     * integer that define the max width of the help text
+     * Integer that define the max width of the help text.
      *
-     * @var    integer $line_width
-     * @access public
+     * @var integer $line_width Line width
      */
     public $line_width = 75;
 
     /**
-     * An instance of PEAR2_Console_CommandLine
+     * Integer that define the max width of the help text.
      *
-     * @var    object PEAR2_Console_CommandLine $parser
-     * @access public
+     * @var integer $line_width Line width
+     */
+    public $options_on_different_lines = false;
+
+    /**
+     * An instance of PEAR2_Console_CommandLine.
+     *
+     * @var PEAR2_Console_CommandLine $parser The parser
      */
     public $parser = false;
 
@@ -59,9 +64,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     /**
      * Constructor.
      *
-     * @param object $parser a PEAR2_Console_CommandLine instance
+     * @param object $parser A PEAR2_Console_CommandLine instance
      *
-     * @access public
+     * @return void
      */
     public function __construct($parser = false) 
     {
@@ -72,10 +77,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // usage() {{{
 
     /**
-     * Return the full usage message
+     * Returns the full usage message.
      *
-     * @return string the usage message
-     * @access public
+     * @return string The usage message
      */
     public function usage()
     {
@@ -103,12 +107,11 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // error() {{{
 
     /**
-     * Return a formatted error message
+     * Returns a formatted error message.
      *
-     * @param string $error the error message to format
+     * @param string $error The error message to format
      *
-     * @return string the error string
-     * @access public
+     * @return string The error string
      */
     public function error($error)
     {
@@ -129,10 +132,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // version() {{{
 
     /**
-     * Return the program version string
+     * Returns the program version string.
      *
-     * @return string the version string
-     * @access public
+     * @return string The version string
      */
     public function version()
     {
@@ -146,10 +148,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // name() {{{
 
     /**
-     * return the full name of the program or the sub command
+     * Returns the full name of the program or the sub command
      *
-     * @return string
-     * @access protected
+     * @return string The name of the program
      */
     protected function name()
     {
@@ -173,10 +174,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // description() {{{
 
     /**
-     * Return the command line description message
+     * Returns the command line description message.
      *
-     * @access protected
-     * @return string the usage message
+     * @return string The description message
      */
     protected function description()
     {
@@ -187,10 +187,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // usageLine() {{{
 
     /**
-     * Return the command line usage message
+     * Returns the command line usage message
      *
      * @return string the usage message
-     * @access protected
      */
     protected function usageLine()
     {
@@ -213,10 +212,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     // commandUsageLine() {{{
 
     /**
-     * Return the command line usage message for subcommands
+     * Returns the command line usage message for subcommands.
      *
-     * @return string
-     * @access protected
+     * @return string The usage line
      */
     protected function commandUsageLine()
     {
@@ -241,8 +239,7 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
      * Render the arguments list that will be displayed to the user, you can 
      * override this method if you want to change the look of the list.
      *
-     * @return string the formatted argument list
-     * @access protected
+     * @return string The formatted argument list
      */
     protected function argumentList()
     {
@@ -271,25 +268,38 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
      * Render the options list that will be displayed to the user, you can 
      * override this method if you want to change the look of the list.
      *
-     * @return string the formatted option list
-     * @access protected
+     * @return string The formatted option list
      */
     protected function optionList()
     {
         $col     = 0;
         $options = array();
         foreach ($this->parser->options as $option) {
-            $optstr    = '  ' . $option->toString();
-            $options[] = array($optstr, $option->description);
-            $ln        = strlen($optstr);
+            $delim    = $this->options_on_different_lines ? "\n" : ', ';
+            $optstr   = $option->toString($delim);
+            $lines    = explode("\n", $optstr);
+            $lines[0] = '  ' . $lines[0];
+            if (count($lines) > 1) {
+                $lines[1] = '  ' . $lines[1];
+                $ln       = strlen($lines[1]);
+            } else {
+                $ln = strlen($lines[0]);
+            }
+            $options[] = array($lines, $option->description);
             if ($col < $ln) {
                 $col = $ln;
             }
         }
         $ret = $this->parser->message_provider->get('OPTION_WORD') . ":";
         foreach ($options as $option) {
-            $text = str_pad($option[0], $col) . '  ' . $option[1];
-            $ret .= "\n" . $this->columnWrap($text, $col+2);
+            if (count($option[0]) > 1) {
+                $text = str_pad($option[0][1], $col) . '  ' . $option[1];
+                $pre  = $option[0][0] . "\n";
+            } else {
+                $text = str_pad($option[0][0], $col) . '  ' . $option[1];
+                $pre  = '';
+            }
+            $ret .= "\n" . $pre . $this->columnWrap($text, $col+2);
         }
         return $ret;
     }
@@ -301,8 +311,7 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
      * Render the command list that will be displayed to the user, you can 
      * override this method if you want to change the look of the list.
      *
-     * @return string the formatted subcommand list
-     * @access protected
+     * @return string The formatted subcommand list
      */
     protected function commandList()
     {
@@ -332,10 +341,9 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
      * Wraps the text passed to the method.
      *
      * @param string $text The text to wrap
-     * @param int    $lw   The column width. Defaults to line_width property.
+     * @param int    $lw   The column width (defaults to line_width property)
      *
-     * @return string
-     * @access protected
+     * @return string The wrapped text
      */
     protected function wrap($text, $lw=null)
     {
@@ -354,11 +362,10 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
     /**
      * Wraps the text passed to the method at the specified width.
      *
-     * @param string $text the text to wrap
-     * @param int    $cw   the wrap width
+     * @param string $text The text to wrap
+     * @param int    $cw   The wrap width
      *
-     * @return string
-     * @access protected
+     * @return string The wrapped text
      */
     protected function columnWrap($text, $cw)
     {
@@ -377,5 +384,3 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
 
     // }}}
 }
-
-?>

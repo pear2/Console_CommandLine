@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -27,7 +28,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -38,28 +39,24 @@ class PEAR2_Console_CommandLine_XmlParser
     // parse() {{{
 
     /**
-     * Parse the given xml definition file and return a
+     * Parses the given xml definition file and returns a
      * PEAR2_Console_CommandLine instance constructed with the xml data.
      *
-     * @param string $xmlfile the xml file to parse
+     * @param string $xmlfile The xml file to parse
      *
-     * @return object a PEAR2_Console_CommandLine instance
-     * @access public
-     * @static
+     * @return PEAR2_Console_CommandLine A parser instance
      */
     public static function parse($xmlfile) 
     {
         if (!is_readable($xmlfile)) {
-            PEAR2_Console_CommandLine::triggerError(
-                'invalid_xml_file',
-                E_USER_ERROR,
-                array('{$file}' => $xmlfile)
-            );
+            PEAR2_Console_CommandLine::triggerError('invalid_xml_file',
+                E_USER_ERROR, array('{$file}' => $xmlfile));
         }
         $doc = new DomDocument();
         $doc->load($xmlfile);
         self::validate($doc);
-        $root = $doc->childNodes->item(0);
+        $nodes = $doc->getElementsByTagName('command');
+        $root  = $nodes->item(0);
         return self::_parseCommandNode($root, true);
     }
 
@@ -67,21 +64,20 @@ class PEAR2_Console_CommandLine_XmlParser
     // parseString() {{{
 
     /**
-     * Parse the given xml definition string and return a
+     * Parses the given xml definition string and returns a
      * PEAR2_Console_CommandLine instance constructed with the xml data.
      *
-     * @param string $xmlstr the xml string to parse
+     * @param string $xmlstr The xml string to parse
      *
-     * @return object a PEAR2_Console_CommandLine instance
-     * @access public
-     * @static
+     * @return PEAR2_Console_CommandLine A parser instance
      */
     public static function parseString($xmlstr) 
     {
         $doc = new DomDocument();
         $doc->loadXml($xmlstr);
         self::validate($doc);
-        $root = $doc->childNodes->item(0);
+        $nodes = $doc->getElementsByTagName('command');
+        $root  = $nodes->item(0);
         return self::_parseCommandNode($root, true);
     }
 
@@ -89,13 +85,13 @@ class PEAR2_Console_CommandLine_XmlParser
     // validate() {{{
 
     /**
-     * Validate the xml definition using Relax NG
+     * Validates the xml definition using Relax NG.
      *
-     * @param object $doc a DomDocument instance (the document to validate)
+     * @param DomDocument $doc The document to validate
      *
-     * @return boolean
-     * @access public
-     * @static
+     * @return boolean Whether the xml data is valid or not.
+     * @throws PEAR2_Console_CommandLine_Exception
+     * @todo use exceptions only
      */
     public static function validate($doc) 
     {
@@ -117,23 +113,20 @@ class PEAR2_Console_CommandLine_XmlParser
     // _parseCommandNode() {{{
 
     /**
-     * Parse the root command node or a command node and return the
+     * Parses the root command node or a command node and return the
      * constructed PEAR2_Console_CommandLine or PEAR2_Console_CommandLine_Command
      * instance.
      *
-     * @param object $node       a DomDocumentNode instance
-     * @param bool   $isRootNode boolean that tells if the node is a root node
+     * @param DomDocumentNode $node       The node to parse
+     * @param bool            $isRootNode Whether it is a root node or not
      *
-     * @return object PEAR2_Console_CommandLine or PEAR2_Console_CommandLine_Command
-     * @access private
-     * @static
+     * @return mixed PEAR2_Console_CommandLine or PEAR2_Console_CommandLine_Command
      */
-    private static function _parseCommandNode($node, $isRootNode=false) 
+    private static function _parseCommandNode($node, $isRootNode = false) 
     {
         if ($isRootNode) { 
             $obj = new PEAR2_Console_CommandLine();
         } else {
-            // include_once 'Console/CommandLine/Command.php';
             $obj = new PEAR2_Console_CommandLine_Command();
         }
         foreach ($node->childNodes as $cNode) {
@@ -169,18 +162,15 @@ class PEAR2_Console_CommandLine_XmlParser
     // _parseOptionNode() {{{
 
     /**
-     * Parse an option node and return the constructed
+     * Parses an option node and returns the constructed
      * PEAR2_Console_CommandLine_Option instance.
      *
-     * @param object $node a DomDocumentNode instance
+     * @param DomDocumentNode $node The node to parse
      *
-     * @return object a PEAR2_Console_CommandLine_Option instance
-     * @access private
-     * @static
+     * @return PEAR2_Console_CommandLine_Option The built option
      */
     private static function _parseOptionNode($node) 
     {
-        // include_once 'Console/CommandLine/Option.php';
         $obj = new PEAR2_Console_CommandLine_Option($node->getAttribute('name'));
         foreach ($node->childNodes as $cNode) {
             $cNodeName = $cNode->nodeName;
@@ -194,6 +184,9 @@ class PEAR2_Console_CommandLine_XmlParser
                 $obj->$cNodeName = trim($cNode->nodeValue);
             }
         }
+        if ($obj->action == 'Password') {
+            $obj->argument_optional = true;
+        }
         return $obj;
     }
 
@@ -201,18 +194,15 @@ class PEAR2_Console_CommandLine_XmlParser
     // _parseArgumentNode() {{{
 
     /**
-     * Parse an argument node and return the constructed 
+     * Parses an argument node and returns the constructed 
      * PEAR2_Console_CommandLine_Argument instance.
      *
-     * @param object $node a DomDocumentNode instance
+     * @param DomDocumentNode $node The node to parse
      *
-     * @return object a PEAR2_Console_CommandLine_Argument instance
-     * @access private
-     * @static
+     * @return PEAR2_Console_CommandLine_Argument The built argument
      */
     private static function _parseArgumentNode($node) 
     {
-        // include_once 'Console/CommandLine/Argument.php';
         $obj = new PEAR2_Console_CommandLine_Argument($node->getAttribute('name'));
         foreach ($node->childNodes as $cNode) {
             $cNodeName = $cNode->nodeName;
@@ -236,13 +226,11 @@ class PEAR2_Console_CommandLine_XmlParser
     // _bool() {{{
 
     /**
-     * Return a boolean according to true/false possible strings
+     * Returns a boolean according to true/false possible strings.
      * 
-     * @param string $str the string to process
+     * @param string $str The string to process
      *
      * @return boolean
-     * @access private
-     * @static
      */
     private static function _bool($str)
     {
@@ -251,5 +239,3 @@ class PEAR2_Console_CommandLine_XmlParser
 
     // }}}
 }
-
-?>

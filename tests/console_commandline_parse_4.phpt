@@ -1,5 +1,5 @@
 --TEST--
-Test for Console_CommandLine::parse() method (errors 1).
+Test for PEAR2_Console_CommandLine::parse() method (errors 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -19,4 +19,4 @@ try {
 ?>
 --EXPECT--
 Error: Unknown option "-d".
-Type "some_program -h" to get help.
+Type "some_program --help" to get help.

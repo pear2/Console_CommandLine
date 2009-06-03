@@ -1,13 +1,13 @@
 --TEST--
-Test for Console_CommandLine::parse() method (errors 3).
+Test for PEAR2_Console_CommandLine::parse() method (errors 3).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
---float=1.2 foo 2>&1
+--float=1.2 2>&1
 --FILE--
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 try {
     $parser = buildParser1();
@@ -18,5 +18,5 @@ try {
 
 ?>
 --EXPECT--
-Error: You must provide at least 2 arguments.
-Type "some_program -h" to get help.
+Error: You must provide at least 1 argument.
+Type "some_program --help" to get help.

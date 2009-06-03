@@ -1,5 +1,5 @@
 --TEST--
-Test for Console_CommandLine::parse() method (user argc/argv 2).
+Test for PEAR2_Console_CommandLine::parse() method (user argc/argv 2).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --FILE--

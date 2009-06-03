@@ -1,5 +1,5 @@
 --TEST--
-Test for Console_CommandLine::parse() method (user errors 1).
+Test for PEAR2_Console_CommandLine::parse() method (user errors 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -7,12 +7,12 @@ Test for Console_CommandLine::parse() method (user errors 1).
 --FILE--
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = buildParser1();
 try {
     $result = $parser->parse();
-} catch (Exception $exc) {
+} catch (PEAR2_Console_CommandLine_Exception $exc) {
     echo $exc->getMessage();
 }
 

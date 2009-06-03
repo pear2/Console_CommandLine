@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -47,7 +48,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -58,20 +59,17 @@ class PEAR2_Console_CommandLine_Action_Callback extends PEAR2_Console_CommandLin
     // execute() {{{
 
     /**
-     * Execute the action with the value entered by the user.
+     * Executes the action with the value entered by the user.
      *
-     * @param mixed $value  the value of the option
-     * @param array $params an optional array of parameters
+     * @param mixed $value  The value of the option
+     * @param array $params An optional array of parameters
      *
      * @return string
-     * @access public
      */
-    public function execute($value=false, $params=array())
+    public function execute($value = false, $params = array())
     {
         $this->setResult(call_user_func($this->option->callback, $value,
             $this->option, $this->result, $this->parser, $params));
     }
     // }}}
 }
-
-?>

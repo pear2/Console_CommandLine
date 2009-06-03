@@ -1,11 +1,11 @@
 --TEST--
-Test for Console_CommandLine::parse() method (user argc/argv 1).
+Test for PEAR2_Console_CommandLine::parse() method (user argc/argv 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --FILE--
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $argv = array('somename', '-t', '-f', '--float=1.2', 'foo', 'bar');
 $argc = count($argv);

@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -27,7 +28,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -48,21 +49,19 @@ class PEAR2_Console_CommandLine_Exception extends PEAR2_Exception
     /**#@-*/
 
     // }}}
-    // build() {{{
+    // factory() {{{
 
     /**
      * Convenience method that builds the exception with the array of params by 
      * calling the message provider class.
      *
-     * @param string $code   the string identifier of the exception
-     * @param array  $params an array containing the vars of the message tpl
-     * @param object $parser an instance of PEAR2_Console_CommandLine
+     * @param string                    $code   The string identifier of the exception
+     * @param array                     $params Array of template vars/values
+     * @param PEAR2_Console_CommandLine $parser An instance of the parser
      *
-     * @return object an instance of PEAR2_Console_CommandLine_Exception
-     * @access public
-     * @static
+     * @return PEAR2_Console_CommandLine_Exception The exception instance
      */
-    public static function build($code, $params, $parser)
+    public static function factory($code, $params, $parser)
     {
         $msg   = $parser->message_provider->get($code, $params);
         $const = 'PEAR2_Console_CommandLine_Exception::' . $code;
@@ -72,5 +71,3 @@ class PEAR2_Console_CommandLine_Exception extends PEAR2_Exception
 
     // }}}
 }
-
-?>

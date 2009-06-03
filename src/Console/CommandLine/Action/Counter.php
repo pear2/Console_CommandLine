@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -50,7 +51,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -61,15 +62,14 @@ class PEAR2_Console_CommandLine_Action_Counter extends PEAR2_Console_CommandLine
     // execute() {{{
 
     /**
-     * Execute the action with the value entered by the user.
+     * Executes the action with the value entered by the user.
      *
-     * @param mixed $value  the option value
-     * @param array $params an optional array of parameters
+     * @param mixed $value  The option value
+     * @param array $params An optional array of parameters
      *
      * @return string
-     * @access public
      */
-    public function execute($value=false, $params=array())
+    public function execute($value = false, $params = array())
     {
         $result = $this->getResult();
         if ($result === null) {
@@ -79,5 +79,3 @@ class PEAR2_Console_CommandLine_Action_Counter extends PEAR2_Console_CommandLine
     }
     // }}}
 }
-
-?>

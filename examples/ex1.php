@@ -18,7 +18,7 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -26,8 +26,8 @@
  */
 
 // uncomment this when package won't be in the SandBox anymore
-// $basedir = __DIR__ . '/..';
-$basedir = __DIR__ . '/../..';
+// $basedir = __DIR__ . '/../..';
+$basedir = __DIR__ . '/../../..';
 
 // Include PEAR2 autoload
 require_once $basedir . '/autoload.php';
@@ -52,7 +52,8 @@ $parser->addOption('delete', array(
     'long_name'   => '--delete',
     'action'      => 'StoreString',
     'description' => 'delete original files after zip operation',
-    'choices'     => array('foo', 'bar')
+    'choices'     => array('foo', 'bar'),
+    'add_list_option' => true
 ));
 
 // add the files argument, the user can specify one or several files

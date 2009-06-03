@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -27,7 +28,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -38,10 +39,9 @@ interface PEAR2_Console_CommandLine_Renderer
     // usage() {{{
 
     /**
-     * Return the full usage message.
+     * Returns the full usage message.
      *
-     * @access public
-     * @return string the usage message
+     * @return string The usage message
      */
     public function usage();
 
@@ -49,12 +49,11 @@ interface PEAR2_Console_CommandLine_Renderer
     // error() {{{
 
     /**
-     * Return a formatted error message
+     * Returns a formatted error message.
      *
-     * @param string $error the error message to format
+     * @param string $error The error message to format
      *
-     * @access public
-     * @return string the error string
+     * @return string The error string
      */
     public function error($error);
 
@@ -62,14 +61,11 @@ interface PEAR2_Console_CommandLine_Renderer
     // version() {{{
 
     /**
-     * Return the program version string.
+     * Returns the program version string.
      *
-     * @access public
-     * @return string the version string
+     * @return string The version string
      */
     public function version();
 
     // }}}
 }
-
-?>

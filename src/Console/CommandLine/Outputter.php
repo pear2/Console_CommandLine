@@ -14,11 +14,12 @@
  * @category  Console 
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   SVN: $Id$
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
+ * @filesource
  */
 
 /**
@@ -27,7 +28,7 @@
  * @category  Console
  * @package   PEAR2_Console_CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
- * @copyright 2007 David JEAN LOUIS
+ * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   Release: @package_version@
  * @link      http://pear.php.net/package/Console_CommandLine
@@ -38,11 +39,10 @@ interface PEAR2_Console_CommandLine_Outputter
     // stdout() {{{
 
     /**
-     * Process the output for a message that should be displayed on STDOUT
+     * Processes the output for a message that should be displayed on STDOUT.
      *
-     * @param string $msg the message to output
+     * @param string $msg The message to output
      *
-     * @access public
      * @return void
      */
     public function stdout($msg);
@@ -51,16 +51,13 @@ interface PEAR2_Console_CommandLine_Outputter
     // stderr() {{{
 
     /**
-     * Process the output for a message that should be displayed on STDERR
+     * Processes the output for a message that should be displayed on STDERR.
      *
-     * @param string $msg the message to output
+     * @param string $msg The message to output
      *
-     * @access public
      * @return void
      */
     public function stderr($msg);
 
     // }}}
 }
-
-?>

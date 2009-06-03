@@ -1,5 +1,5 @@
 --TEST--
-Test for Console_CommandLine::parse() method (password option).
+Test for PEAR2_Console_CommandLine::parse() method (password option).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -9,7 +9,7 @@ secretpass
 --FILE--
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = buildParser1();
 $result = $parser->parse();

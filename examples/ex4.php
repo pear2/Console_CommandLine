@@ -3,10 +3,10 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the PEAR PEAR2_Console_CommandLine package.
  *
- * This example demonstrate the use of xml definitions files with 
- * PEAR2_Console_CommandLine, the result is the same as for the ex1.php file.
+ * A simple example demonstrating the use of subcommands.
+ * (Same as ex3.php but using an xml file).
  *
  * PHP version 5
  *
@@ -19,7 +19,7 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   SVN: $Id$
+ * @version   CVS: $Id: ex4.php,v 1.1 2008/12/06 11:46:28 izi Exp $
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
  */
@@ -31,17 +31,23 @@ $basedir = __DIR__ . '/../../..';
 // Include PEAR2 autoload
 require_once $basedir . '/autoload.php';
 
-// create the parser from xml file
-$xmlfile = __DIR__ . DIRECTORY_SEPARATOR . 'ex2.xml';
+// create the parser
+$xmlfile = __DIR__ . DIRECTORY_SEPARATOR . 'ex4.xml';
 $parser  = PEAR2_Console_CommandLine::fromXmlFile($xmlfile);
-
 
 // run the parser
 try {
     $result = $parser->parse();
-    // write your program here...
-    print_r($result->options);
-    print_r($result->args);
+    if ($result->command_name) {
+        $st = $result->command->options['reverse'] 
+            ? strrev($result->command->args['text'])
+            : $result->command->args['text'];
+        if ($result->command_name == 'foo') { 
+            echo "Foo says: $st\n";
+        } else if ($result->command_name == 'bar') {
+            echo "Bar says: $st\n";
+        }
+    }
 } catch (Exception $exc) {
     $parser->displayError($exc->getMessage());
 }

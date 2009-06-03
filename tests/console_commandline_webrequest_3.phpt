@@ -1,11 +1,11 @@
 --TEST--
-Test for Console_CommandLine::parse() with a web request 3
+Test for PEAR2_Console_CommandLine::parse() with a web request 3
 --POST--
 true=1&false=1&string=foo&int=3&float=4.0&callback=somestring&-a[]=foo&-a[]=bar&-a[]=baz&simple=foo&multiple=bar
 --FILE--
 <?php
 
-require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
+require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = buildParser1();
 $result = $parser->parse();
