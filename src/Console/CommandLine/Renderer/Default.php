@@ -320,7 +320,7 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
         $col      = 0;
         foreach ($this->parser->commands as $cmdname=>$command) {
             $cmdname    = '  ' . $cmdname;
-            $commands[] = array($cmdname, $command->description);
+            $commands[] = array($cmdname, $command->description, $command->aliases);
             $ln         = strlen($cmdname);
             if ($col < $ln) {
                 $col = $ln;
@@ -329,6 +329,16 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
         $ret = $this->parser->message_provider->get('COMMAND_WORD') . ":";
         foreach ($commands as $command) {
             $text = str_pad($command[0], $col) . '  ' . $command[1];
+            if ($aliasesCount = count($command[2])) {
+                $pad = '';
+                $text .= ' (';
+                $text .= $aliasesCount > 1 ? 'aliases: ' : 'alias: ';
+                foreach ($command[2] as $alias) {
+                    $text .= $pad . $alias;
+                    $pad   = ', ';
+                }
+                $text .= ')';
+            }
             $ret .= "\n" . $this->columnWrap($text, $col+2);
         }
         return $ret;
