@@ -34,7 +34,7 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_Exception extends PEAR2_Exception
+class PEAR2_Console_CommandLine_Exception extends \pear2\Exception
 {
     // Codes constants {{{
 

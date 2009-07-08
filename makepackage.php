@@ -35,15 +35,15 @@ $basedir = __DIR__ . '/../..';
 
 require_once $basedir . '/autoload.php';
 
-new PEAR2_Pyrus_Developer_PackageFile_PEAR2SVN(
+new \pear2\Pyrus\Developer\PackageFile\PEAR2SVN(
     __DIR__,
     'PEAR2_Console_CommandLine'
 );
 
-$package = new PEAR2_Pyrus_Package('package.xml');
+$package = new \pear2\Pyrus\Package('package.xml');
 $outfile = $package->name . '-' . $package->version['release'];
-$creator = new PEAR2_Pyrus_Package_Creator(
-	new PEAR2_Pyrus_Developer_Creator_Phar($outfile . '.tgz', false, Phar::TAR, Phar::GZ),
+$creator = new \pear2\Pyrus\Package\Creator(
+	new \pear2\Pyrus\Developer\Creator\Phar($outfile . '.tgz', false, Phar::TAR, Phar::GZ),
 	$basedir . '/Exception/src',
 	$basedir . '/Autoload/src',
 	$basedir . '/MultiErrors/src'
