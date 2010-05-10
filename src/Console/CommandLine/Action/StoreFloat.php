@@ -51,7 +51,7 @@ class PEAR2_Console_CommandLine_Action_StoreFloat extends PEAR2_Console_CommandL
      * @return string
      * @throws PEAR2_Console_CommandLine_Exception
      */
-    public function execute($value=false, $params=array())
+    public function execute($value = false, $params = array())
     {
         if (!is_numeric($value)) {
             throw PEAR2_Console_CommandLine_Exception::factory(

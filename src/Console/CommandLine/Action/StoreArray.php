@@ -39,6 +39,16 @@
  */
 class PEAR2_Console_CommandLine_Action_StoreArray extends PEAR2_Console_CommandLine_Action
 {
+    // Protected properties {{{
+
+    /**
+     * Force a clean result when first called, overriding any defaults assigned.
+     *
+     * @var object $firstPass First time this action has been called.
+     */
+    protected $firstPass = true;
+
+    // }}}
     // execute() {{{
 
     /**
@@ -52,8 +62,9 @@ class PEAR2_Console_CommandLine_Action_StoreArray extends PEAR2_Console_CommandL
     public function execute($value = false, $params = array())
     {
         $result = $this->getResult();
-        if (null === $result) {
-            $result = array();
+        if (null === $result || $this->firstPass) {
+            $result          = array();
+            $this->firstPass = false;
         }
         $result[] = $value;
         $this->setResult($result);

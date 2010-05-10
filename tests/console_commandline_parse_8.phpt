@@ -20,7 +20,7 @@ try {
 
 ?>
 --EXPECT--
-object(PEAR2_Console_CommandLine_Result)#21 (4) {
+object(PEAR2_Console_CommandLine_Result)#19 (4) {
   ["options"]=>
   array(11) {
     ["true"]=>
@@ -38,7 +38,12 @@ object(PEAR2_Console_CommandLine_Result)#21 (4) {
     ["callback"]=>
     NULL
     ["array"]=>
-    NULL
+    array(2) {
+      [0]=>
+      string(4) "spam"
+      [1]=>
+      string(3) "egg"
+    }
     ["password"]=>
     NULL
     ["help"]=>

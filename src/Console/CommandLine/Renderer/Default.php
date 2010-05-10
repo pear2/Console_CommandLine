@@ -154,19 +154,18 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
      */
     protected function name()
     {
-        $name   = '';
+        $name   = $this->parser->name;
         $parent = $this->parser->parent;
         while ($parent) {
-            $name .= $parent->name . ' ';
             if (count($parent->options) > 0) {
-                $name .= '[' 
+                $name = '[' 
                     . strtolower($this->parser->message_provider->get('OPTION_WORD',
                           array('plural' => 's'))) 
-                    . '] ';
+                    . '] ' . $name;
             }
+            $name = $parent->name . ' ' . $name;
             $parent = $parent->parent;
         }
-        $name .= $this->parser->name;
         return $this->wrap($name);
     }
 
@@ -227,8 +226,24 @@ class PEAR2_Console_CommandLine_Renderer_Default implements PEAR2_Console_Comman
                 . strtolower($this->parser->message_provider->get('OPTION_WORD'))
                 . ']';
         }
-        //XXX
-        $ret .= " <command> [options] [args]";
+        $ret       .= " <command>";
+        $hasArgs    = false;
+        $hasOptions = false;
+        foreach ($this->parser->commands as $command) {
+            if (!$hasArgs && count($command->args) > 0) {
+                $hasArgs = true;
+            }
+            if (!$hasOptions && ($command->add_help_option || 
+                $command->add_version_option || count($command->options) > 0)) {
+                $hasOptions = true;
+            }
+        }
+        if ($hasOptions) {
+            $ret .= ' [options]';
+        }
+        if ($hasArgs) {
+            $ret .= ' [args]';
+        }
         return $this->columnWrap($ret, 2);
     }
 

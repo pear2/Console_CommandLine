@@ -37,7 +37,9 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_MessageProvider_Default implements PEAR2_Console_CommandLine_MessageProvider
+class PEAR2_Console_CommandLine_MessageProvider_Default
+    implements PEAR2_Console_CommandLine_MessageProvider,
+    PEAR2_Console_CommandLine_CustomMessageProvider
 {
     // Properties {{{
 
@@ -66,6 +68,7 @@ class PEAR2_Console_CommandLine_MessageProvider_Default implements PEAR2_Console
         'INVALID_CUSTOM_INSTANCE' => 'Instance does not implement the required interface',
         'LIST_OPTION_MESSAGE'     => 'lists valid choices for option {$name}',
         'LIST_DISPLAYED_MESSAGE'  => 'Valid choices are: ',
+        'INVALID_SUBCOMMAND'      => 'Command "{$command}" is not valid.',
     );
 
     // }}}
@@ -84,12 +87,55 @@ class PEAR2_Console_CommandLine_MessageProvider_Default implements PEAR2_Console
         if (!isset($this->messages[$code])) {
             return 'UNKNOWN';
         }
+        return $this->replaceTemplateVars($this->messages[$code], $vars);
+    }
+
+    // }}}
+    // getWithCustomMessages() {{{
+
+    /**
+     * Retrieve the given string identifier corresponding message.
+     *
+     * @param string $code     The string identifier of the message
+     * @param array  $vars     An array of template variables
+     * @param array  $messages An optional array of messages to use. Array
+     *                         indexes are message codes.
+     *
+     * @return string
+     */
+    public function getWithCustomMessages(
+        $code, $vars = array(), $messages = array()
+    ) {
+        // get message
+        if (isset($messages[$code])) {
+            $message = $messages[$code];
+        } elseif (isset($this->messages[$code])) {
+            $message = $this->messages[$code];
+        } else {
+            $message = 'UNKNOWN';
+        }
+        return $this->replaceTemplateVars($message, $vars);
+    }
+
+    // }}}
+    // replaceTemplateVars() {{{
+
+    /**
+     * Replaces template vars in a message
+     *
+     * @param string $message The message
+     * @param array  $vars    An array of template variables
+     *
+     * @return string
+     */
+    protected function replaceTemplateVars($message, $vars = array())
+    {
         $tmpkeys = array_keys($vars);
         $keys    = array();
         foreach ($tmpkeys as $key) {
             $keys[] = '{$' . $key . '}';
         }
-        return str_replace($keys, array_values($vars), $this->messages[$code]);
+        return str_replace($keys, array_values($vars), $message);
     }
 
     // }}}

@@ -27,7 +27,7 @@ $parser->addArgument('Some invalid name');
 --EXPECTF--
 array(4) {
   ["arg1"]=>
-  object(PEAR2_Console_CommandLine_Argument)#8 (5) {
+  object(PEAR2_Console_CommandLine_Argument)#6 (6) {
     ["multiple"]=>
     bool(false)
     ["optional"]=>
@@ -38,9 +38,12 @@ array(4) {
     string(4) "arg1"
     ["description"]=>
     NULL
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["arg2"]=>
-  object(PEAR2_Console_CommandLine_Argument)#9 (5) {
+  object(PEAR2_Console_CommandLine_Argument)#7 (6) {
     ["multiple"]=>
     bool(true)
     ["optional"]=>
@@ -51,9 +54,12 @@ array(4) {
     string(4) "arg2"
     ["description"]=>
     string(19) "description of arg2"
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["arg3"]=>
-  object(PEAR2_Console_CommandLine_Argument)#10 (5) {
+  object(PEAR2_Console_CommandLine_Argument)#8 (6) {
     ["multiple"]=>
     bool(true)
     ["optional"]=>
@@ -64,9 +70,12 @@ array(4) {
     string(4) "arg3"
     ["description"]=>
     string(19) "description of arg3"
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["arg4"]=>
-  object(PEAR2_Console_CommandLine_Argument)#11 (5) {
+  object(PEAR2_Console_CommandLine_Argument)#9 (6) {
     ["multiple"]=>
     bool(false)
     ["optional"]=>
@@ -77,6 +86,9 @@ array(4) {
     string(4) "arg4"
     ["description"]=>
     NULL
+    ["messages"]=>
+    array(0) {
+    }
   }
 }
 

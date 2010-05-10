@@ -217,6 +217,38 @@ class PEAR2_Console_CommandLine
     );
 
     /**
+     * Custom errors messages for this command
+     *
+     * This array is of the form:
+     * <code>
+     * <?php
+     * array(
+     *     $messageName => $messageText,
+     *     $messageName => $messageText,
+     *     ...
+     * );
+     * ?>
+     * </code>
+     *
+     * If specified, these messages override the messages provided by the
+     * default message provider. For example:
+     * <code>
+     * <?php
+     * $messages = array(
+     *     'ARGUMENT_REQUIRED' => 'The argument foo is required.',
+     * );
+     * ?>
+     * </code>
+     *
+     * @var array
+     * @see PEAR2_Console_CommandLine_MessageProvider_Default
+     */
+    public $messages = array();
+
+    // }}}
+    // {{{ Private properties
+
+    /**
      * Array of options that must be dispatched at the end.
      *
      * @var array $_dispatchLater Options to be dispatched
@@ -235,8 +267,8 @@ class PEAR2_Console_CommandLine
      *     'name'               => 'yourprogram', // defaults to argv[0]
      *     'description'        => 'Description of your program',
      *     'version'            => '0.0.1', // your program version
-     *     'add_help_option'    => true, // or false to disable --version option
-     *     'add_version_option' => true, // or false to disable --help option
+     *     'add_help_option'    => true, // or false to disable --help option
+     *     'add_version_option' => true, // or false to disable --version option
      *     'force_posix'        => false // or true to force posix compliance
      * ));
      * </code>
@@ -273,6 +305,9 @@ class PEAR2_Console_CommandLine
         } else if (getenv('POSIXLY_CORRECT')) {
             $this->force_posix = true;
         }
+        if (isset($params['messages']) && is_array($params['messages'])) {
+            $this->messages = $params['messages'];
+        }
         // set default instances
         $this->renderer         = new PEAR2_Console_CommandLine_Renderer_Default($this);
         $this->outputter        = new PEAR2_Console_CommandLine_Outputter_Default();
@@ -307,7 +342,9 @@ class PEAR2_Console_CommandLine
         } else {
             throw PEAR2_Console_CommandLine_Exception::factory(
                 'INVALID_CUSTOM_INSTANCE',
-                array(), $this
+                array(),
+                $this,
+                $this->messages
             );
         }
     }
@@ -479,8 +516,30 @@ class PEAR2_Console_CommandLine
         } else {
             $params['name'] = $name;
             $command        = new PEAR2_Console_CommandLine_Command($params);
+            // some properties must cascade to the child command if not 
+            // passed explicitely. This is done only in this case, because if 
+            // we have a Command object we have no way to determine if theses 
+            // properties have already been set
+            $cascade = array(
+                'add_help_option',
+                'add_version_option',
+                'outputter',
+                'message_provider',
+                'force_posix',
+                'force_options_defaults'
+            );
+            foreach ($cascade as $property) {
+                if (!isset($params[$property])) {
+                    $command->$property = $this->$property;
+                }
+            }
+            if (!isset($params['renderer'])) {
+                $renderer          = clone $this->renderer;
+                $renderer->parser  = $command;
+                $command->renderer = $renderer;
+            }
         }
-        $command->parent                = $this;
+        $command->parent = $this;
         $this->commands[$command->name] = $command;
         return $command;
     }
@@ -567,47 +626,62 @@ class PEAR2_Console_CommandLine
     // displayError() {{{
 
     /**
-     * Displays an error to the user and exit with $exitCode.
+     * Displays an error to the user via stderr and exit with $exitCode if its
+     * value is not equals to false.
      *
      * @param string $error    The error message
-     * @param int    $exitCode The exit code number
+     * @param int    $exitCode The exit code number (default: 1). If set to
+     *                         false, the exit() function will not be called
      *
      * @return void
      */
     public function displayError($error, $exitCode = 1)
     {
         $this->outputter->stderr($this->renderer->error($error));
-        exit($exitCode);
+        if ($exitCode !== false) {
+            exit($exitCode);
+        }
     }
 
     // }}}
     // displayUsage() {{{
 
     /**
-     * Displays the usage help message to the user and exit with $exitCode
+     * Displays the usage help message to the user via stdout and exit with
+     * $exitCode if its value is not equals to false.
      *
-     * @param int $exitCode The exit code number
+     * @param int $exitCode The exit code number (default: 0). If set to
+     *                      false, the exit() function will not be called
      *
      * @return void
      */
-    public function displayUsage($exitCode = 1)
+    public function displayUsage($exitCode = 0)
     {
-        $this->outputter->stderr($this->renderer->usage());
-        exit($exitCode);
+        $this->outputter->stdout($this->renderer->usage());
+        if ($exitCode !== false) {
+            exit($exitCode);
+        }
     }
 
     // }}}
     // displayVersion() {{{
 
     /**
-     * Displays the program version to the user
+     * Displays the program version to the user via stdout and exit with
+     * $exitCode if its value is not equals to false.
+     *
+     *
+     * @param int $exitCode The exit code number (default: 0). If set to
+     *                      false, the exit() function will not be called
      *
      * @return void
      */
-    public function displayVersion()
+    public function displayVersion($exitCode = 0)
     {
         $this->outputter->stdout($this->renderer->version());
-        exit(0);
+        if ($exitCode !== false) {
+            exit($exitCode);
+        }
     }
 
     // }}}
@@ -650,7 +724,8 @@ class PEAR2_Console_CommandLine
                 throw PEAR2_Console_CommandLine_Exception::factory(
                     'OPTION_AMBIGUOUS',
                     array('name' => $str, 'matches' => $matches_str),
-                    $this
+                    $this,
+                    $this->messages
                 );
             }
             return $matches[0];
@@ -769,7 +844,7 @@ class PEAR2_Console_CommandLine
             array_shift($argv);
             $argc--;
         }
-        // will contain aruments
+        // will contain arguments
         $args = array();
         foreach ($this->options as $name=>$option) {
             $result->options[$name] = $option->default;
@@ -789,6 +864,22 @@ class PEAR2_Console_CommandLine
                 throw $exc;
             }
         }
+        // Parse a null token to allow any undespatched actions to be despatched.
+        $this->parseToken(null, $result, $args, 0);
+        // Check if an invalid subcommand was specified. If there are
+        // subcommands and no arguments, but an argument was provided, it is
+        // an invalid subcommand.
+        if (   count($this->commands) > 0
+            && count($this->args) === 0
+            && count($args) > 0
+        ) {
+            throw PEAR2_Console_CommandLine_Exception::factory(
+                'INVALID_SUBCOMMAND',
+                array('command' => $args[0]),
+                $this,
+                $this->messages
+            );
+        }
         // minimum argument number check
         $argnum = 0;
         foreach ($this->args as $name=>$arg) {
@@ -800,7 +891,8 @@ class PEAR2_Console_CommandLine
             throw PEAR2_Console_CommandLine_Exception::factory(
                 'ARGUMENT_REQUIRED',
                 array('argnum' => $argnum, 'plural' => $argnum>1 ? 's': ''),
-                $this
+                $this,
+                $this->messages
             );
         }
         // handle arguments
@@ -841,7 +933,6 @@ class PEAR2_Console_CommandLine
         static $lastopt  = false;
         static $stopflag = false;
         $last  = $argc === 0;
-        $token = trim($token);
         if (!$stopflag && $lastopt) {
             if (substr($token, 0, 1) == '-') {
                 if ($lastopt->argument_optional) {
@@ -856,7 +947,8 @@ class PEAR2_Console_CommandLine
                     throw PEAR2_Console_CommandLine_Exception::factory(
                         'OPTION_VALUE_REQUIRED',
                         array('name' => $lastopt->name),
-                        $this
+                        $this,
+                        $this->messages
                     );
                 }
             } else {
@@ -867,10 +959,14 @@ class PEAR2_Console_CommandLine
                 if ($lastopt->action == 'StoreArray' && 
                     !empty($result->options[$lastopt->name]) &&
                     count($this->args) > ($argc + count($args))) {
-                    $args[] = $token;
+                    if (!is_null($token)) {
+                        $args[] = $token;
+                    }
                     return;
                 }
-                $this->_dispatchAction($lastopt, $token, $result);
+                if (!is_null($token) || $lastopt->action == 'Password') {
+                    $this->_dispatchAction($lastopt, $token, $result);
+                }
                 if ($lastopt->action != 'StoreArray') {
                     $lastopt = false;
                 }
@@ -891,7 +987,8 @@ class PEAR2_Console_CommandLine
                 throw PEAR2_Console_CommandLine_Exception::factory(
                     'OPTION_UNKNOWN',
                     array('name' => $optkv[0]),
-                    $this
+                    $this,
+                    $this->messages
                 );
             }
             $value = isset($optkv[1]) ? $optkv[1] : false;
@@ -899,7 +996,8 @@ class PEAR2_Console_CommandLine
                 throw PEAR2_Console_CommandLine_Exception::factory(
                     'OPTION_VALUE_UNEXPECTED',
                     array('name' => $opt->name, 'value' => $value),
-                    $this
+                    $this,
+                    $this->messages
                 );
             }
             if ($opt->expectsArgument() && $value === false) {
@@ -909,7 +1007,8 @@ class PEAR2_Console_CommandLine
                     throw PEAR2_Console_CommandLine_Exception::factory(
                         'OPTION_VALUE_REQUIRED',
                         array('name' => $opt->name),
-                        $this
+                        $this,
+                        $this->messages
                     );
                 }
                 // we will have a value next time
@@ -933,7 +1032,8 @@ class PEAR2_Console_CommandLine
                 throw PEAR2_Console_CommandLine_Exception::factory(
                     'OPTION_UNKNOWN',
                     array('name' => $optname),
-                    $this
+                    $this,
+                    $this->messages
                 );
             }
             // parse other options or set the value
@@ -946,7 +1046,8 @@ class PEAR2_Console_CommandLine
                         throw PEAR2_Console_CommandLine_Exception::factory(
                             'OPTION_VALUE_REQUIRED',
                             array('name' => $opt->name),
-                            $this
+                            $this,
+                            $this->messages
                         );
                     }
                     // we will have a value next time
@@ -965,7 +1066,8 @@ class PEAR2_Console_CommandLine
                         throw PEAR2_Console_CommandLine_Exception::factory(
                             'OPTION_UNKNOWN',
                             array('name' => $next),
-                            $this
+                            $this,
+                            $this->messages
                         );
                     }
                 }
@@ -982,7 +1084,9 @@ class PEAR2_Console_CommandLine
             if (!$stopflag && $this->force_posix) {
                 $stopflag = true;
             }
-            $args[] = $token;
+            if (!is_null($token)) {
+                $args[] = $token;
+            }
         }
     }
 
@@ -1049,7 +1153,7 @@ class PEAR2_Console_CommandLine
                             $opt->short_name : $opt->long_name;
                         foreach ($value as $v) {
                             if ($opt->expectsArgument()) {
-                                $argv[] = isset($_GET[$key]) ? urldecode($v) : $v;
+                                $argv[] = isset($_REQUEST[$key]) ? urldecode($v) : $v;
                             } else if ($v == '0' || $v == 'false') {
                                 array_pop($argv);
                             }
@@ -1057,7 +1161,7 @@ class PEAR2_Console_CommandLine
                     } else if (isset($this->args[$key])) {
                         // match a configured argument
                         foreach ($value as $v) {
-                            $argv[] = isset($_GET[$key]) ? urldecode($v) : $v;
+                            $argv[] = isset($_REQUEST[$key]) ? urldecode($v) : $v;
                         }
                     }
                 }

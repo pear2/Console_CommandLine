@@ -28,10 +28,10 @@ $parser->addOption($opt3);
 var_dump($parser->options);
 
 ?>
---EXPECT--
+--EXPECTF--
 array(4) {
   ["opt1"]=>
-  object(PEAR2_Console_CommandLine_Option)#8 (12) {
+  object(PEAR2_Console_CommandLine_Option)#6 (14) {
     ["short_name"]=>
     string(2) "-a"
     ["long_name"]=>
@@ -52,15 +52,20 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
+    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    NULL
     ["name"]=>
     string(4) "opt1"
     ["help_name"]=>
     string(4) "opt1"
     ["description"]=>
     NULL
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["opt2"]=>
-  object(PEAR2_Console_CommandLine_Option)#9 (12) {
+  object(PEAR2_Console_CommandLine_Option)#7 (14) {
     ["short_name"]=>
     string(2) "-b"
     ["long_name"]=>
@@ -87,15 +92,20 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(true)
+    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    NULL
     ["name"]=>
     string(4) "opt2"
     ["help_name"]=>
     string(3) "bar"
     ["description"]=>
     string(19) "description of opt2"
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["list_opt2"]=>
-  object(PEAR2_Console_CommandLine_Option)#10 (12) {
+  object(PEAR2_Console_CommandLine_Option)#8 (14) {
     ["short_name"]=>
     NULL
     ["long_name"]=>
@@ -125,15 +135,20 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
+    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    NULL
     ["name"]=>
     string(9) "list_opt2"
     ["help_name"]=>
     string(9) "list_opt2"
     ["description"]=>
     string(35) "lists valid choices for option opt2"
+    ["messages"]=>
+    array(0) {
+    }
   }
   ["opt3"]=>
-  object(PEAR2_Console_CommandLine_Option)#11 (12) {
+  object(PEAR2_Console_CommandLine_Option)#9 (14) {
     ["short_name"]=>
     NULL
     ["long_name"]=>
@@ -154,11 +169,16 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
+    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    NULL
     ["name"]=>
     string(4) "opt3"
     ["help_name"]=>
     string(4) "opt3"
     ["description"]=>
     string(19) "description of opt3"
+    ["messages"]=>
+    array(0) {
+    }
   }
 }

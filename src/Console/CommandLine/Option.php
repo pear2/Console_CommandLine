@@ -67,7 +67,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
     public $default;
 
     /**
-     * An array of possible values for the option if this array is not empty 
+     * An array of possible values for the option. If this array is not empty 
      * and the value passed is not in the array an exception is raised.
      * This only make sense for actions that accept values of course.
      *
@@ -136,6 +136,16 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
      * @var bool $add_list_option Whether to add a list option or not
      */
     public $add_list_option = false;
+
+    // }}}
+    // Private properties {{{
+
+    /**
+     * When an action is called remember it to allow for multiple calls.
+     *
+     * @var object $action_instance Placeholder for action
+     */
+    private $_action_instance = null;
 
     // }}}
     // __construct() {{{
@@ -224,25 +234,26 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
      */
     public function dispatchAction($value, $result, $parser)
     {
+        $actionInfo = PEAR2_Console_CommandLine::$actions[$this->action];
+        $clsname    = $actionInfo[0];
+        if ($this->_action_instance === null) {
+            $this->_action_instance  = new $clsname($result, $this, $parser);
+        }
+
         // check value is in option choices
-        if (!empty($this->choices) && !in_array($value, $this->choices)) {
+        if (!empty($this->choices) && !in_array($this->_action_instance->format($value), $this->choices)) {
             throw PEAR2_Console_CommandLine_Exception::factory(
                 'OPTION_VALUE_NOT_VALID',
                 array(
                     'name'    => $this->name,
                     'choices' => implode('", "', $this->choices),
                     'value'   => $value,
-                ), $parser
+                ),
+                $parser,
+                $this->messages
             );
         }
-        $actionInfo = PEAR2_Console_CommandLine::$actions[$this->action];
-        if (true === $actionInfo[1]) {
-            // we have a "builtin" action
-            $tokens = explode('_', $actionInfo[0]);
-        }
-        $clsname = $actionInfo[0];
-        $action  = new $clsname($result, $this, $parser);
-        $action->execute($value, $this->action_params);
+        $this->_action_instance->execute($value, $this->action_params);
     }
 
     // }}}
