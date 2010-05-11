@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -26,7 +26,7 @@
  * Class that represent a command line argument.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,7 +34,8 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_Argument extends PEAR2_Console_CommandLine_Element
+namespace pear2\Console\CommandLine;
+class Argument extends Element
 {
     // Public properties {{{
 
@@ -63,7 +64,7 @@ class PEAR2_Console_CommandLine_Argument extends PEAR2_Console_CommandLine_Eleme
      * Validates the argument instance.
      *
      * @return void
-     * @throws PEAR2_Console_CommandLine_Exception
+     * @throws pear2\Console\CommandLine_Exception
      * @todo use exceptions
      */
     public function validate()
@@ -71,7 +72,7 @@ class PEAR2_Console_CommandLine_Argument extends PEAR2_Console_CommandLine_Eleme
         // check if the argument name is valid
         if (!preg_match('/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
             $this->name)) {
-            PEAR2_Console_CommandLine::triggerError(
+            \pear2\Console\CommandLine::triggerError(
                 'argument_bad_name',
                 E_USER_ERROR,
                 array('{$name}' => $this->name)

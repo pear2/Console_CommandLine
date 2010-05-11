@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() method (--help with renderer options).
+Test for pear2\Console\CommandLine::parse() method (--help with renderer options).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -9,7 +9,7 @@ Test for PEAR2_Console_CommandLine::parse() method (--help with renderer options
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = new PEAR2_Console_CommandLine();
+$parser = new pear2\Console\CommandLine();
 $parser->addOption('list', array(
     'long_name'     => '--list',
     'action'        => 'List',

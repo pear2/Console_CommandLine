@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::fromXmlFile() method (error).
+Test for pear2\Console\CommandLine::fromXmlFile() method (error).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -10,7 +10,7 @@ Test for PEAR2_Console_CommandLine::fromXmlFile() method (error).
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 // unexisting xml file
-$parser = PEAR2_Console_CommandLine::fromXmlFile(__DIR__ . DIRECTORY_SEPARATOR . 'unexisting.xml');
+$parser = pear2\Console\CommandLine::fromXmlFile(__DIR__ . DIRECTORY_SEPARATOR . 'unexisting.xml');
 $parser->parse();
 
 ?>

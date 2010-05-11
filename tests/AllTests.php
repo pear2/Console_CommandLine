@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -30,15 +30,15 @@ require_once 'PHPUnit/Extensions/PhptTestSuite.php';
 require_once 'PHPUnit/TextUI/TestRunner.php';
 
 /**
- * PEAR2_Console_CommandLine phpt test suite.
+ * pear2\Console\CommandLine phpt test suite.
  *
  * Run all tests from the package root directory:
- * $ phpunit PEAR2_Console_CommandLine_AllTests tests/AllTests.php
+ * $ phpunit pear2\Console\CommandLine_AllTests tests/AllTests.php
  * or
  * $ php tests/AllTests.php
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -46,7 +46,7 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 1.0.0
  */
-class PEAR2_Console_CommandLine_AllTests
+class pear2\Console\CommandLine_AllTests
 {
     /**
      * Runs the test suite
@@ -72,7 +72,7 @@ class PEAR2_Console_CommandLine_AllTests
 }
 
 if (PHPUnit_MAIN_METHOD == 'Console_CommandLine_AllTests::main') {
-    PEAR2_Console_CommandLine_AllTests::main();
+    pear2\Console\CommandLine_AllTests::main();
 }
 
 ?>

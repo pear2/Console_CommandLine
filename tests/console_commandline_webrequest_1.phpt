@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() with a web request 1
+Test for pear2\Console\CommandLine::parse() with a web request 1
 --GET--
 version=1
 --FILE--

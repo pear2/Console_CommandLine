@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::fromXmlString() method.
+Test for pear2\Console\CommandLine::fromXmlString() method.
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -10,7 +10,7 @@ Test for PEAR2_Console_CommandLine::fromXmlString() method.
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $str = file_get_contents(__DIR__ . DIRECTORY_SEPARATOR . 'test.xml');
-$parser = PEAR2_Console_CommandLine::fromXmlString($str);
+$parser = pear2\Console\CommandLine::fromXmlString($str);
 $parser->parse();
 
 ?>

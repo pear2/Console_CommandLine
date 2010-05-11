@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() method (user argc/argv 2).
+Test for pear2\Console\CommandLine::parse() method (user argc/argv 2).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --FILE--
@@ -13,13 +13,13 @@ try {
     $parser = buildParser2();
     $result = $parser->parse($argc, $argv);
     var_dump($result);
-} catch (PEAR2_Console_CommandLine_Exception $exc) {
+} catch (pear2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
 ?>
 --EXPECT--
-object(PEAR2_Console_CommandLine_Result)#17 (4) {
+object(pear2\Console\CommandLine\Result)#17 (4) {
   ["options"]=>
   array(4) {
     ["verbose"]=>
@@ -37,7 +37,7 @@ object(PEAR2_Console_CommandLine_Result)#17 (4) {
   ["command_name"]=>
   string(7) "install"
   ["command"]=>
-  object(PEAR2_Console_CommandLine_Result)#20 (4) {
+  object(pear2\Console\CommandLine\Result)#20 (4) {
     ["options"]=>
     array(2) {
       ["force"]=>

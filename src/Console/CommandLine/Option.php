@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -26,7 +26,7 @@
  * Class that represent a commandline option.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,7 +34,11 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
+namespace pear2\Console\CommandLine;
+
+use pear2\Console;
+
+class Option extends Element
 {
     // Public properties {{{
 
@@ -223,18 +227,18 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
 
     /**
      * Formats the value $value according to the action of the option and 
-     * updates the passed PEAR2_Console_CommandLine_Result object.
+     * updates the passed pear2\Console\CommandLine_Result object.
      *
      * @param mixed                            $value  The value to format
-     * @param PEAR2_Console_CommandLine_Result $result The result instance
-     * @param PEAR2_Console_CommandLine        $parser The parser instance
+     * @param pear2\Console\CommandLine_Result $result The result instance
+     * @param pear2\Console\CommandLine        $parser The parser instance
      *
      * @return void
-     * @throws PEAR2_Console_CommandLine_Exception
+     * @throws pear2\Console\CommandLine_Exception
      */
     public function dispatchAction($value, $result, $parser)
     {
-        $actionInfo = PEAR2_Console_CommandLine::$actions[$this->action];
+        $actionInfo = Console\CommandLine::$actions[$this->action];
         $clsname    = $actionInfo[0];
         if ($this->_action_instance === null) {
             $this->_action_instance  = new $clsname($result, $this, $parser);
@@ -242,7 +246,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
 
         // check value is in option choices
         if (!empty($this->choices) && !in_array($this->_action_instance->format($value), $this->choices)) {
-            throw PEAR2_Console_CommandLine_Exception::factory(
+            throw Console\CommandLine\Exception::factory(
                 'OPTION_VALUE_NOT_VALID',
                 array(
                     'name'    => $this->name,
@@ -263,7 +267,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
      * Validates the option instance.
      *
      * @return void
-     * @throws PEAR2_Console_CommandLine_Exception
+     * @throws pear2\Console\CommandLine_Exception
      * @todo use exceptions instead
      */
     public function validate()
@@ -271,20 +275,20 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
         // check if the option name is valid
         if (!preg_match('/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
             $this->name)) {
-            PEAR2_Console_CommandLine::triggerError('option_bad_name',
+            Console\CommandLine::triggerError('option_bad_name',
                 E_USER_ERROR, array('{$name}' => $this->name));
         }
         // call the parent validate method
         parent::validate();
         // a short_name or a long_name must be provided
         if ($this->short_name == null && $this->long_name == null) {
-            PEAR2_Console_CommandLine::triggerError('option_long_and_short_name_missing',
+            Console\CommandLine::triggerError('option_long_and_short_name_missing',
                 E_USER_ERROR, array('{$name}' => $this->name));
         }
         // check if the option short_name is valid
         if ($this->short_name != null && 
             !(preg_match('/^\-[a-zA-Z]{1}$/', $this->short_name))) {
-            PEAR2_Console_CommandLine::triggerError('option_bad_short_name',
+            Console\CommandLine::triggerError('option_bad_short_name',
                 E_USER_ERROR, array(
                     '{$name}' => $this->name, 
                     '{$short_name}' => $this->short_name
@@ -293,7 +297,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
         // check if the option long_name is valid
         if ($this->long_name != null && 
             !preg_match('/^\-\-[a-zA-Z]+[a-zA-Z0-9_\-]*$/', $this->long_name)) {
-            PEAR2_Console_CommandLine::triggerError('option_bad_long_name',
+            Console\CommandLine::triggerError('option_bad_long_name',
                 E_USER_ERROR, array(
                     '{$name}' => $this->name, 
                     '{$long_name}' => $this->long_name
@@ -301,11 +305,11 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
         }
         // check if we have a valid action
         if (!is_string($this->action)) {
-            PEAR2_Console_CommandLine::triggerError('option_bad_action',
+            Console\CommandLine::triggerError('option_bad_action',
                 E_USER_ERROR, array('{$name}' => $this->name));
         }
-        if (!isset(PEAR2_Console_CommandLine::$actions[$this->action])) {
-            PEAR2_Console_CommandLine::triggerError('option_unregistered_action',
+        if (!isset(Console\CommandLine::$actions[$this->action])) {
+            Console\CommandLine::triggerError('option_unregistered_action',
                 E_USER_ERROR, array(
                     '{$action}' => $this->action,
                     '{$name}' => $this->name
@@ -313,7 +317,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
         }
         // if the action is a callback, check that we have a valid callback
         if ($this->action == 'Callback' && !is_callable($this->callback)) {
-            PEAR2_Console_CommandLine::triggerError('option_invalid_callback',
+            Console\CommandLine::triggerError('option_invalid_callback',
                 E_USER_ERROR, array('{$name}' => $this->name));
         }
     }
@@ -326,7 +330,7 @@ class PEAR2_Console_CommandLine_Option extends PEAR2_Console_CommandLine_Element
      *
      * Note that for backward compatibility issues this method is only called 
      * when the 'force_options_defaults' is set to true, it will become the
-     * default behaviour in the next major release of PEAR2_Console_CommandLine.
+     * default behaviour in the next major release of pear2\Console\CommandLine.
      *
      * @return void
      */

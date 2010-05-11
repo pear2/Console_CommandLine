@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -30,7 +30,7 @@
  * an Exception is raised.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -38,7 +38,11 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_Action_StoreFloat extends PEAR2_Console_CommandLine_Action
+namespace pear2\Console\CommandLine\Action;
+
+use pear2\Console\CommandLine;
+
+class StoreFloat extends CommandLine\Action
 {
     // execute() {{{
 
@@ -49,12 +53,12 @@ class PEAR2_Console_CommandLine_Action_StoreFloat extends PEAR2_Console_CommandL
      * @param array $params An array of optional parameters
      *
      * @return string
-     * @throws PEAR2_Console_CommandLine_Exception
+     * @throws pear2\Console\CommandLine_Exception
      */
     public function execute($value = false, $params = array())
     {
         if (!is_numeric($value)) {
-            throw PEAR2_Console_CommandLine_Exception::factory(
+            throw CommandLine\Exception::factory(
                 'OPTION_VALUE_TYPE_ERROR',
                 array(
                     'name'  => $this->option->name,

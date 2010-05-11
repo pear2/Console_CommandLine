@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @author    Michael Gauthier <mike@silverorange.com>
  * @copyright 2007 David JEAN LOUIS, 2009 silverorange
@@ -30,7 +30,7 @@
  * Message providers may optionally implement this interface.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @author    Michael Gauthier <mike@silverorange.com>
  * @copyright 2007 David JEAN LOUIS, 2009 silverorange
@@ -39,7 +39,8 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Interface available since release 1.1.0
  */
-interface PEAR2_Console_CommandLine_CustomMessageProvider
+namespace pear2\Console\CommandLine;
+interface CustomMessageProvider
 {
     // getWithCustomMesssages() {{{
 
@@ -55,8 +56,8 @@ interface PEAR2_Console_CommandLine_CustomMessageProvider
      *                         indexes are message codes.
      *
      * @return string
-     * @see PEAR2_Console_CommandLine_MessageProvider
-     * @see PEAR2_Console_CommandLine_MessageProvider_Default
+     * @see pear2\Console\CommandLine_MessageProvider
+     * @see pear2\Console\CommandLine_MessageProvider_Default
      */
     public function getWithCustomMessages(
         $code, $vars = array(), $messages = array()

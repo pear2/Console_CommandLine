@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -60,11 +60,11 @@ function rot13Callback($value, $option, $result, $parser, $params=array())
 /**
  * Build a parser instance and return it.
  *
- * @return object PEAR2_Console_CommandLine instance
+ * @return object pear2\Console\CommandLine instance
  */
 function buildParser1()
 {
-    $parser              = new PEAR2_Console_CommandLine();
+    $parser              = new pear2\Console\CommandLine();
     $parser->name        = 'some_program';
     $parser->version     = '0.1.0';
     $parser->description = 'Description of our parser goes here...';
@@ -148,11 +148,11 @@ function buildParser1()
 /**
  * Build a parser instance and return it.
  *
- * @return object PEAR2_Console_CommandLine instance
+ * @return object pear2\Console\CommandLine instance
  */
 function buildParser2()
 {
-    $parser              = new PEAR2_Console_CommandLine();
+    $parser              = new pear2\Console\CommandLine();
     $parser->name        = 'some_program';
     $parser->version     = '0.1.0';
     $parser->description = 'Description of our parser goes here...';
@@ -202,11 +202,11 @@ function buildParser2()
 /**
  * Build a parser instance and return it.
  *
- * @return object PEAR2_Console_CommandLine instance
+ * @return object pear2\Console\CommandLine instance
  */
 function buildParser3()
 {
-    $parser              = new PEAR2_Console_CommandLine();
+    $parser              = new pear2\Console\CommandLine();
     $parser->name        = 'some_program';
     $parser->version     = '0.1.0';
     $parser->description = 'Description of our parser goes here...';
@@ -287,7 +287,7 @@ function buildParser3()
  */
 function buildParser4()
 {
-    $parser = new PEAR2_Console_CommandLine(array(
+    $parser = new pear2\Console\CommandLine(array(
         'messages' => array(
             'INVALID_SUBCOMMAND' => 'Only "upgrade" is supported.',
         ),
@@ -340,7 +340,7 @@ function buildParser4()
  * Some custom renderer for tests purposes.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -348,7 +348,7 @@ function buildParser4()
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
  */
-class CustomRenderer implements PEAR2_Console_CommandLine_Renderer
+class CustomRenderer implements \pear2\Console\CommandLine\Renderer
 {
     // usage() {{{
 
@@ -402,7 +402,7 @@ class CustomRenderer implements PEAR2_Console_CommandLine_Renderer
  * Some custom outputter for tests purposes.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -410,7 +410,7 @@ class CustomRenderer implements PEAR2_Console_CommandLine_Renderer
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
  */
-class CustomOutputter implements PEAR2_Console_CommandLine_Outputter
+class CustomOutputter implements \pear2\Console\CommandLine\Outputter
 {
     // stdout() {{{
 
@@ -453,7 +453,7 @@ class CustomOutputter implements PEAR2_Console_CommandLine_Outputter
  * Some custom message provider for tests purposes.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -461,7 +461,7 @@ class CustomOutputter implements PEAR2_Console_CommandLine_Outputter
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     File available since release 0.1.0
  */
-class CustomMessageProvider implements PEAR2_Console_CommandLine_MessageProvider
+class CustomMessageProvider implements \pear2\Console\CommandLine\MessageProvider
 {
     // get() {{{
 

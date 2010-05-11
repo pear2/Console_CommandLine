@@ -1,11 +1,11 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::addOption() method.
+Test for pear2\Console\CommandLine::addOption() method.
 --FILE--
 <?php
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = new PEAR2_Console_CommandLine();
+$parser = new pear2\Console\CommandLine();
 $parser->addOption('opt1', array(
     'short_name' => '-a'
 ));
@@ -19,7 +19,7 @@ $parser->addOption('opt2', array(
     'add_list_option' => true,
     'default' => 2
 ));
-$opt3 = new PEAR2_Console_CommandLine_Option('opt3', array(
+$opt3 = new pear2\Console\CommandLine\Option('opt3', array(
     'long_name' => '--bar',
     'description' => 'description of opt3',
 ));
@@ -31,7 +31,7 @@ var_dump($parser->options);
 --EXPECTF--
 array(4) {
   ["opt1"]=>
-  object(PEAR2_Console_CommandLine_Option)#6 (14) {
+  object(pear2\Console\CommandLine\Option)#6 (14) {
     ["short_name"]=>
     string(2) "-a"
     ["long_name"]=>
@@ -52,7 +52,7 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
-    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    ["_action_instance":"pear2\Console\CommandLine\Option":private]=>
     NULL
     ["name"]=>
     string(4) "opt1"
@@ -65,7 +65,7 @@ array(4) {
     }
   }
   ["opt2"]=>
-  object(PEAR2_Console_CommandLine_Option)#7 (14) {
+  object(pear2\Console\CommandLine\Option)#7 (14) {
     ["short_name"]=>
     string(2) "-b"
     ["long_name"]=>
@@ -92,7 +92,7 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(true)
-    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    ["_action_instance":"pear2\Console\CommandLine\Option":private]=>
     NULL
     ["name"]=>
     string(4) "opt2"
@@ -105,7 +105,7 @@ array(4) {
     }
   }
   ["list_opt2"]=>
-  object(PEAR2_Console_CommandLine_Option)#8 (14) {
+  object(pear2\Console\CommandLine\Option)#8 (14) {
     ["short_name"]=>
     NULL
     ["long_name"]=>
@@ -135,7 +135,7 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
-    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    ["_action_instance":"pear2\Console\CommandLine\Option":private]=>
     NULL
     ["name"]=>
     string(9) "list_opt2"
@@ -148,7 +148,7 @@ array(4) {
     }
   }
   ["opt3"]=>
-  object(PEAR2_Console_CommandLine_Option)#9 (14) {
+  object(pear2\Console\CommandLine\Option)#9 (14) {
     ["short_name"]=>
     NULL
     ["long_name"]=>
@@ -169,7 +169,7 @@ array(4) {
     bool(false)
     ["add_list_option"]=>
     bool(false)
-    ["_action_instance":"PEAR2_Console_CommandLine_Option":private]=>
+    ["_action_instance":"pear2\Console\CommandLine\Option":private]=>
     NULL
     ["name"]=>
     string(4) "opt3"

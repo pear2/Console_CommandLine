@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine::parse() method (invalid subcommand detection).
+Test for pear2\Console\CommandLine::parse() method (invalid subcommand detection).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -18,4 +18,4 @@ try {
 
 ?>
 --EXPECT--
-Package name is required.
+You must provide at least 1 argument.

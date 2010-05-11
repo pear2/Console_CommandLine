@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the PEAR2_Console_CommandLine package.
+ * This file is part of the pear2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -23,10 +23,10 @@
  */
 
 /**
- * Class for exceptions raised by the PEAR2_Console_CommandLine package.
+ * Class for exceptions raised by the pear2\Console\CommandLine package.
  *
  * @category  Console
- * @package   PEAR2_Console_CommandLine
+ * @package   pear2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,7 +34,8 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class PEAR2_Console_CommandLine_Exception extends \pear2\Exception
+namespace pear2\Console\CommandLine;
+class Exception extends \pear2\Exception
 {
     // Codes constants {{{
 
@@ -59,17 +60,17 @@ class PEAR2_Console_CommandLine_Exception extends \pear2\Exception
      * @param string                    $code     The string identifier of the
      *                                            exception.
      * @param array                     $params   Array of template vars/values
-     * @param PEAR2_Console_CommandLine $parser   An instance of the parser
+     * @param pear2\Console\CommandLine $parser   An instance of the parser
      * @param array                     $messages An optional array of messages
      *                                            passed to the message provider.
      *
-     * @return PEAR2_Console_CommandLine_Exception The exception instance
+     * @return pear2\Console\CommandLine_Exception The exception instance
      */
     public static function factory(
         $code, $params, $parser, array $messages = array()
     ) {
         $provider = $parser->message_provider;
-        if ($provider instanceof PEAR2_Console_CommandLine_CustomMessageProvider) {
+        if ($provider instanceof CommandLine\CustomMessageProvider) {
             $msg = $provider->getWithCustomMessages(
                 $code,
                 $params,
@@ -78,9 +79,9 @@ class PEAR2_Console_CommandLine_Exception extends \pear2\Exception
         } else {
             $msg = $provider->get($code, $params);
         }
-        $const = 'PEAR2_Console_CommandLine_Exception::' . $code;
+        $const = '\pear2\Console\CommandLine\Exception::' . $code;
         $code  = defined($const) ? constant($const) : 0;
-        return new PEAR2_Console_CommandLine_Exception($msg, $code);
+        return new Exception($msg, $code);
     }
 
     // }}}

@@ -1,5 +1,5 @@
 --TEST--
-Test for PEAR2_Console_CommandLine options defaults.
+Test for pear2\Console\CommandLine options defaults.
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --FILE--
@@ -14,7 +14,7 @@ try {
     foreach ($result->options as $k => $v) {
         echo $k . ":"; var_dump($v);
     }
-} catch (PEAR2_Console_CommandLine_Exception $exc) {
+} catch (pear2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
