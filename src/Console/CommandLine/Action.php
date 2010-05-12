@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -26,7 +26,7 @@
  * Class that represent an option action.
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,7 +34,7 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace pear2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine;
 abstract class Action
 {
     // Properties {{{
@@ -42,21 +42,21 @@ abstract class Action
     /**
      * A reference to the result instance.
      *
-     * @var pear2\Console\CommandLine_Result $result The result instance
+     * @var PEAR2\Console\CommandLine_Result $result The result instance
      */
     protected $result;
 
     /**
      * A reference to the option instance.
      *
-     * @var pear2\Console\CommandLine_Option $option The action option
+     * @var PEAR2\Console\CommandLine_Option $option The action option
      */
     protected $option;
 
     /**
      * A reference to the parser instance.
      *
-     * @var pear2\Console\CommandLine $parser The parser
+     * @var PEAR2\Console\CommandLine $parser The parser
      */
     protected $parser;
 
@@ -66,9 +66,9 @@ abstract class Action
     /**
      * Constructor
      *
-     * @param pear2\Console\CommandLine_Result $result The result instance
-     * @param pear2\Console\CommandLine_Option $option The action option
-     * @param pear2\Console\CommandLine        $parser The current parser
+     * @param PEAR2\Console\CommandLine_Result $result The result instance
+     * @param PEAR2\Console\CommandLine_Option $option The action option
+     * @param PEAR2\Console\CommandLine        $parser The current parser
      *
      * @return void
      */

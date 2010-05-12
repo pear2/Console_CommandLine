@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * A full featured package for managing command-line options and arguments 
  * hightly inspired from python optparse module, it allows the developper to 
@@ -16,7 +16,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -31,18 +31,18 @@
  * There are three ways to create parsers with this class:
  * <code>
  * // direct usage
- * $parser = new pear2\Console\CommandLine();
+ * $parser = new PEAR2\Console\CommandLine();
  *
  * // with an xml definition file
- * $parser = pear2\Console\CommandLine::fromXmlFile('path/to/file.xml');
+ * $parser = PEAR2\Console\CommandLine::fromXmlFile('path/to/file.xml');
  *
  * // with an xml definition string
  * $validXmlString = '..your xml string...';
- * $parser = pear2\Console\CommandLine::fromXmlString($validXmlString);
+ * $parser = PEAR2\Console\CommandLine::fromXmlString($validXmlString);
  * </code>
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -52,7 +52,7 @@
  * @example   docs/examples/ex1.php
  * @example   docs/examples/ex2.php
  */
-namespace pear2\Console;
+namespace PEAR2\Console;
 class CommandLine
 {
     // Public properties {{{
@@ -61,7 +61,7 @@ class CommandLine
      * Error messages.
      *
      * @var array $errors Error messages
-     * @todo move this to pear2\Console\CommandLine\MessageProvider
+     * @todo move this to PEAR2\Console\CommandLine\MessageProvider
      */
     public static $errors = array(
         'option_bad_name'                    => 'option name must be a valid php variable name (got: {$name})',
@@ -72,7 +72,7 @@ class CommandLine
         'option_unregistered_action'         => 'unregistered action "{$action}" for option "{$name}".',
         'option_bad_action'                  => 'invalid action for option "{$name}".',
         'option_invalid_callback'            => 'you must provide a valid callback for option "{$name}"',
-        'action_class_does_not_exists'       => 'action "{$name}" class "{$class}" not found, make sure that your class is available before calling pear2\Console\CommandLine::registerAction()',
+        'action_class_does_not_exists'       => 'action "{$name}" class "{$class}" not found, make sure that your class is available before calling PEAR2\Console\CommandLine::registerAction()',
         'invalid_xml_file'                   => 'XML definition file "{$file}" does not exists or is not readable',
         'invalid_rng_file'                   => 'RNG file "{$file}" does not exists or is not readable'
     );
@@ -124,21 +124,21 @@ class CommandLine
     /**
      * The command line parser renderer instance.
      *
-     * @var    object that implements pear2\Console\CommandLine\Renderer interface
+     * @var    object that implements PEAR2\Console\CommandLine\Renderer interface
      */
     public $renderer = false;
 
     /**
      * The command line parser outputter instance.
      *
-     * @var pear2\Console\CommandLine\Outputter An outputter
+     * @var PEAR2\Console\CommandLine\Outputter An outputter
      */
     public $outputter = false;
 
     /**
      * The command line message provider instance.
      *
-     * @var pear2\Console\CommandLine\MessageProvider A message provider instance
+     * @var PEAR2\Console\CommandLine\MessageProvider A message provider instance
      */
     public $message_provider = false;
 
@@ -154,27 +154,27 @@ class CommandLine
      * Boolean that tells the parser to set relevant options default values, 
      * according to the option action.
      *
-     * @see pear2\Console\CommandLine\Option::setDefaults()
+     * @see PEAR2\Console\CommandLine\Option::setDefaults()
      * @var bool $force_options_defaults Whether to force option default values
      */
     public $force_options_defaults = false;
 
     /**
-     * An array of pear2\Console\CommandLine\Option objects.
+     * An array of PEAR2\Console\CommandLine\Option objects.
      *
      * @var array $options The options array
      */
     public $options = array();
 
     /**
-     * An array of pear2\Console\CommandLine\Argument objects.
+     * An array of PEAR2\Console\CommandLine\Argument objects.
      *
      * @var array $args The arguments array
      */
     public $args = array();
 
     /**
-     * An array of pear2\Console\CommandLine\Command objects (sub commands).
+     * An array of PEAR2\Console\CommandLine\Command objects (sub commands).
      *
      * @var array $commands The commands array
      */
@@ -184,8 +184,8 @@ class CommandLine
      * Parent, only relevant in Command objects but left here for interface 
      * convenience.
      *
-     * @var pear2\Console\CommandLine The parent instance
-     * @todo move pear2\Console\CommandLine::parent to pear2\Console\CommandLine\Command
+     * @var PEAR2\Console\CommandLine The parent instance
+     * @todo move PEAR2\Console\CommandLine::parent to PEAR2\Console\CommandLine\Command
      */
     public $parent = false;
 
@@ -203,18 +203,18 @@ class CommandLine
      * @var array $actions List of valid actions
      */
     public static $actions = array(
-        'StoreTrue'   => array('pear2\\Console\\CommandLine\\Action\\StoreTrue', true),
-        'StoreFalse'  => array('pear2\\Console\\CommandLine\\Action\\StoreFalse', true),
-        'StoreString' => array('pear2\\Console\\CommandLine\\Action\\StoreString', true),
-        'StoreInt'    => array('pear2\\Console\\CommandLine\\Action\\StoreInt', true),
-        'StoreFloat'  => array('pear2\\Console\\CommandLine\\Action\\StoreFloat', true),
-        'StoreArray'  => array('pear2\\Console\\CommandLine\\Action\\StoreArray', true),
-        'Callback'    => array('pear2\\Console\\CommandLine\\Action\\Callback', true),
-        'Counter'     => array('pear2\\Console\\CommandLine\\Action\\Counter', true),
-        'Help'        => array('pear2\\Console\\CommandLine\\Action\\Help', true),
-        'Version'     => array('pear2\\Console\\CommandLine\\Action\\Version', true),
-        'Password'    => array('pear2\\Console\\CommandLine\\Action\\Password', true),
-        'List'        => array('pear2\\Console\\CommandLine\\Action_List', true),
+        'StoreTrue'   => array('PEAR2\\Console\\CommandLine\\Action\\StoreTrue', true),
+        'StoreFalse'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreFalse', true),
+        'StoreString' => array('PEAR2\\Console\\CommandLine\\Action\\StoreString', true),
+        'StoreInt'    => array('PEAR2\\Console\\CommandLine\\Action\\StoreInt', true),
+        'StoreFloat'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreFloat', true),
+        'StoreArray'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreArray', true),
+        'Callback'    => array('PEAR2\\Console\\CommandLine\\Action\\Callback', true),
+        'Counter'     => array('PEAR2\\Console\\CommandLine\\Action\\Counter', true),
+        'Help'        => array('PEAR2\\Console\\CommandLine\\Action\\Help', true),
+        'Version'     => array('PEAR2\\Console\\CommandLine\\Action\\Version', true),
+        'Password'    => array('PEAR2\\Console\\CommandLine\\Action\\Password', true),
+        'List'        => array('PEAR2\\Console\\CommandLine\\Action_List', true),
     );
 
     /**
@@ -242,7 +242,7 @@ class CommandLine
      * </code>
      *
      * @var array
-     * @see pear2\Console\CommandLine\MessageProvider_Default
+     * @see PEAR2\Console\CommandLine\MessageProvider_Default
      */
     public $messages = array();
 
@@ -264,7 +264,7 @@ class CommandLine
      * Example:
      *
      * <code>
-     * $parser = new pear2\Console\CommandLine(array(
+     * $parser = new PEAR2\Console\CommandLine(array(
      *     'name'               => 'yourprogram', // defaults to argv[0]
      *     'description'        => 'Description of your program',
      *     'version'            => '0.0.1', // your program version
@@ -319,7 +319,7 @@ class CommandLine
     // accept() {{{
 
     /**
-     * Method to allow pear2\Console\CommandLine to accept either:
+     * Method to allow PEAR2\Console\CommandLine to accept either:
      *  + a custom renderer, 
      *  + a custom outputter,
      *  + or a custom message provider
@@ -327,7 +327,7 @@ class CommandLine
      * @param mixed $instance The custom instance
      *
      * @return void
-     * @throws pear2\Console\CommandLine\Exception if wrong argument passed
+     * @throws PEAR2\Console\CommandLine\Exception if wrong argument passed
      */
     public function accept($instance) 
     {
@@ -358,13 +358,13 @@ class CommandLine
      *
      * Example:
      * <code>
-     * $parser = pear2\Console\CommandLine::fromXmlFile('path/to/file.xml');
+     * $parser = PEAR2\Console\CommandLine::fromXmlFile('path/to/file.xml');
      * $result = $parser->parse();
      * </code>
      *
      * @param string $file Path to the xml file
      *
-     * @return pear2\Console\CommandLine The parser instance
+     * @return PEAR2\Console\CommandLine The parser instance
      */
     public static function fromXmlFile($file) 
     {
@@ -393,13 +393,13 @@ class CommandLine
      *     <multiple>true</multiple>
      *   </argument>
      * </command>';
-     * $parser = pear2\Console\CommandLine::fromXmlString($xmldata);
+     * $parser = PEAR2\Console\CommandLine::fromXmlString($xmldata);
      * $result = $parser->parse();
      * </code>
      *
      * @param string $string The xml data
      *
-     * @return pear2\Console\CommandLine The parser instance
+     * @return PEAR2\Console\CommandLine The parser instance
      */
     public static function fromXmlString($string) 
     {
@@ -413,16 +413,16 @@ class CommandLine
      * Adds an argument to the command line parser and returns it.
      *
      * Adds an argument with the name $name and set its attributes with the
-     * array $params, then return the pear2\Console\CommandLine\Argument instance
+     * array $params, then return the PEAR2\Console\CommandLine\Argument instance
      * created.
      * The method accepts another form: you can directly pass a 
-     * pear2\Console\CommandLine\Argument object as the sole argument, this allows
+     * PEAR2\Console\CommandLine\Argument object as the sole argument, this allows
      * you to contruct the argument separately, in order to reuse it in
      * different command line parsers or commands for example.
      *
      * Example:
      * <code>
-     * $parser = new pear2\Console\CommandLine();
+     * $parser = new PEAR2\Console\CommandLine();
      * // add an array argument
      * $parser->addArgument('input_files', array('multiple'=>true));
      * // add a simple argument
@@ -444,11 +444,11 @@ class CommandLine
      * </code>
      *
      * @param mixed $name   A string containing the argument name or an
-     *                      instance of pear2\Console\CommandLine\Argument
+     *                      instance of PEAR2\Console\CommandLine\Argument
      * @param array $params An array containing the argument attributes
      *
-     * @return pear2\Console\CommandLine\Argument the added argument
-     * @see pear2\Console\CommandLine\Argument
+     * @return PEAR2\Console\CommandLine\Argument the added argument
+     * @see PEAR2\Console\CommandLine\Argument
      */
     public function addArgument($name, $params = array())
     {
@@ -469,14 +469,14 @@ class CommandLine
      * Adds a sub-command to the command line parser.
      *
      * Adds a command with the given $name to the parser and returns the 
-     * pear2\Console\CommandLine\Command instance, you can then populate the command
+     * PEAR2\Console\CommandLine\Command instance, you can then populate the command
      * with options, configure it, etc... like you would do for the main parser
-     * because the class pear2\Console\CommandLine\Command inherits from
-     * pear2\Console\CommandLine.
+     * because the class PEAR2\Console\CommandLine\Command inherits from
+     * PEAR2\Console\CommandLine.
      *
      * An example:
      * <code>
-     * $parser = new pear2\Console\CommandLine();
+     * $parser = new PEAR2\Console\CommandLine();
      * $install_cmd = $parser->addCommand('install');
      * $install_cmd->addOption(
      *     'verbose',
@@ -504,11 +504,11 @@ class CommandLine
      * </code>
      *
      * @param mixed $name   A string containing the command name or an
-     *                      instance of pear2\Console\CommandLine\Command
+     *                      instance of PEAR2\Console\CommandLine\Command
      * @param array $params An array containing the command attributes
      *
-     * @return pear2\Console\CommandLine\Command The added subcommand
-     * @see    pear2\Console\CommandLine\Command
+     * @return PEAR2\Console\CommandLine\Command The added subcommand
+     * @see    PEAR2\Console\CommandLine\Command
      */
     public function addCommand($name, $params = array())
     {
@@ -552,16 +552,16 @@ class CommandLine
      * Adds an option to the command line parser and returns it.
      *
      * Adds an option with the name $name and set its attributes with the
-     * array $params, then return the pear2\Console\CommandLine\Option instance
+     * array $params, then return the PEAR2\Console\CommandLine\Option instance
      * created.
      * The method accepts another form: you can directly pass a 
-     * pear2\Console\CommandLine\Option object as the sole argument, this allows
+     * PEAR2\Console\CommandLine\Option object as the sole argument, this allows
      * you to contruct the option separately, in order to reuse it in different
      * command line parsers or commands for example.
      *
      * Example:
      * <code>
-     * $parser = new pear2\Console\CommandLine();
+     * $parser = new PEAR2\Console\CommandLine();
      * $parser->addOption('path', array(
      *     'short_name'  => '-p',  // a short name
      *     'long_name'   => '--path', // a long name
@@ -591,11 +591,11 @@ class CommandLine
      * </code>
      *
      * @param mixed $name   A string containing the option name or an
-     *                      instance of pear2\Console\CommandLine\Option
+     *                      instance of PEAR2\Console\CommandLine\Option
      * @param array $params An array containing the option attributes
      *
-     * @return pear2\Console\CommandLine\Option The added option
-     * @see    pear2\Console\CommandLine\Option
+     * @return PEAR2\Console\CommandLine\Option The added option
+     * @see    PEAR2\Console\CommandLine\Option
      */
     public function addOption($name, $params = array())
     {
@@ -694,7 +694,7 @@ class CommandLine
      *
      * @param string $str The option identifier
      *
-     * @return mixed A pear2\Console\CommandLine\Option instance or false
+     * @return mixed A PEAR2\Console\CommandLine\Option instance or false
      */
     public function findOption($str)
     {
@@ -747,7 +747,7 @@ class CommandLine
      * // and in the result we will have:
      * // $result->options['range']: array(1, 5)
      *
-     * class ActionRange extends pear2\Console\CommandLine\Action
+     * class ActionRange extends PEAR2\Console\CommandLine\Action
      * {
      *     public function execute($value=false, $params=array())
      *     {
@@ -762,9 +762,9 @@ class CommandLine
      *     }
      * }
      * // then we can register our action
-     * pear2\Console\CommandLine::registerAction('Range', 'ActionRange');
+     * PEAR2\Console\CommandLine::registerAction('Range', 'ActionRange');
      * // and now our action is available !
-     * $parser = new pear2\Console\CommandLine();
+     * $parser = new PEAR2\Console\CommandLine();
      * $parser->addOption('range', array(
      *     'short_name'  => '-r',
      *     'long_name'   => '--range',
@@ -821,12 +821,12 @@ class CommandLine
 
     /**
      * Parses the command line arguments and returns a
-     * pear2\Console\CommandLine\Result instance.
+     * PEAR2\Console\CommandLine\Result instance.
      *
      * @param integer $userArgc Number of arguments (optional)
      * @param array   $userArgv Array containing arguments (optional)
      *
-     * @return pear2\Console\CommandLine\Result The result instance
+     * @return PEAR2\Console\CommandLine\Result The result instance
      * @throws Exception on user errors
      */
     public function parse($userArgc=null, $userArgv=null)
@@ -921,7 +921,7 @@ class CommandLine
      * and $args arrays.
      *
      * @param string $token  The command line token to parse
-     * @param object $result The pear2\Console\CommandLine\Result instance
+     * @param object $result The PEAR2\Console\CommandLine\Result instance
      * @param array  &$args  The argv array
      * @param int    $argc   Number of lasting args
      *
@@ -1135,7 +1135,7 @@ class CommandLine
      * if it fails to get them.
      *
      * @return array The argc/argv array
-     * @throws pear2\Console\CommandLine\Exception 
+     * @throws PEAR2\Console\CommandLine\Exception 
      */
     protected function getArgcArgv()
     {
@@ -1185,9 +1185,9 @@ class CommandLine
     /**
      * Dispatches the given option or store the option to dispatch it later.
      *
-     * @param pear2\Console\CommandLine\Option $option The option instance
+     * @param PEAR2\Console\CommandLine\Option $option The option instance
      * @param string                           $token  Command line token to parse
-     * @param pear2\Console\CommandLine\Result $result The result instance
+     * @param PEAR2\Console\CommandLine\Result $result The result instance
      *
      * @return void
      */
@@ -1208,7 +1208,7 @@ class CommandLine
      *
      * @param string $token Current command line token
      *
-     * @return mixed An instance of pear2\Console\CommandLine\Command or false
+     * @return mixed An instance of PEAR2\Console\CommandLine\Command or false
      */
     private function _getSubCommand($token)
     {

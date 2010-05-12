@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::parse() method (user argc/argv 1).
+Test for PEAR2\Console\CommandLine::parse() method (user argc/argv 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --FILE--
@@ -19,7 +19,7 @@ try {
 
 ?>
 --EXPECT--
-object(pear2\Console\CommandLine\Result)#19 (4) {
+object(PEAR2\Console\CommandLine\Result)#19 (4) {
   ["options"]=>
   array(11) {
     ["true"]=>

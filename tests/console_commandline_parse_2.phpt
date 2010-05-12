@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::parse() method (--help).
+Test for PEAR2\Console\CommandLine::parse() method (--help).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--

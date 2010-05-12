@@ -58,7 +58,7 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
     <file role="doc" name="ex4.php"/>
     <file role="doc" name="ex4.xml"/>
    </dir>
-   <dir name="src" baseinstalldir="pear2">
+   <dir name="src" baseinstalldir="PEAR2">
     <dir name="Console">
      <dir name="CommandLine">
       <dir name="Action">

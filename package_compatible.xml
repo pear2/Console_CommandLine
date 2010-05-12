@@ -97,34 +97,34 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
    <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addargument.phpt"/>
    <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_accept.phpt"/>
    <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/AllTests.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/XmlParser.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Result.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Renderer/Default.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Renderer.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Outputter/Default.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Outputter.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Option.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/MessageProvider/Default.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/MessageProvider.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Exception.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Element.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/CustomMessageProvider.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Command.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Argument.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/Version.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreTrue.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreString.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreInt.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreFloat.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreFalse.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/StoreArray.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/Password.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/List.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/Help.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/Counter.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action/Callback.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine/Action.php"/>
-   <file role="php" name="php/pear2/Console/CommandLine.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/XmlParser.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Result.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Renderer/Default.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Renderer.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Outputter/Default.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Outputter.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Option.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/MessageProvider/Default.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/MessageProvider.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Exception.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Element.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/CustomMessageProvider.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Command.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Argument.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/Version.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreTrue.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreString.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreInt.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreFloat.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreFalse.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/StoreArray.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/Password.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/List.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/Help.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/Counter.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action/Callback.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine/Action.php"/>
+   <file role="php" name="php/PEAR2/Console/CommandLine.php"/>
    <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.xml"/>
    <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.php"/>
    <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex3.php"/>
@@ -153,34 +153,34 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
    <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex3.php" as="pear2.php.net/examples/examples/ex3.php"/>
    <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.php" as="pear2.php.net/examples/examples/ex4.php"/>
    <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.xml" as="pear2.php.net/examples/examples/ex4.xml"/>
-   <install name="php/pear2/Console/CommandLine.php" as="pear2/Console/CommandLine.php"/>
-   <install name="php/pear2/Console/CommandLine/Action.php" as="pear2/Console/CommandLine/Action.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/Callback.php" as="pear2/Console/CommandLine/Action/Callback.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/Counter.php" as="pear2/Console/CommandLine/Action/Counter.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/Help.php" as="pear2/Console/CommandLine/Action/Help.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/List.php" as="pear2/Console/CommandLine/Action/List.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/Password.php" as="pear2/Console/CommandLine/Action/Password.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreArray.php" as="pear2/Console/CommandLine/Action/StoreArray.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreFalse.php" as="pear2/Console/CommandLine/Action/StoreFalse.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreFloat.php" as="pear2/Console/CommandLine/Action/StoreFloat.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreInt.php" as="pear2/Console/CommandLine/Action/StoreInt.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreString.php" as="pear2/Console/CommandLine/Action/StoreString.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/StoreTrue.php" as="pear2/Console/CommandLine/Action/StoreTrue.php"/>
-   <install name="php/pear2/Console/CommandLine/Action/Version.php" as="pear2/Console/CommandLine/Action/Version.php"/>
-   <install name="php/pear2/Console/CommandLine/Argument.php" as="pear2/Console/CommandLine/Argument.php"/>
-   <install name="php/pear2/Console/CommandLine/Command.php" as="pear2/Console/CommandLine/Command.php"/>
-   <install name="php/pear2/Console/CommandLine/CustomMessageProvider.php" as="pear2/Console/CommandLine/CustomMessageProvider.php"/>
-   <install name="php/pear2/Console/CommandLine/Element.php" as="pear2/Console/CommandLine/Element.php"/>
-   <install name="php/pear2/Console/CommandLine/Exception.php" as="pear2/Console/CommandLine/Exception.php"/>
-   <install name="php/pear2/Console/CommandLine/MessageProvider.php" as="pear2/Console/CommandLine/MessageProvider.php"/>
-   <install name="php/pear2/Console/CommandLine/MessageProvider/Default.php" as="pear2/Console/CommandLine/MessageProvider/Default.php"/>
-   <install name="php/pear2/Console/CommandLine/Option.php" as="pear2/Console/CommandLine/Option.php"/>
-   <install name="php/pear2/Console/CommandLine/Outputter.php" as="pear2/Console/CommandLine/Outputter.php"/>
-   <install name="php/pear2/Console/CommandLine/Outputter/Default.php" as="pear2/Console/CommandLine/Outputter/Default.php"/>
-   <install name="php/pear2/Console/CommandLine/Renderer.php" as="pear2/Console/CommandLine/Renderer.php"/>
-   <install name="php/pear2/Console/CommandLine/Renderer/Default.php" as="pear2/Console/CommandLine/Renderer/Default.php"/>
-   <install name="php/pear2/Console/CommandLine/Result.php" as="pear2/Console/CommandLine/Result.php"/>
-   <install name="php/pear2/Console/CommandLine/XmlParser.php" as="pear2/Console/CommandLine/XmlParser.php"/>
+   <install name="php/PEAR2/Console/CommandLine.php" as="PEAR2/Console/CommandLine.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action.php" as="PEAR2/Console/CommandLine/Action.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/Callback.php" as="PEAR2/Console/CommandLine/Action/Callback.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/Counter.php" as="PEAR2/Console/CommandLine/Action/Counter.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/Help.php" as="PEAR2/Console/CommandLine/Action/Help.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/List.php" as="PEAR2/Console/CommandLine/Action/List.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/Password.php" as="PEAR2/Console/CommandLine/Action/Password.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreArray.php" as="PEAR2/Console/CommandLine/Action/StoreArray.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreFalse.php" as="PEAR2/Console/CommandLine/Action/StoreFalse.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreFloat.php" as="PEAR2/Console/CommandLine/Action/StoreFloat.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreInt.php" as="PEAR2/Console/CommandLine/Action/StoreInt.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreString.php" as="PEAR2/Console/CommandLine/Action/StoreString.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/StoreTrue.php" as="PEAR2/Console/CommandLine/Action/StoreTrue.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Action/Version.php" as="PEAR2/Console/CommandLine/Action/Version.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Argument.php" as="PEAR2/Console/CommandLine/Argument.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Command.php" as="PEAR2/Console/CommandLine/Command.php"/>
+   <install name="php/PEAR2/Console/CommandLine/CustomMessageProvider.php" as="PEAR2/Console/CommandLine/CustomMessageProvider.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Element.php" as="PEAR2/Console/CommandLine/Element.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Exception.php" as="PEAR2/Console/CommandLine/Exception.php"/>
+   <install name="php/PEAR2/Console/CommandLine/MessageProvider.php" as="PEAR2/Console/CommandLine/MessageProvider.php"/>
+   <install name="php/PEAR2/Console/CommandLine/MessageProvider/Default.php" as="PEAR2/Console/CommandLine/MessageProvider/Default.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Option.php" as="PEAR2/Console/CommandLine/Option.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Outputter.php" as="PEAR2/Console/CommandLine/Outputter.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Outputter/Default.php" as="PEAR2/Console/CommandLine/Outputter/Default.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Renderer.php" as="PEAR2/Console/CommandLine/Renderer.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Renderer/Default.php" as="PEAR2/Console/CommandLine/Renderer/Default.php"/>
+   <install name="php/PEAR2/Console/CommandLine/Result.php" as="PEAR2/Console/CommandLine/Result.php"/>
+   <install name="php/PEAR2/Console/CommandLine/XmlParser.php" as="PEAR2/Console/CommandLine/XmlParser.php"/>
    <install name="test/PEAR2_Console_CommandLine/pear2.php.net/AllTests.php" as="pear2.php.net/AllTests.php"/>
    <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_accept.phpt" as="pear2.php.net/console_commandline_accept.phpt"/>
    <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addargument.phpt" as="pear2.php.net/console_commandline_addargument.phpt"/>

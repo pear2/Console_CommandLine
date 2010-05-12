@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -27,7 +27,7 @@
  * this interface.
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -35,7 +35,7 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace pear2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine;
 interface MessageProvider
 {
     // get() {{{
@@ -49,7 +49,7 @@ interface MessageProvider
      * @param array  $vars An array of template variables
      *
      * @return string
-     * @see pear2\Console\CommandLine_MessageProvider_Default
+     * @see PEAR2\Console\CommandLine_MessageProvider_Default
      */
     public function get($code, $vars=array());
 

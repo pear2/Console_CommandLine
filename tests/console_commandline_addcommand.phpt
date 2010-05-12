@@ -1,16 +1,16 @@
 --TEST--
-Test for pear2\Console\CommandLine::addCommand() method.
+Test for PEAR2\Console\CommandLine::addCommand() method.
 --FILE--
 <?php
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = new pear2\Console\CommandLine();
+$parser = new PEAR2\Console\CommandLine();
 $parser->addCommand('cmd1');
 $parser->addCommand('cmd2', array(
     'description' => 'description of cmd2'
 ));
-$cmd3 = new pear2\Console\CommandLine\Command(array(
+$cmd3 = new PEAR2\Console\CommandLine\Command(array(
     'name' => 'cmd3',
     'description' => 'description of cmd3'    
 ));

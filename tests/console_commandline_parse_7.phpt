@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::parse() method (special cases 1).
+Test for PEAR2\Console\CommandLine::parse() method (special cases 1).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -13,13 +13,13 @@ try {
     $parser = buildParser1();
     $result = $parser->parse();
     var_dump($result);
-} catch (pear2\Console\CommandLine\Exception $exc) {
+} catch (PEAR2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
 ?>
 --EXPECT--
-object(pear2\Console\CommandLine\Result)#19 (4) {
+object(PEAR2\Console\CommandLine\Result)#19 (4) {
   ["options"]=>
   array(11) {
     ["true"]=>

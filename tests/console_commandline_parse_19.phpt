@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::parse() method (subcommand help 1).
+Test for PEAR2\Console\CommandLine::parse() method (subcommand help 1).
 --STDIN--
 some_package
 --SKIPIF--
@@ -15,13 +15,13 @@ $parser = buildParser2();
 try {
     $result = $parser->parse();
     print_r($result);
-} catch (pear2\Console\CommandLine\Exception $exc) {
+} catch (PEAR2\Console\CommandLine\Exception $exc) {
     echo $exc->getMessage();
 }
 
 ?>
 --EXPECT--
-pear2\Console\CommandLine\Result Object
+PEAR2\Console\CommandLine\Result Object
 (
     [options] => Array
         (
@@ -36,7 +36,7 @@ pear2\Console\CommandLine\Result Object
         )
 
     [command_name] => install
-    [command] => pear2\Console\CommandLine\Result Object
+    [command] => PEAR2\Console\CommandLine\Result Object
         (
             [options] => Array
                 (

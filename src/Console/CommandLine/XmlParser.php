@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -26,7 +26,7 @@
  * Parser for command line xml definitions.
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,9 +34,9 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace pear2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine;
 
-use pear2\Console\CommandLine;
+use PEAR2\Console\CommandLine;
 
 class XmlParser
 {
@@ -44,11 +44,11 @@ class XmlParser
 
     /**
      * Parses the given xml definition file and returns a
-     * pear2\Console\CommandLine instance constructed with the xml data.
+     * PEAR2\Console\CommandLine instance constructed with the xml data.
      *
      * @param string $xmlfile The xml file to parse
      *
-     * @return pear2\Console\CommandLine A parser instance
+     * @return PEAR2\Console\CommandLine A parser instance
      */
     public static function parse($xmlfile) 
     {
@@ -69,11 +69,11 @@ class XmlParser
 
     /**
      * Parses the given xml definition string and returns a
-     * pear2\Console\CommandLine instance constructed with the xml data.
+     * PEAR2\Console\CommandLine instance constructed with the xml data.
      *
      * @param string $xmlstr The xml string to parse
      *
-     * @return pear2\Console\CommandLine A parser instance
+     * @return PEAR2\Console\CommandLine A parser instance
      */
     public static function parseString($xmlstr) 
     {
@@ -94,7 +94,7 @@ class XmlParser
      * @param DomDocument $doc The document to validate
      *
      * @return boolean Whether the xml data is valid or not.
-     * @throws pear2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine_Exception
      * @todo use exceptions only
      */
     public static function validate($doc) 
@@ -118,13 +118,13 @@ class XmlParser
 
     /**
      * Parses the root command node or a command node and returns the
-     * constructed pear2\Console\CommandLine or pear2\Console\CommandLine_Command
+     * constructed PEAR2\Console\CommandLine or PEAR2\Console\CommandLine_Command
      * instance.
      *
      * @param DomDocumentNode $node       The node to parse
      * @param bool            $isRootNode Whether it is a root node or not
      *
-     * @return mixed pear2\Console\CommandLine or pear2\Console\CommandLine_Command
+     * @return mixed PEAR2\Console\CommandLine or PEAR2\Console\CommandLine_Command
      */
     private static function _parseCommandNode($node, $isRootNode = false) 
     {
@@ -179,11 +179,11 @@ class XmlParser
 
     /**
      * Parses an option node and returns the constructed
-     * pear2\Console\CommandLine_Option instance.
+     * PEAR2\Console\CommandLine_Option instance.
      *
      * @param DomDocumentNode $node The node to parse
      *
-     * @return pear2\Console\CommandLine\Option The built option
+     * @return PEAR2\Console\CommandLine\Option The built option
      */
     private static function _parseOptionNode($node) 
     {
@@ -219,11 +219,11 @@ class XmlParser
 
     /**
      * Parses an argument node and returns the constructed 
-     * pear2\Console\CommandLine_Argument instance.
+     * PEAR2\Console\CommandLine_Argument instance.
      *
      * @param DomDocumentNode $node The node to parse
      *
-     * @return pear2\Console\CommandLine\Argument The built argument
+     * @return PEAR2\Console\CommandLine\Argument The built argument
      */
     private static function _parseArgumentNode($node) 
     {
@@ -277,8 +277,8 @@ class XmlParser
      *
      * @return array an array of messages
      *
-     * @see pear2\Console\CommandLine::$messages
-     * @see pear2\Console\CommandLine_Element::$messages
+     * @see PEAR2\Console\CommandLine::$messages
+     * @see PEAR2\Console\CommandLine_Element::$messages
      */
     private static function _messages(DOMNode $node)
     {

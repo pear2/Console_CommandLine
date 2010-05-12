@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -22,10 +22,10 @@
  */
 
 /**
- * pear2\Console\CommandLine default renderer.
+ * PEAR2\Console\CommandLine default renderer.
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -33,7 +33,7 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace pear2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine;
 class Renderer_Default implements Renderer
 {
     // Properties {{{
@@ -53,9 +53,9 @@ class Renderer_Default implements Renderer
     public $options_on_different_lines = false;
 
     /**
-     * An instance of pear2\Console\CommandLine.
+     * An instance of PEAR2\Console\CommandLine.
      *
-     * @var pear2\Console\CommandLine $parser The parser
+     * @var PEAR2\Console\CommandLine $parser The parser
      */
     public $parser = false;
 
@@ -65,7 +65,7 @@ class Renderer_Default implements Renderer
     /**
      * Constructor.
      *
-     * @param object $parser A pear2\Console\CommandLine instance
+     * @param object $parser A PEAR2\Console\CommandLine instance
      *
      * @return void
      */

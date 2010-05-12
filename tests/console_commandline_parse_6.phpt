@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::parse() method (errors 3).
+Test for PEAR2\Console\CommandLine::parse() method (errors 3).
 --SKIPIF--
 <?php if(php_sapi_name()!='cli') echo 'skip'; ?>
 --ARGS--
@@ -12,7 +12,7 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 try {
     $parser = buildParser1();
     $result = $parser->parse();
-} catch (pear2\Console\CommandLine\Exception $exc) {
+} catch (PEAR2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 

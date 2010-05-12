@@ -3,7 +3,7 @@
 /* vim: set expandtab tabstop=4 shiftwidth=4 softtabstop=4: */
 
 /**
- * This file is part of the pear2\Console\CommandLine package.
+ * This file is part of the PEAR2\Console\CommandLine package.
  *
  * PHP version 5
  *
@@ -12,7 +12,7 @@
  * http://opensource.org/licenses/mit-license.php
  *
  * @category  Console 
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -26,7 +26,7 @@
  * Class that represent a commandline option.
  *
  * @category  Console
- * @package   pear2\Console\CommandLine
+ * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
@@ -34,9 +34,9 @@
  * @link      http://pear.php.net/package/Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace pear2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine;
 
-use pear2\Console;
+use PEAR2\Console;
 
 class Option extends Element
 {
@@ -227,14 +227,14 @@ class Option extends Element
 
     /**
      * Formats the value $value according to the action of the option and 
-     * updates the passed pear2\Console\CommandLine_Result object.
+     * updates the passed PEAR2\Console\CommandLine_Result object.
      *
      * @param mixed                            $value  The value to format
-     * @param pear2\Console\CommandLine_Result $result The result instance
-     * @param pear2\Console\CommandLine        $parser The parser instance
+     * @param PEAR2\Console\CommandLine_Result $result The result instance
+     * @param PEAR2\Console\CommandLine        $parser The parser instance
      *
      * @return void
-     * @throws pear2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine_Exception
      */
     public function dispatchAction($value, $result, $parser)
     {
@@ -267,7 +267,7 @@ class Option extends Element
      * Validates the option instance.
      *
      * @return void
-     * @throws pear2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine_Exception
      * @todo use exceptions instead
      */
     public function validate()
@@ -330,7 +330,7 @@ class Option extends Element
      *
      * Note that for backward compatibility issues this method is only called 
      * when the 'force_options_defaults' is set to true, it will become the
-     * default behaviour in the next major release of pear2\Console\CommandLine.
+     * default behaviour in the next major release of PEAR2\Console\CommandLine.
      *
      * @return void
      */

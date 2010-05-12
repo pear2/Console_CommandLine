@@ -1,5 +1,5 @@
 --TEST--
-Test for pear2\Console\CommandLine::accept() method.
+Test for PEAR2\Console\CommandLine::accept() method.
 --FILE--
 <?php
 
@@ -16,7 +16,7 @@ try {
     $parser->accept(new CustomMessageProvider());
     echo get_class($parser->message_provider) . "\n";
     $parser->accept(new stdclass());
-} catch (pear2\Console\CommandLine\Exception $exc) {
+} catch (PEAR2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
