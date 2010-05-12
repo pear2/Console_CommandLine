@@ -1,1 +1,5 @@
 Initial port of PEAR Console_CommandLine to PEAR2.
+
+Major differences are namespace usage and no require statements.
+
+This release is in sync with pear.php.net/Console_CommandLine-1.1.3

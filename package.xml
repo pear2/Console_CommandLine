@@ -22,18 +22,28 @@ Main features:
   <email>izi@php.net</email>
   <active>yes</active>
  </lead>
- <date>2008-06-08</date>
- <time>21:20:56</time>
+ <helper>
+  <name>Brett Bieber</name>
+  <user>saltybeagle</user>
+  <email>saltybeagle@php.net</email>
+  <active>yes</active>
+ </helper>
+ <date>2010-05-11</date>
+ <time>19:46:29</time>
  <version>
   <release>0.1.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
-  <release>devel</release>
+  <release>alpha</release>
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
  <notes>Initial port of PEAR Console_CommandLine to PEAR2.
+
+Major differences are namespace usage and no require statements.
+
+This release is in sync with pear.php.net/Console_CommandLine-1.1.3
 </notes>
  <contents>
   <dir name="/">
@@ -44,14 +54,18 @@ Main features:
     <file role="doc" name="ex1.php"/>
     <file role="doc" name="ex2.php"/>
     <file role="doc" name="ex2.xml"/>
+    <file role="doc" name="ex3.php"/>
+    <file role="doc" name="ex4.php"/>
+    <file role="doc" name="ex4.xml"/>
    </dir>
-   <dir name="src" baseinstalldir="PEAR2">
+   <dir name="src" baseinstalldir="pear2">
     <dir name="Console">
      <dir name="CommandLine">
       <dir name="Action">
        <file role="php" name="Callback.php"/>
        <file role="php" name="Counter.php"/>
        <file role="php" name="Help.php"/>
+       <file role="php" name="List.php"/>
        <file role="php" name="Password.php"/>
        <file role="php" name="StoreArray.php"/>
        <file role="php" name="StoreFalse.php"/>
@@ -73,6 +87,7 @@ Main features:
       <file role="php" name="Action.php"/>
       <file role="php" name="Argument.php"/>
       <file role="php" name="Command.php"/>
+      <file role="php" name="CustomMessageProvider.php"/>
       <file role="php" name="Element.php"/>
       <file role="php" name="Exception.php"/>
       <file role="php" name="MessageProvider.php"/>
@@ -101,6 +116,7 @@ Main features:
     <file role="test" name="console_commandline_fromxmlfile.phpt"/>
     <file role="test" name="console_commandline_fromxmlfile_error.phpt"/>
     <file role="test" name="console_commandline_fromxmlstring.phpt"/>
+    <file role="test" name="console_commandline_options_defaults.phpt"/>
     <file role="test" name="console_commandline_parse_1.phpt"/>
     <file role="test" name="console_commandline_parse_2.phpt"/>
     <file role="test" name="console_commandline_parse_3.phpt"/>
@@ -119,6 +135,17 @@ Main features:
     <file role="test" name="console_commandline_parse_16.phpt"/>
     <file role="test" name="console_commandline_parse_17.phpt"/>
     <file role="test" name="console_commandline_parse_18.phpt"/>
+    <file role="test" name="console_commandline_parse_19.phpt"/>
+    <file role="test" name="console_commandline_parse_20.phpt"/>
+    <file role="test" name="console_commandline_parse_21.phpt"/>
+    <file role="test" name="console_commandline_parse_22.phpt"/>
+    <file role="test" name="console_commandline_parse_23.phpt"/>
+    <file role="test" name="console_commandline_parse_24.phpt"/>
+    <file role="test" name="console_commandline_parse_25.phpt"/>
+    <file role="test" name="console_commandline_parse_26.phpt"/>
+    <file role="test" name="console_commandline_parse_27.phpt"/>
+    <file role="test" name="console_commandline_parse_28.phpt"/>
+    <file role="test" name="console_commandline_parse_29.phpt"/>
     <file role="test" name="console_commandline_webrequest_1.phpt"/>
     <file role="test" name="console_commandline_webrequest_2.phpt"/>
     <file role="test" name="console_commandline_webrequest_3.phpt"/>
