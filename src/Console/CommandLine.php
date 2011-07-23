@@ -123,6 +123,13 @@ class CommandLine
     public $add_version_option = true;
 
     /**
+     * Boolean that determine if providing a subcommand is mandatory.
+     *
+     * @var bool $subcommand_required Whether a subcommand is required or not
+     */
+    public $subcommand_required = false;
+
+    /**
      * The command line parser renderer instance.
      *
      * @var    object that implements PEAR2\Console\CommandLine\Renderer interface
@@ -301,6 +308,9 @@ class CommandLine
         }
         if (isset($params['add_help_option'])) {
             $this->add_help_option = $params['add_help_option'];
+        }
+        if (isset($params['subcommand_required'])) {
+            $this->subcommand_required = $params['subcommand_required'];
         }
         if (isset($params['force_posix'])) {
             $this->force_posix = $params['force_posix'];
@@ -882,6 +892,19 @@ class CommandLine
                 $this->messages
             );
         }
+        // if subcommand_required is set to true we must check that we have a
+        // subcommand.
+        if (   count($this->commands)
+            && $this->subcommand_required
+            && !$result->command_name
+        ) {
+            throw Console_CommandLine_Exception::factory(
+                'SUBCOMMAND_REQUIRED',
+                array('commands' => implode(array_keys($this->commands), ', ')),
+                $this,
+                $this->messages
+            );
+        }
         // minimum argument number check
         $argnum = 0;
         foreach ($this->args as $name=>$arg) {
@@ -961,9 +984,10 @@ class CommandLine
                 // is to consider that if there's already an element in the
                 // array, and the commandline expects one or more args, we
                 // leave last tokens to arguments
-                if ($lastopt->action == 'StoreArray' &&
-                    !empty($result->options[$lastopt->name]) &&
-                    count($this->args) > ($argc + count($args))) {
+                if ($lastopt->action == 'StoreArray'
+                    && !empty($result->options[$lastopt->name])
+                    && count($this->args) > ($argc + count($args))
+                ) {
                     if (!is_null($token)) {
                         $args[] = $token;
                     }
