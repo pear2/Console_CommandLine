@@ -1,0 +1,7 @@
+Features and changes
+ - Implemented feature request #18582 (From pear.php.net) add possibility to require a subcommand
+ - Implemented feature request #18583 (From pear.php.net) default values for arguments
+ - removed the enclosing "< >" on argument names (it looks better IMO).
+
+Bug Fixes
+ - Fixed bug #18584 (From pear.php.net) optional arguments not shown as optional
