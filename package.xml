@@ -28,10 +28,10 @@ Main features:
   <email>saltybeagle@php.net</email>
   <active>yes</active>
  </helper>
- <date>2010-05-23</date>
- <time>08:52:36</time>
+ <date>2011-08-06</date>
+ <time>10:48:12</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.2.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -39,12 +39,13 @@ Main features:
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
- <notes>Initial port of PEAR Console_CommandLine to PEAR2.
+ <notes>Features and changes
+ - Implemented feature request #18582 (From pear.php.net) add possibility to require a subcommand
+ - Implemented feature request #18583 (From pear.php.net) default values for arguments
+ - removed the enclosing &quot;&lt; &gt;&quot; on argument names (it looks better IMO).
 
-Major differences are namespace usage and no require statements.
-
-This release is in sync with pear.php.net/Console_CommandLine-1.1.3
-</notes>
+Bug Fixes
+ - Fixed bug #18584 (From pear.php.net) optional arguments not shown as optional</notes>
  <contents>
   <dir name="/">
    <dir name="data" baseinstalldir="/">
@@ -58,53 +59,57 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
     <file role="doc" name="ex4.php"/>
     <file role="doc" name="ex4.xml"/>
    </dir>
-   <dir name="src" baseinstalldir="PEAR2">
-    <dir name="Console">
-     <dir name="CommandLine">
-      <dir name="Action">
-       <file role="php" name="Callback.php"/>
-       <file role="php" name="Counter.php"/>
-       <file role="php" name="Help.php"/>
-       <file role="php" name="List.php"/>
-       <file role="php" name="Password.php"/>
-       <file role="php" name="StoreArray.php"/>
-       <file role="php" name="StoreFalse.php"/>
-       <file role="php" name="StoreFloat.php"/>
-       <file role="php" name="StoreInt.php"/>
-       <file role="php" name="StoreString.php"/>
-       <file role="php" name="StoreTrue.php"/>
-       <file role="php" name="Version.php"/>
+   <dir name="src" baseinstalldir="/">
+    <dir name="PEAR2">
+     <dir name="Console">
+      <dir name="CommandLine">
+       <dir name="Action">
+        <file role="php" name="Callback.php"/>
+        <file role="php" name="Counter.php"/>
+        <file role="php" name="Help.php"/>
+        <file role="php" name="List.php"/>
+        <file role="php" name="Password.php"/>
+        <file role="php" name="StoreArray.php"/>
+        <file role="php" name="StoreFalse.php"/>
+        <file role="php" name="StoreFloat.php"/>
+        <file role="php" name="StoreInt.php"/>
+        <file role="php" name="StoreString.php"/>
+        <file role="php" name="StoreTrue.php"/>
+        <file role="php" name="Version.php"/>
+       </dir>
+       <dir name="MessageProvider">
+        <file role="php" name="Default.php"/>
+       </dir>
+       <dir name="Outputter">
+        <file role="php" name="Default.php"/>
+       </dir>
+       <dir name="Renderer">
+        <file role="php" name="Default.php"/>
+       </dir>
+       <file role="php" name="Action.php"/>
+       <file role="php" name="Argument.php"/>
+       <file role="php" name="Command.php"/>
+       <file role="php" name="CustomMessageProvider.php"/>
+       <file role="php" name="Element.php"/>
+       <file role="php" name="Exception.php"/>
+       <file role="php" name="MessageProvider.php"/>
+       <file role="php" name="Option.php"/>
+       <file role="php" name="Outputter.php"/>
+       <file role="php" name="Renderer.php"/>
+       <file role="php" name="Result.php"/>
+       <file role="php" name="XmlParser.php"/>
       </dir>
-      <dir name="MessageProvider">
-       <file role="php" name="Default.php"/>
-      </dir>
-      <dir name="Outputter">
-       <file role="php" name="Default.php"/>
-      </dir>
-      <dir name="Renderer">
-       <file role="php" name="Default.php"/>
-      </dir>
-      <file role="php" name="Action.php"/>
-      <file role="php" name="Argument.php"/>
-      <file role="php" name="Command.php"/>
-      <file role="php" name="CustomMessageProvider.php"/>
-      <file role="php" name="Element.php"/>
-      <file role="php" name="Exception.php"/>
-      <file role="php" name="MessageProvider.php"/>
-      <file role="php" name="Option.php"/>
-      <file role="php" name="Outputter.php"/>
-      <file role="php" name="Renderer.php"/>
-      <file role="php" name="Result.php"/>
-      <file role="php" name="XmlParser.php"/>
+      <file role="php" name="CommandLine.php"/>
      </dir>
-     <file role="php" name="CommandLine.php"/>
     </dir>
    </dir>
    <dir name="tests" baseinstalldir="/">
     <file role="test" name="AllTests.php"/>
     <file role="test" name="console_commandline_accept.phpt"/>
     <file role="test" name="console_commandline_addargument.phpt"/>
+    <file role="test" name="console_commandline_addargument2.phpt"/>
     <file role="test" name="console_commandline_addcommand.phpt"/>
+    <file role="test" name="console_commandline_addcommand_3.phpt"/>
     <file role="test" name="console_commandline_addoption.phpt"/>
     <file role="test" name="console_commandline_addoption_errors_1.phpt"/>
     <file role="test" name="console_commandline_addoption_errors_2.phpt"/>

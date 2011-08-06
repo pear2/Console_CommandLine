@@ -28,10 +28,10 @@ Main features:
   <email>saltybeagle@php.net</email>
   <active>yes</active>
  </helper>
- <date>2010-05-23</date>
- <time>08:52:36</time>
+ <date>2011-08-06</date>
+ <time>10:48:12</time>
  <version>
-  <release>0.1.0</release>
+  <release>0.2.0</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -39,64 +39,67 @@ Main features:
   <api>alpha</api>
  </stability>
  <license uri="http://www.opensource.org/licenses/bsd-license.php">New BSD License</license>
- <notes>Initial port of PEAR Console_CommandLine to PEAR2.
+ <notes>Features and changes
+ - Implemented feature request #18582 (From pear.php.net) add possibility to require a subcommand
+ - Implemented feature request #18583 (From pear.php.net) default values for arguments
+ - removed the enclosing &quot;&lt; &gt;&quot; on argument names (it looks better IMO).
 
-Major differences are namespace usage and no require statements.
-
-This release is in sync with pear.php.net/Console_CommandLine-1.1.3
-</notes>
+Bug Fixes
+ - Fixed bug #18584 (From pear.php.net) optional arguments not shown as optional</notes>
  <contents>
   <dir name="/">
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/tests.inc.php"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/test.xml"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_3.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_2.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_1.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_29.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_28.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_27.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_26.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_25.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_24.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_23.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_22.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_21.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_20.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_19.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_18.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_17.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_16.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_15.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_14.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_13.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_12.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_11.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_10.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_9.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_8.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_7.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_6.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_5.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_4.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_3.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_2.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_1.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_options_defaults.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlstring.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlfile_error.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlfile.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_7.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_6.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_5.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_4.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_3.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_2.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_1.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addcommand.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addargument.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_accept.phpt"/>
-   <file role="test" name="test/PEAR2_Console_CommandLine/pear2.php.net/AllTests.php"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/tests.inc.php"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/test.xml"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_3.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_2.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_1.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_29.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_28.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_27.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_26.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_25.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_24.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_23.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_22.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_21.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_20.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_19.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_18.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_17.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_16.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_15.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_14.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_13.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_12.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_11.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_10.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_9.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_8.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_7.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_6.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_5.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_4.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_3.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_2.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_1.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_options_defaults.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlstring.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlfile_error.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlfile.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_7.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_6.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_5.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_4.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_3.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_2.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_1.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addcommand_3.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addcommand.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addargument2.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addargument.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_accept.phpt"/>
+   <file role="test" name="test/pear2.php.net/PEAR2_Console_CommandLine/AllTests.php"/>
    <file role="php" name="php/PEAR2/Console/CommandLine/XmlParser.php"/>
    <file role="php" name="php/PEAR2/Console/CommandLine/Result.php"/>
    <file role="php" name="php/PEAR2/Console/CommandLine/Renderer/Default.php"/>
@@ -125,13 +128,13 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
    <file role="php" name="php/PEAR2/Console/CommandLine/Action/Callback.php"/>
    <file role="php" name="php/PEAR2/Console/CommandLine/Action.php"/>
    <file role="php" name="php/PEAR2/Console/CommandLine.php"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.xml"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.php"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex3.php"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex2.xml"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex2.php"/>
-   <file role="doc" name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex1.php"/>
-   <file role="data" name="data/PEAR2_Console_CommandLine/pear2.php.net/xmlschema.rng"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex4.xml"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex4.php"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex3.php"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex2.xml"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex2.php"/>
+   <file role="doc" name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex1.php"/>
+   <file role="data" name="data/pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng"/>
   </dir>
  </contents>
  <dependencies>
@@ -146,13 +149,13 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
  </dependencies>
  <phprelease>
   <filelist>
-   <install name="data/PEAR2_Console_CommandLine/pear2.php.net/xmlschema.rng" as="pear2.php.net/xmlschema.rng"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex1.php" as="pear2.php.net/examples/examples/ex1.php"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex2.php" as="pear2.php.net/examples/examples/ex2.php"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex2.xml" as="pear2.php.net/examples/examples/ex2.xml"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex3.php" as="pear2.php.net/examples/examples/ex3.php"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.php" as="pear2.php.net/examples/examples/ex4.php"/>
-   <install name="doc/PEAR2_Console_CommandLine/pear2.php.net/examples/examples/ex4.xml" as="pear2.php.net/examples/examples/ex4.xml"/>
+   <install name="data/pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng" as="PEAR2_Console_CommandLine/xmlschema.rng"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex1.php" as="PEAR2_Console_CommandLine/examples/examples/ex1.php"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex2.php" as="PEAR2_Console_CommandLine/examples/examples/ex2.php"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex2.xml" as="PEAR2_Console_CommandLine/examples/examples/ex2.xml"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex3.php" as="PEAR2_Console_CommandLine/examples/examples/ex3.php"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex4.php" as="PEAR2_Console_CommandLine/examples/examples/ex4.php"/>
+   <install name="doc/pear2.php.net/PEAR2_Console_CommandLine/examples/examples/ex4.xml" as="PEAR2_Console_CommandLine/examples/examples/ex4.xml"/>
    <install name="php/PEAR2/Console/CommandLine.php" as="PEAR2/Console/CommandLine.php"/>
    <install name="php/PEAR2/Console/CommandLine/Action.php" as="PEAR2/Console/CommandLine/Action.php"/>
    <install name="php/PEAR2/Console/CommandLine/Action/Callback.php" as="PEAR2/Console/CommandLine/Action/Callback.php"/>
@@ -181,56 +184,58 @@ This release is in sync with pear.php.net/Console_CommandLine-1.1.3
    <install name="php/PEAR2/Console/CommandLine/Renderer/Default.php" as="PEAR2/Console/CommandLine/Renderer/Default.php"/>
    <install name="php/PEAR2/Console/CommandLine/Result.php" as="PEAR2/Console/CommandLine/Result.php"/>
    <install name="php/PEAR2/Console/CommandLine/XmlParser.php" as="PEAR2/Console/CommandLine/XmlParser.php"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/AllTests.php" as="pear2.php.net/AllTests.php"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_accept.phpt" as="pear2.php.net/console_commandline_accept.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addargument.phpt" as="pear2.php.net/console_commandline_addargument.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addcommand.phpt" as="pear2.php.net/console_commandline_addcommand.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption.phpt" as="pear2.php.net/console_commandline_addoption.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_1.phpt" as="pear2.php.net/console_commandline_addoption_errors_1.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_2.phpt" as="pear2.php.net/console_commandline_addoption_errors_2.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_3.phpt" as="pear2.php.net/console_commandline_addoption_errors_3.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_4.phpt" as="pear2.php.net/console_commandline_addoption_errors_4.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_5.phpt" as="pear2.php.net/console_commandline_addoption_errors_5.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_6.phpt" as="pear2.php.net/console_commandline_addoption_errors_6.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_addoption_errors_7.phpt" as="pear2.php.net/console_commandline_addoption_errors_7.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlfile.phpt" as="pear2.php.net/console_commandline_fromxmlfile.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlfile_error.phpt" as="pear2.php.net/console_commandline_fromxmlfile_error.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_fromxmlstring.phpt" as="pear2.php.net/console_commandline_fromxmlstring.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_options_defaults.phpt" as="pear2.php.net/console_commandline_options_defaults.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_1.phpt" as="pear2.php.net/console_commandline_parse_1.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_2.phpt" as="pear2.php.net/console_commandline_parse_2.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_3.phpt" as="pear2.php.net/console_commandline_parse_3.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_4.phpt" as="pear2.php.net/console_commandline_parse_4.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_5.phpt" as="pear2.php.net/console_commandline_parse_5.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_6.phpt" as="pear2.php.net/console_commandline_parse_6.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_7.phpt" as="pear2.php.net/console_commandline_parse_7.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_8.phpt" as="pear2.php.net/console_commandline_parse_8.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_9.phpt" as="pear2.php.net/console_commandline_parse_9.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_10.phpt" as="pear2.php.net/console_commandline_parse_10.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_11.phpt" as="pear2.php.net/console_commandline_parse_11.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_12.phpt" as="pear2.php.net/console_commandline_parse_12.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_13.phpt" as="pear2.php.net/console_commandline_parse_13.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_14.phpt" as="pear2.php.net/console_commandline_parse_14.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_15.phpt" as="pear2.php.net/console_commandline_parse_15.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_16.phpt" as="pear2.php.net/console_commandline_parse_16.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_17.phpt" as="pear2.php.net/console_commandline_parse_17.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_18.phpt" as="pear2.php.net/console_commandline_parse_18.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_19.phpt" as="pear2.php.net/console_commandline_parse_19.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_20.phpt" as="pear2.php.net/console_commandline_parse_20.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_21.phpt" as="pear2.php.net/console_commandline_parse_21.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_22.phpt" as="pear2.php.net/console_commandline_parse_22.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_23.phpt" as="pear2.php.net/console_commandline_parse_23.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_24.phpt" as="pear2.php.net/console_commandline_parse_24.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_25.phpt" as="pear2.php.net/console_commandline_parse_25.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_26.phpt" as="pear2.php.net/console_commandline_parse_26.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_27.phpt" as="pear2.php.net/console_commandline_parse_27.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_28.phpt" as="pear2.php.net/console_commandline_parse_28.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_parse_29.phpt" as="pear2.php.net/console_commandline_parse_29.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_1.phpt" as="pear2.php.net/console_commandline_webrequest_1.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_2.phpt" as="pear2.php.net/console_commandline_webrequest_2.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/console_commandline_webrequest_3.phpt" as="pear2.php.net/console_commandline_webrequest_3.phpt"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/test.xml" as="pear2.php.net/test.xml"/>
-   <install name="test/PEAR2_Console_CommandLine/pear2.php.net/tests.inc.php" as="pear2.php.net/tests.inc.php"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/AllTests.php" as="PEAR2_Console_CommandLine/AllTests.php"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_accept.phpt" as="PEAR2_Console_CommandLine/console_commandline_accept.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addargument.phpt" as="PEAR2_Console_CommandLine/console_commandline_addargument.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addargument2.phpt" as="PEAR2_Console_CommandLine/console_commandline_addargument2.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addcommand.phpt" as="PEAR2_Console_CommandLine/console_commandline_addcommand.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addcommand_3.phpt" as="PEAR2_Console_CommandLine/console_commandline_addcommand_3.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_1.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_1.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_2.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_2.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_3.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_3.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_4.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_4.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_5.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_5.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_6.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_6.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_addoption_errors_7.phpt" as="PEAR2_Console_CommandLine/console_commandline_addoption_errors_7.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlfile.phpt" as="PEAR2_Console_CommandLine/console_commandline_fromxmlfile.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlfile_error.phpt" as="PEAR2_Console_CommandLine/console_commandline_fromxmlfile_error.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_fromxmlstring.phpt" as="PEAR2_Console_CommandLine/console_commandline_fromxmlstring.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_options_defaults.phpt" as="PEAR2_Console_CommandLine/console_commandline_options_defaults.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_1.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_1.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_2.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_2.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_3.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_3.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_4.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_4.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_5.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_5.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_6.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_6.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_7.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_7.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_8.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_8.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_9.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_9.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_10.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_10.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_11.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_11.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_12.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_12.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_13.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_13.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_14.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_14.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_15.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_15.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_16.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_16.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_17.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_17.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_18.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_18.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_19.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_19.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_20.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_20.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_21.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_21.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_22.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_22.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_23.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_23.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_24.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_24.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_25.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_25.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_26.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_26.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_27.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_27.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_28.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_28.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_parse_29.phpt" as="PEAR2_Console_CommandLine/console_commandline_parse_29.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_1.phpt" as="PEAR2_Console_CommandLine/console_commandline_webrequest_1.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_2.phpt" as="PEAR2_Console_CommandLine/console_commandline_webrequest_2.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/console_commandline_webrequest_3.phpt" as="PEAR2_Console_CommandLine/console_commandline_webrequest_3.phpt"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/test.xml" as="PEAR2_Console_CommandLine/test.xml"/>
+   <install name="test/pear2.php.net/PEAR2_Console_CommandLine/tests.inc.php" as="PEAR2_Console_CommandLine/tests.inc.php"/>
   </filelist>
  </phprelease>
 </package>
