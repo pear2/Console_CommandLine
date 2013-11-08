@@ -99,9 +99,10 @@ class XmlParser
      */
     public static function validate($doc) 
     {
-        $rngfile = '../../../data/PEAR2_Console_CommandLine/pear2.php.net/xmlschema.rng';
+        $rngfile = __DIR__
+            . '/../../../../data/pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng';
         if (!is_file($rngfile)) {
-            $rngfile = __DIR__ . '/../../../data/xmlschema.rng'; 
+            $rngfile = __DIR__ . '/../../../../data/xmlschema.rng'; 
         }
         if (!is_readable($rngfile)) {
             CommandLine::triggerError(
