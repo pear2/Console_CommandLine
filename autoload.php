@@ -8,4 +8,4 @@ function autoload($class)
     
 spl_autoload_register("autoload");
 
-set_include_path(dirname(__FILE__).'/src');
+set_include_path(dirname(__FILE__).'/src' . PATH_SEPARATOR . __DIR__ . '/vendor/php');
