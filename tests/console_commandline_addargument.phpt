@@ -5,13 +5,13 @@ Test for PEAR2\Console\CommandLine::addArgument() method.
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = new PEAR2\Console\CommandLine();
+$parser = new \PEAR2\Console\CommandLine();
 $parser->addArgument('arg1');
 $parser->addArgument('arg2', array(
     'multiple' => true,
     'description' => 'description of arg2'
 ));
-$arg3 = new PEAR2\Console\CommandLine\Argument('arg3', array(
+$arg3 = new \PEAR2\Console\CommandLine\Argument('arg3', array(
     'multiple' => true,
     'description' => 'description of arg3'
 ));
@@ -27,7 +27,7 @@ $parser->addArgument('Some invalid name');
 --EXPECTF--
 array(4) {
   ["arg1"]=>
-  object(PEAR2\Console\CommandLine\Argument)#6 (7) {
+  object(PEAR2\Console\CommandLine\Argument)#%d (7) {
     ["multiple"]=>
     bool(false)
     ["optional"]=>
@@ -45,7 +45,7 @@ array(4) {
     }
   }
   ["arg2"]=>
-  object(PEAR2\Console\CommandLine\Argument)#7 (7) {
+  object(PEAR2\Console\CommandLine\Argument)#%d (7) {
     ["multiple"]=>
     bool(true)
     ["optional"]=>
@@ -63,7 +63,7 @@ array(4) {
     }
   }
   ["arg3"]=>
-  object(PEAR2\Console\CommandLine\Argument)#8 (7) {
+  object(PEAR2\Console\CommandLine\Argument)#%d (7) {
     ["multiple"]=>
     bool(true)
     ["optional"]=>
@@ -81,7 +81,7 @@ array(4) {
     }
   }
   ["arg4"]=>
-  object(PEAR2\Console\CommandLine\Argument)#9 (7) {
+  object(PEAR2\Console\CommandLine\Argument)#%d (7) {
     ["multiple"]=>
     bool(false)
     ["optional"]=>

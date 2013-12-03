@@ -18,8 +18,8 @@ try {
 }
 
 ?>
---EXPECT--
-object(PEAR2\Console\CommandLine\Result)#17 (4) {
+--EXPECTF--
+object(PEAR2\Console\CommandLine\Result)#%d (4) {
   ["options"]=>
   array(4) {
     ["verbose"]=>
@@ -37,7 +37,7 @@ object(PEAR2\Console\CommandLine\Result)#17 (4) {
   ["command_name"]=>
   string(7) "install"
   ["command"]=>
-  object(PEAR2\Console\CommandLine\Result)#20 (4) {
+  object(PEAR2\Console\CommandLine\Result)#%d (4) {
     ["options"]=>
     array(2) {
       ["force"]=>

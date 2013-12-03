@@ -19,8 +19,8 @@ try {
 }
 
 ?>
---EXPECT--
-object(PEAR2\Console\CommandLine\Result)#19 (4) {
+--EXPECTF--
+object(PEAR2\Console\CommandLine\Result)#%d (4) {
   ["options"]=>
   array(11) {
     ["true"]=>

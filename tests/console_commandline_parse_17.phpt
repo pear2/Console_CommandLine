@@ -13,13 +13,13 @@ try {
     $parser = buildParser1();
     $result = $parser->parse($argc, $argv);
     var_dump($result);
-} catch (Console_CommandLine_Exception $exc) {
+} catch (\PEAR2\Console\CommandLine\Exception $exc) {
     $parser->displayError($exc->getMessage());
 }
 
 ?>
---EXPECT--
-object(PEAR2\Console\CommandLine\Result)#19 (4) {
+--EXPECTF--
+object(PEAR2\Console\CommandLine\Result)#%d (4) {
   ["options"]=>
   array(11) {
     ["true"]=>

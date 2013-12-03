@@ -9,7 +9,7 @@ foo
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = new PEAR2\Console\CommandLine();
+$parser = new \PEAR2\Console\CommandLine();
 $parser->addArgument('arg1');
 $parser->addArgument('arg2', array(
     'optional' => true,
