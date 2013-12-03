@@ -79,7 +79,7 @@ class Argument extends Element
             );
         }
         if (!$this->optional && $this->default !== null) {
-            Console_CommandLine::triggerError(
+            \PEAR2\Console\CommandLine::triggerError(
                 'argument_no_default',
                 E_USER_ERROR
             );
