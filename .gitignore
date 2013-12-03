@@ -2,3 +2,4 @@
 /tests/*.diff
 /tests/*.exp
 /tests/*.log
+/tests/*.php
