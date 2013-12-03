@@ -1,0 +1,4 @@
+/tests/*.out
+/tests/*.diff
+/tests/*.exp
+/tests/*.log
