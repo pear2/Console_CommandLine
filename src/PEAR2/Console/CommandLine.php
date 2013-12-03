@@ -898,7 +898,7 @@ class CommandLine
             && $this->subcommand_required
             && !$result->command_name
         ) {
-            throw Console_CommandLine_Exception::factory(
+            throw CommandLine\Exception::factory(
                 'SUBCOMMAND_REQUIRED',
                 array('commands' => implode(array_keys($this->commands), ', ')),
                 $this,
