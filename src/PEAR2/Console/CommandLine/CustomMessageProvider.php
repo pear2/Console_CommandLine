@@ -18,10 +18,12 @@
  * @copyright 2007 David JEAN LOUIS, 2009 silverorange
  * @license   http://opensource.org/licenses/mit-license.php MIT License
  * @version   CVS: $Id: CustomMessageProvider.php 282427 2009-06-19 10:22:48Z izi $
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 1.1.0
  * @filesource
  */
+
+namespace PEAR2\Console\CommandLine;
 
 /**
  * Common interfacefor message providers that allow overriding with custom
@@ -35,11 +37,9 @@
  * @author    Michael Gauthier <mike@silverorange.com>
  * @copyright 2007 David JEAN LOUIS, 2009 silverorange
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Interface available since release 1.1.0
  */
-namespace PEAR2\Console\CommandLine;
 interface CustomMessageProvider
 {
     // getWithCustomMesssages() {{{

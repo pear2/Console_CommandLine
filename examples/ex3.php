@@ -18,60 +18,79 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   CVS: $Id: ex3.php,v 1.1 2008/12/06 11:46:28 izi Exp $
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
 
-// uncomment this when package won't be in the SandBox anymore
-// $basedir = __DIR__ . '/../..';
-$basedir = __DIR__ . '/../../..';
-
 // Include PEAR2 autoload
-require_once $basedir . '/autoload.php';
+require_once 'PEAR2/Autoload.php';
 
 // create the parser
-$parser = new PEAR2_Console_CommandLine(array(
-    'description' => 'A great program that can foo and bar !',
-    'version'     => '1.0.0'
-));
+$parser = new PEAR2_Console_CommandLine(
+    array(
+        'description' => 'A great program that can foo and bar !',
+        'version'     => '1.0.0'
+    )
+);
 
 // add a global option to make the program verbose
-$parser->addOption('verbose', array(
-    'short_name'  => '-v',
-    'long_name'   => '--verbose',
-    'action'      => 'StoreTrue',
-    'description' => 'turn on verbose output'
-));
+$parser->addOption(
+    'verbose',
+    array(
+        'short_name'  => '-v',
+        'long_name'   => '--verbose',
+        'action'      => 'StoreTrue',
+        'description' => 'turn on verbose output'
+    )
+);
 
 // add the foo subcommand
-$foo_cmd = $parser->addCommand('foo', array(
-    'description' => 'output the given string with a foo prefix'
-));
-$foo_cmd->addOption('reverse', array(
-    'short_name'  => '-r',
-    'long_name'   => '--reverse',
-    'action'      => 'StoreTrue',
-    'description' => 'reverse the given string before echoing it'
-));
-$foo_cmd->addArgument('text', array(
-    'description' => 'the text to output'
-));
+$foo_cmd = $parser->addCommand(
+    'foo',
+    array(
+        'description' => 'output the given string with a foo prefix'
+    )
+);
+$foo_cmd->addOption(
+    'reverse',
+    array(
+        'short_name'  => '-r',
+        'long_name'   => '--reverse',
+        'action'      => 'StoreTrue',
+        'description' => 'reverse the given string before echoing it'
+    )
+);
+$foo_cmd->addArgument(
+    'text',
+    array(
+        'description' => 'the text to output'
+    )
+);
 
 // add the bar subcommand with a "baz" alias
-$bar_cmd = $parser->addCommand('bar', array(
-    'description' => 'output the given string with a bar prefix',
-    'aliases'     => array('baz'),
-));
-$bar_cmd->addOption('reverse', array(
-    'short_name'  => '-r',
-    'long_name'   => '--reverse',
-    'action'      => 'StoreTrue',
-    'description' => 'reverse the given string before echoing it'
-));
-$bar_cmd->addArgument('text', array(
-    'description' => 'the text to output'
-));
+$bar_cmd = $parser->addCommand(
+    'bar',
+    array(
+        'description' => 'output the given string with a bar prefix',
+        'aliases'     => array('baz'),
+    )
+);
+$bar_cmd->addOption(
+    'reverse',
+    array(
+        'short_name'  => '-r',
+        'long_name'   => '--reverse',
+        'action'      => 'StoreTrue',
+        'description' => 'reverse the given string before echoing it'
+    )
+);
+$bar_cmd->addArgument(
+    'text',
+    array(
+        'description' => 'the text to output'
+    )
+);
 
 // run the parser
 try {

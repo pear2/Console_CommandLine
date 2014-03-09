@@ -1,7 +1,9 @@
 --TEST--
 Test for Console_CommandLine::addArgument() method.
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --ARGS--
 foo
 --FILE--
@@ -11,10 +13,13 @@ require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = new \PEAR2\Console\CommandLine();
 $parser->addArgument('arg1');
-$parser->addArgument('arg2', array(
-    'optional' => true,
-    'default' => 'bar'
-));
+$parser->addArgument(
+    'arg2',
+    array(
+        'optional' => true,
+        'default' => 'bar'
+    )
+);
 
 $result = $parser->parse();
 echo $result->args['arg1'] . ' ' . $result->args['arg2'];

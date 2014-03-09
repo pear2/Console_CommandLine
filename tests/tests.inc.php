@@ -15,20 +15,21 @@
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   SVN: $Id$
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  */
 
 // ensure that errors will be printed
 error_reporting(E_ALL | E_STRICT);
 ini_set('display_errors', true);
-set_include_path(get_include_path() . PATH_SEPARATOR . __DIR__ . '/../src/');
 
-// uncomment this when package won't be in the SandBox anymore
-$basedir = __DIR__ . '/..';
-//$basedir = dirname(__FILE__) . '/../../..';
-
-require_once $basedir . '/autoload.php';
+//Add the source folder to the autoloader
+require_once 'PEAR2/Autoload.php';
+$oldCwd = getcwd();
+chdir(__DIR__);
+\PEAR2\Autoload::initialize(realpath('../src'));
+chdir($oldCwd);
 
 /**
  * A dummy callback for tests purposes.
@@ -70,75 +71,108 @@ function buildParser1()
     $parser->description = 'Description of our parser goes here...';
 
     // add options
-    $parser->addOption('true', array(
-        'short_name'  => '-t',
-        'long_name'   => '--true',
-        'action'      => 'StoreTrue',
-        'description' => 'test the StoreTrue action'
-    ));
-    $parser->addOption('false', array(
-        'short_name'  => '-f',
-        'long_name'   => '--false',
-        'action'      => 'StoreFalse',
-        'description' => 'test the StoreFalse action'
-    ));
-    $parser->addOption('int', array(
-        'long_name'   => '--int',
-        'action'      => 'StoreInt',
-        'description' => 'test the StoreInt action',
-        'help_name'   => 'INT',
-        'default'     => 1
-    ));
-    $parser->addOption('float', array(
-        'long_name'   => '--float',
-        'action'      => 'StoreFloat',
-        'description' => 'test the StoreFloat action',
-        'help_name'   => 'FLOAT',
-        'default'     => 1.0
-    ));
-    $parser->addOption('string', array(
-        'short_name'  => '-s',
-        'long_name'   => '--string',
-        'action'      => 'StoreString',
-        'description' => 'test the StoreString action',
-        'help_name'   => 'STRING',
-        'choices'     => array('foo', 'bar', 'baz')
-    ));
-    $parser->addOption('counter', array(
-        'short_name'  => '-c',
-        'long_name'   => '--counter',
-        'action'      => 'Counter',
-        'description' => 'test the Counter action'
-    ));
-    $parser->addOption('callback', array(
-        'long_name'     => '--callback',
-        'action'        => 'Callback',
-        'description'   => 'test the Callback action',
-        'callback'      => 'rot13Callback',
-        'action_params' => array('prefix' => 'foo', 'suffix' => 'bar')
-    ));
-    $parser->addOption('array', array(
-        'short_name'  => '-a',
-        'long_name'   => '--array',
-        'default'     => array('spam', 'egg'),
-        'action'      => 'StoreArray',
-        'help_name'   => 'ARRAY',
-        'description' => 'test the StoreArray action'
-    ));
-    $parser->addOption('password', array(
-        'short_name'  => '-p',
-        'long_name'   => '--password',
-        'action'      => 'Password',
-        'description' => 'test the Password action'
-    ));
-    $parser->addArgument('simple', array(
-        'description' => 'test a simple argument'
-    ));
-    $parser->addArgument('multiple', array(
-        'description' => 'test a multiple argument',
-        'multiple'    => true,
-        'optional'    => true
-    ));
+    $parser->addOption(
+        'true',
+        array(
+            'short_name'  => '-t',
+            'long_name'   => '--true',
+            'action'      => 'StoreTrue',
+            'description' => 'test the StoreTrue action'
+        )
+    );
+    $parser->addOption(
+        'false',
+        array(
+            'short_name'  => '-f',
+            'long_name'   => '--false',
+            'action'      => 'StoreFalse',
+            'description' => 'test the StoreFalse action'
+        )
+    );
+    $parser->addOption(
+        'int',
+        array(
+            'long_name'   => '--int',
+            'action'      => 'StoreInt',
+            'description' => 'test the StoreInt action',
+            'help_name'   => 'INT',
+            'default'     => 1
+        )
+    );
+    $parser->addOption(
+        'float',
+        array(
+            'long_name'   => '--float',
+            'action'      => 'StoreFloat',
+            'description' => 'test the StoreFloat action',
+            'help_name'   => 'FLOAT',
+            'default'     => 1.0
+        )
+    );
+    $parser->addOption(
+        'string',
+        array(
+            'short_name'  => '-s',
+            'long_name'   => '--string',
+            'action'      => 'StoreString',
+            'description' => 'test the StoreString action',
+            'help_name'   => 'STRING',
+            'choices'     => array('foo', 'bar', 'baz')
+        )
+    );
+    $parser->addOption(
+        'counter',
+        array(
+            'short_name'  => '-c',
+            'long_name'   => '--counter',
+            'action'      => 'Counter',
+            'description' => 'test the Counter action'
+        )
+    );
+    $parser->addOption(
+        'callback',
+        array(
+            'long_name'     => '--callback',
+            'action'        => 'Callback',
+            'description'   => 'test the Callback action',
+            'callback'      => 'rot13Callback',
+            'action_params' => array('prefix' => 'foo', 'suffix' => 'bar')
+        )
+    );
+    $parser->addOption(
+        'array',
+        array(
+            'short_name'  => '-a',
+            'long_name'   => '--array',
+            'default'     => array('spam', 'egg'),
+            'action'      => 'StoreArray',
+            'help_name'   => 'ARRAY',
+            'description' => 'test the StoreArray action'
+        )
+    );
+    $parser->addOption(
+        'password',
+        array(
+            'short_name'  => '-p',
+            'long_name'   => '--password',
+            'action'      => 'Password',
+            'description' => 'test the Password action'
+        )
+    );
+    $parser->addArgument(
+        'simple',
+        array(
+            'description' => 'test a simple argument'
+        )
+    );
+    $parser->addArgument(
+        'multiple',
+        array(
+            'description' => 'test a multiple argument',
+            'multiple'    => true,
+            'optional'    => true
+        )
+    );
     return $parser;
 }
 
@@ -158,41 +192,62 @@ function buildParser2()
     $parser->description = 'Description of our parser goes here...';
 
     // add general options
-    $parser->addOption('verbose', array(
-        'short_name'  => '-v',
-        'long_name'   => '--verbose',
-        'action'      => 'StoreTrue',
-        'description' => 'verbose mode'
-    ));
-    $parser->addOption('logfile', array(
-        'short_name'  => '-l',
-        'long_name'   => '--logfile',
-        'action'      => 'StoreString',
-        'description' => 'path to logfile'
-    ));
+    $parser->addOption(
+        'verbose',
+        array(
+            'short_name'  => '-v',
+            'long_name'   => '--verbose',
+            'action'      => 'StoreTrue',
+            'description' => 'verbose mode'
+        )
+    );
+    $parser->addOption(
+        'logfile',
+        array(
+            'short_name'  => '-l',
+            'long_name'   => '--logfile',
+            'action'      => 'StoreString',
+            'description' => 'path to logfile'
+        )
+    );
  
     // install subcommand
-    $cmd1 = $parser->addCommand('install', array(
-        'description' => 'install given package',
-        'aliases'     => array('inst', 'instbis'),
-    ));
-    $cmd1->addOption('force', array(
-        'short_name'  => '-f',
-        'long_name'   => '--force',
-        'action'      => 'StoreTrue',
-        'description' => 'force installation'
-    ));
-    $cmd1->addArgument('package', array(
-        'description' => 'package to install'
-    ));
+    $cmd1 = $parser->addCommand(
+        'install',
+        array(
+            'description' => 'install given package',
+            'aliases'     => array('inst', 'instbis'),
+        )
+    );
+    $cmd1->addOption(
+        'force',
+        array(
+            'short_name'  => '-f',
+            'long_name'   => '--force',
+            'action'      => 'StoreTrue',
+            'description' => 'force installation'
+        )
+    );
+    $cmd1->addArgument(
+        'package',
+        array(
+            'description' => 'package to install'
+        )
+    );
 
     // uninstall subcommand
-    $cmd2 = $parser->addCommand('uninstall', array(
-        'description' => 'uninstall given package'
-    ));
-    $cmd2->addArgument('package', array(
-        'description' => 'package to uninstall'
-    ));
+    $cmd2 = $parser->addCommand(
+        'uninstall',
+        array(
+            'description' => 'uninstall given package'
+        )
+    );
+    $cmd2->addArgument(
+        'package',
+        array(
+            'description' => 'package to uninstall'
+        )
+    );
     return $parser;
 }
 
@@ -214,64 +269,91 @@ function buildParser3()
     $parser->force_options_defaults = true;
 
     // add options
-    $parser->addOption('true', array(
-        'short_name'  => '-t',
-        'long_name'   => '--true',
-        'action'      => 'StoreTrue',
-        'description' => 'test the StoreTrue action',
-    ));
-    $parser->addOption('false', array(
-        'short_name'  => '-f',
-        'long_name'   => '--false',
-        'action'      => 'StoreFalse',
-        'description' => 'test the StoreFalse action',
-    ));
-    $parser->addOption('int', array(
-        'long_name'   => '--int',
-        'action'      => 'StoreInt',
-        'description' => 'test the StoreInt action',
-        'help_name'   => 'INT',
-    ));
-    $parser->addOption('float', array(
-        'long_name'   => '--float',
-        'action'      => 'StoreFloat',
-        'description' => 'test the StoreFloat action',
-        'help_name'   => 'FLOAT',
-    ));
-    $parser->addOption('string', array(
-        'short_name'  => '-s',
-        'long_name'   => '--string',
-        'action'      => 'StoreString',
-        'description' => 'test the StoreString action',
-        'help_name'   => 'STRING',
-        'choices'     => array('foo', 'bar', 'baz')
-    ));
-    $parser->addOption('counter', array(
-        'short_name'  => '-c',
-        'long_name'   => '--counter',
-        'action'      => 'Counter',
-        'description' => 'test the Counter action'
-    ));
-    $parser->addOption('callback', array(
-        'long_name'     => '--callback',
-        'action'        => 'Callback',
-        'description'   => 'test the Callback action',
-        'callback'      => 'rot13Callback',
-        'action_params' => array('prefix' => 'foo', 'suffix' => 'bar')
-    ));
-    $parser->addOption('array', array(
-        'short_name'  => '-a',
-        'long_name'   => '--array',
-        'action'      => 'StoreArray',
-        'help_name'   => 'ARRAY',
-        'description' => 'test the StoreArray action'
-    ));
-    $parser->addOption('password', array(
-        'short_name'  => '-p',
-        'long_name'   => '--password',
-        'action'      => 'Password',
-        'description' => 'test the Password action'
-    ));
+    $parser->addOption(
+        'true',
+        array(
+            'short_name'  => '-t',
+            'long_name'   => '--true',
+            'action'      => 'StoreTrue',
+            'description' => 'test the StoreTrue action',
+        )
+    );
+    $parser->addOption(
+        'false',
+        array(
+            'short_name'  => '-f',
+            'long_name'   => '--false',
+            'action'      => 'StoreFalse',
+            'description' => 'test the StoreFalse action',
+        )
+    );
+    $parser->addOption(
+        'int',
+        array(
+            'long_name'   => '--int',
+            'action'      => 'StoreInt',
+            'description' => 'test the StoreInt action',
+            'help_name'   => 'INT',
+        )
+    );
+    $parser->addOption(
+        'float',
+        array(
+            'long_name'   => '--float',
+            'action'      => 'StoreFloat',
+            'description' => 'test the StoreFloat action',
+            'help_name'   => 'FLOAT',
+        )
+    );
+    $parser->addOption(
+        'string',
+        array(
+            'short_name'  => '-s',
+            'long_name'   => '--string',
+            'action'      => 'StoreString',
+            'description' => 'test the StoreString action',
+            'help_name'   => 'STRING',
+            'choices'     => array('foo', 'bar', 'baz')
+        )
+    );
+    $parser->addOption(
+        'counter',
+        array(
+            'short_name'  => '-c',
+            'long_name'   => '--counter',
+            'action'      => 'Counter',
+            'description' => 'test the Counter action'
+        )
+    );
+    $parser->addOption(
+        'callback',
+        array(
+            'long_name'     => '--callback',
+            'action'        => 'Callback',
+            'description'   => 'test the Callback action',
+            'callback'      => 'rot13Callback',
+            'action_params' => array('prefix' => 'foo', 'suffix' => 'bar')
+        )
+    );
+    $parser->addOption(
+        'array',
+        array(
+            'short_name'  => '-a',
+            'long_name'   => '--array',
+            'action'      => 'StoreArray',
+            'help_name'   => 'ARRAY',
+            'description' => 'test the StoreArray action'
+        )
+    );
+    $parser->addOption(
+        'password',
+        array(
+            'short_name'  => '-p',
+            'long_name'   => '--password',
+            'action'      => 'Password',
+            'description' => 'test the Password action'
+        )
+    );
     return $parser;
 }
 
@@ -287,48 +369,62 @@ function buildParser3()
  */
 function buildParser4()
 {
-    $parser = new PEAR2\Console\CommandLine(array(
-        'messages' => array(
-            'INVALID_SUBCOMMAND' => 'Only "upgrade" is supported.',
-        ),
-    ));
+    $parser = new PEAR2\Console\CommandLine(
+        array(
+            'messages' => array(
+                'INVALID_SUBCOMMAND' => 'Only "upgrade" is supported.',
+            ),
+        )
+    );
     $parser->name        = 'some_program';
     $parser->version     = '0.1.0';
     $parser->description = 'Description of our parser goes here...';
 
     // some subcommand
-    $cmd1 = $parser->addCommand('upgrade', array(
-        'description' => 'upgrade given package',
-        'aliases'     => array('up'),
-        'messages'    => array(
-            'ARGUMENT_REQUIRED'       => 'Package name is required.',
-            'OPTION_VALUE_REQUIRED'   => 'Option requires value.',
-            'OPTION_VALUE_UNEXPECTED' => 'Option should not have a value.',
-            'OPTION_UNKNOWN'          => 'Mysterious option encountered.',
-        ),
-    ));
+    $cmd1 = $parser->addCommand(
+        'upgrade',
+        array(
+            'description' => 'upgrade given package',
+            'aliases'     => array('up'),
+            'messages'    => array(
+                'ARGUMENT_REQUIRED'       => 'Package name is required.',
+                'OPTION_VALUE_REQUIRED'   => 'Option requires value.',
+                'OPTION_VALUE_UNEXPECTED' => 'Option should not have a value.',
+                'OPTION_UNKNOWN'          => 'Mysterious option encountered.',
+            ),
+        )
+    );
     // add option
-    $cmd1->addOption('state', array(
-        'short_name'  => '-s',
-        'long_name'   => '--state',
-        'action'      => 'StoreString',
-        'choices'     => array('stable', 'beta'),
-        'description' => 'accepted package states',
-        'messages'    => array(
-            'OPTION_VALUE_NOT_VALID' => 'Valid states are "stable" and "beta".',
-        ),
-    ));
+    $cmd1->addOption(
+        'state',
+        array(
+            'short_name'  => '-s',
+            'long_name'   => '--state',
+            'action'      => 'StoreString',
+            'choices'     => array('stable', 'beta'),
+            'description' => 'accepted package states',
+            'messages'    => array(
+                'OPTION_VALUE_NOT_VALID' => 'Valid states are "stable" and "beta".',
+            ),
+        )
+    );
     // add another option
-    $cmd1->addOption('dry_run', array(
-        'short_name'  => '-d',
-        'long_name'   => '--dry-run',
-        'action'      => 'StoreTrue',
-        'description' => 'dry run',
-    ));
+    $cmd1->addOption(
+        'dry_run',
+        array(
+            'short_name'  => '-d',
+            'long_name'   => '--dry-run',
+            'action'      => 'StoreTrue',
+            'description' => 'dry run',
+        )
+    );
     // add argument
-    $cmd1->addArgument('package', array(
-        'description' => 'package to upgrade'
-    ));
+    $cmd1->addArgument(
+        'package',
+        array(
+            'description' => 'package to upgrade'
+        )
+    );
 
     return $parser;
 }
@@ -343,9 +439,8 @@ function buildParser4()
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
 class CustomRenderer implements \PEAR2\Console\CommandLine\Renderer
@@ -405,9 +500,8 @@ class CustomRenderer implements \PEAR2\Console\CommandLine\Renderer
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
 class CustomOutputter implements \PEAR2\Console\CommandLine\Outputter
@@ -456,9 +550,8 @@ class CustomOutputter implements \PEAR2\Console\CommandLine\Outputter
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
 class CustomMessageProvider implements \PEAR2\Console\CommandLine\MessageProvider

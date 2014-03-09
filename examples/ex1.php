@@ -20,50 +20,62 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
 
-// uncomment this when package won't be in the SandBox anymore
-// $basedir = __DIR__ . '/../..';
-$basedir = __DIR__ . '/../../..';
-
 // Include PEAR2 autoload
-require_once $basedir . '/autoload.php';
+require_once 'PEAR2/Autoload.php';
 
 // create the parser
-$parser = new PEAR2_Console_CommandLine(array(
-    'description' => 'zip given files using the php zip module.',
-    'version'     => '1.0.0'
-));
+$parser = new PEAR2_Console_CommandLine(
+    array(
+        'description' => 'zip given files using the php zip module.',
+        'version'     => '1.0.0'
+    )
+);
 
 // add an option to make the program verbose
-$parser->addOption('verbose', array(
-    'short_name'  => '-v',
-    'long_name'   => '--verbose',
-    'action'      => 'StoreTrue',
-    'description' => 'turn on verbose output'
-));
+$parser->addOption(
+    'verbose',
+    array(
+        'short_name'  => '-v',
+        'long_name'   => '--verbose',
+        'action'      => 'StoreTrue',
+        'description' => 'turn on verbose output'
+    )
+);
 
 // add an option to delete original files after zipping
-$parser->addOption('delete', array(
-    'short_name'  => '-d',
-    'long_name'   => '--delete',
-    'action'      => 'StoreString',
-    'description' => 'delete original files after zip operation',
-    'choices'     => array('foo', 'bar'),
-    'add_list_option' => true
-));
+$parser->addOption(
+    'delete',
+    array(
+        'short_name'      => '-d',
+        'long_name'       => '--delete',
+        'action'          => 'StoreString',
+        'description'     => 'delete original files after zip operation',
+        'choices'         => array('foo', 'bar'),
+        'add_list_option' => true
+    )
+);
 
 // add the files argument, the user can specify one or several files
-$parser->addArgument('files', array(
-    'multiple' => true,
-    'description' => 'list of files to zip separated by spaces'
-));
+$parser->addArgument(
+    'files',
+    array(
+        'multiple'    => true,
+        'description' => 'list of files to zip separated by spaces'
+    )
+);
 
 // add the zip file name argument
-$parser->addArgument('zipfile', array('description' => 'zip file name'));
+$parser->addArgument(
+    'zipfile',
+    array(
+        'description' => 'zip file name'
+    )
+);
 
 // run the parser
 try {

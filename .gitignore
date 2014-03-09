@@ -3,4 +3,5 @@
 /tests/*.exp
 /tests/*.log
 /tests/*.php
-/vendor/downloads
+/tests/*.xdebug
+/vendor

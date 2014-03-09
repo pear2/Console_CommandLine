@@ -16,11 +16,13 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  * @filesource
  */
+
+namespace PEAR2\Console\CommandLine;
 
 /**
  * Class that represent a command line argument.
@@ -30,11 +32,9 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace PEAR2\Console\CommandLine;
 class Argument extends Element
 {
     // Public properties {{{
@@ -64,14 +64,17 @@ class Argument extends Element
      * Validates the argument instance.
      *
      * @return void
-     * @throws PEAR2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine\Exception
      * @todo use exceptions
      */
     public function validate()
     {
         // check if the argument name is valid
-        if (!preg_match('/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
-            $this->name)) {
+        if (!preg_match(
+            '/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
+            $this->name
+        )
+        ) {
             \PEAR2\Console\CommandLine::triggerError(
                 'argument_bad_name',
                 E_USER_ERROR,

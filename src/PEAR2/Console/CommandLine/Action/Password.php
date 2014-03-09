@@ -16,11 +16,15 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  * @filesource
  */
+
+namespace PEAR2\Console\CommandLine\Action;
+
+use PEAR2\Console\CommandLine;
 
 /**
  * Class that represent the Password action, a special action that allow the 
@@ -31,15 +35,10 @@
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace PEAR2\Console\CommandLine\Action;
-
-use PEAR2\Console\CommandLine;
-
 class Password extends CommandLine\Action
 {
     // execute() {{{
@@ -69,8 +68,10 @@ class Password extends CommandLine\Action
     private function _promptPassword()
     {
         if (strtoupper(substr(PHP_OS, 0, 3)) === 'WIN') {
-            fwrite(STDOUT,
-                $this->parser->message_provider->get('PASSWORD_PROMPT_ECHO'));
+            fwrite(
+                STDOUT,
+                $this->parser->message_provider->get('PASSWORD_PROMPT_ECHO')
+            );
             @flock(STDIN, LOCK_EX);
             $passwd = fgets(STDIN);
             @flock(STDIN, LOCK_UN);

@@ -17,10 +17,12 @@
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
  * @version   CVS: $Id: List.php,v 1.2 2009/02/27 08:03:17 izi Exp $
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  * @filesource
  */
+
+namespace PEAR2\Console\CommandLine;
 
 /**
  * Class that represent the List action, a special action that simply output an 
@@ -30,12 +32,10 @@
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace PEAR2\Console\CommandLine;
 class Action_List extends Action
 {
     // execute() {{{
