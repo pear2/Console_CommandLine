@@ -1,5 +1,6 @@
 --TEST--
 Test for PEAR2\Console\CommandLine::parse() with a web request 2
+--CGI--
 --GET--
 help
 --FILE--

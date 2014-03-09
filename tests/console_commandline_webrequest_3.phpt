@@ -1,5 +1,6 @@
 --TEST--
 Test for PEAR2\Console\CommandLine::parse() with a web request 3
+--CGI--
 --POST--
 true=1&false=1&string=foo&int=3&float=4.0&callback=somestring&-a[]=foo&-a[]=bar&-a[]=baz&simple=foo&multiple=bar
 --FILE--
