@@ -7,14 +7,20 @@ require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = new \PEAR2\Console\CommandLine();
 $parser->addArgument('arg1');
-$parser->addArgument('arg2', array(
-    'multiple' => true,
-    'description' => 'description of arg2'
-));
-$arg3 = new \PEAR2\Console\CommandLine\Argument('arg3', array(
-    'multiple' => true,
-    'description' => 'description of arg3'
-));
+$parser->addArgument(
+    'arg2',
+    array(
+        'multiple' => true,
+        'description' => 'description of arg2'
+    )
+);
+$arg3 = new \PEAR2\Console\CommandLine\Argument(
+    'arg3',
+    array(
+        'multiple' => true,
+        'description' => 'description of arg3'
+    )
+);
 $parser->addArgument($arg3);
 $parser->addArgument('arg4', array('optional' => true));
 

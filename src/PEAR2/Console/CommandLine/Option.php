@@ -16,11 +16,15 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  * @filesource
  */
+
+namespace PEAR2\Console\CommandLine;
+
+use PEAR2\Console;
 
 /**
  * Class that represent a commandline option.
@@ -30,14 +34,9 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace PEAR2\Console\CommandLine;
-
-use PEAR2\Console;
-
 class Option extends Element
 {
     // Public properties {{{
@@ -207,9 +206,13 @@ class Option extends Element
      */
     public function expectsArgument()
     {
-        if ($this->action == 'StoreTrue' || $this->action == 'StoreFalse' ||
-            $this->action == 'Help' || $this->action == 'Version' ||
-            $this->action == 'Counter' || $this->action == 'List') {
+        if ($this->action == 'StoreTrue'
+            || $this->action == 'StoreFalse'
+            || $this->action == 'Help'
+            || $this->action == 'Version'
+            || $this->action == 'Counter'
+            || $this->action == 'List'
+        ) {
             return false;
         }
         return true;
@@ -227,7 +230,7 @@ class Option extends Element
      * @param PEAR2\Console\CommandLine        $parser The parser instance
      *
      * @return void
-     * @throws PEAR2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine\Exception
      */
     public function dispatchAction($value, $result, $parser)
     {
@@ -238,7 +241,12 @@ class Option extends Element
         }
 
         // check value is in option choices
-        if (!empty($this->choices) && !in_array($this->_action_instance->format($value), $this->choices)) {
+        if (!empty($this->choices)
+            && !in_array(
+                $this->_action_instance->format($value),
+                $this->choices
+            )
+        ) {
             throw Console\CommandLine\Exception::factory(
                 'OPTION_VALUE_NOT_VALID',
                 array(
@@ -260,58 +268,84 @@ class Option extends Element
      * Validates the option instance.
      *
      * @return void
-     * @throws PEAR2\Console\CommandLine_Exception
+     * @throws PEAR2\Console\CommandLine\Exception
      * @todo use exceptions instead
      */
     public function validate()
     {
         // check if the option name is valid
-        if (!preg_match('/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
-            $this->name)) {
-            Console\CommandLine::triggerError('option_bad_name',
-                E_USER_ERROR, array('{$name}' => $this->name));
+        if (!preg_match(
+            '/^[a-zA-Z_\x7f-\xff]+[a-zA-Z0-9_\x7f-\xff]*$/',
+            $this->name
+        )
+        ) {
+            Console\CommandLine::triggerError(
+                'option_bad_name',
+                E_USER_ERROR,
+                array('{$name}' => $this->name)
+            );
         }
         // call the parent validate method
         parent::validate();
         // a short_name or a long_name must be provided
         if ($this->short_name == null && $this->long_name == null) {
-            Console\CommandLine::triggerError('option_long_and_short_name_missing',
-                E_USER_ERROR, array('{$name}' => $this->name));
+            Console\CommandLine::triggerError(
+                'option_long_and_short_name_missing',
+                E_USER_ERROR,
+                array('{$name}' => $this->name)
+            );
         }
         // check if the option short_name is valid
-        if ($this->short_name != null &&
-            !(preg_match('/^\-[a-zA-Z]{1}$/', $this->short_name))) {
-            Console\CommandLine::triggerError('option_bad_short_name',
-                E_USER_ERROR, array(
+        if ($this->short_name != null
+            && !(preg_match('/^\-[a-zA-Z]{1}$/', $this->short_name))
+        ) {
+            Console\CommandLine::triggerError(
+                'option_bad_short_name',
+                E_USER_ERROR,
+                array(
                     '{$name}' => $this->name,
                     '{$short_name}' => $this->short_name
-                ));
+                )
+            );
         }
         // check if the option long_name is valid
-        if ($this->long_name != null &&
-            !preg_match('/^\-\-[a-zA-Z]+[a-zA-Z0-9_\-]*$/', $this->long_name)) {
-            Console\CommandLine::triggerError('option_bad_long_name',
-                E_USER_ERROR, array(
+        if ($this->long_name != null
+            && !preg_match('/^\-\-[a-zA-Z]+[a-zA-Z0-9_\-]*$/', $this->long_name)
+        ) {
+            Console\CommandLine::triggerError(
+                'option_bad_long_name',
+                E_USER_ERROR,
+                array(
                     '{$name}' => $this->name,
                     '{$long_name}' => $this->long_name
-                ));
+                )
+            );
         }
         // check if we have a valid action
         if (!is_string($this->action)) {
-            Console\CommandLine::triggerError('option_bad_action',
-                E_USER_ERROR, array('{$name}' => $this->name));
+            Console\CommandLine::triggerError(
+                'option_bad_action',
+                E_USER_ERROR,
+                array('{$name}' => $this->name)
+            );
         }
         if (!isset(Console\CommandLine::$actions[$this->action])) {
-            Console\CommandLine::triggerError('option_unregistered_action',
-                E_USER_ERROR, array(
+            Console\CommandLine::triggerError(
+                'option_unregistered_action',
+                E_USER_ERROR,
+                array(
                     '{$action}' => $this->action,
                     '{$name}' => $this->name
-                ));
+                )
+            );
         }
         // if the action is a callback, check that we have a valid callback
         if ($this->action == 'Callback' && !is_callable($this->callback)) {
-            Console\CommandLine::triggerError('option_invalid_callback',
-                E_USER_ERROR, array('{$name}' => $this->name));
+            Console\CommandLine::triggerError(
+                'option_invalid_callback',
+                E_USER_ERROR,
+                array('{$name}' => $this->name)
+            );
         }
     }
 

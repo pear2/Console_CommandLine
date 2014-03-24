@@ -6,23 +6,32 @@ Test for PEAR2\Console\CommandLine::addOption() method.
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
 $parser = new PEAR2\Console\CommandLine();
-$parser->addOption('opt1', array(
-    'short_name' => '-a'
-));
-$parser->addOption('opt2', array(
-    'short_name' => '-b',
-    'long_name' => '--foo',
-    'description' => 'description of opt2',
-    'action' => 'StoreInt',
-    'help_name' => 'bar',
-    'choices' => array(1, 2, 3),
-    'add_list_option' => true,
-    'default' => 2
-));
-$opt3 = new PEAR2\Console\CommandLine\Option('opt3', array(
-    'long_name' => '--bar',
-    'description' => 'description of opt3',
-));
+$parser->addOption(
+    'opt1',
+    array(
+        'short_name' => '-a'
+    )
+);
+$parser->addOption(
+    'opt2',
+    array(
+        'short_name' => '-b',
+        'long_name' => '--foo',
+        'description' => 'description of opt2',
+        'action' => 'StoreInt',
+        'help_name' => 'bar',
+        'choices' => array(1, 2, 3),
+        'add_list_option' => true,
+        'default' => 2
+    )
+);
+$opt3 = new PEAR2\Console\CommandLine\Option(
+    'opt3',
+    array(
+        'long_name' => '--bar',
+        'description' => 'description of opt3',
+    )
+);
 $parser->addOption($opt3);
 
 var_dump($parser->options);

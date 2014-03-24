@@ -16,10 +16,12 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  */
+
+namespace PEAR2\Console\CommandLine;
 
 /**
  * PEAR2\Console\CommandLine default renderer.
@@ -29,11 +31,9 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-namespace PEAR2\Console\CommandLine;
 class Renderer_Default implements Renderer
 {
     // Properties {{{
@@ -119,11 +119,19 @@ class Renderer_Default implements Renderer
         $ret = 'Error: ' . $error . "\n";
         if ($this->parser->add_help_option) {
             $name = $this->name();
-            $ret .= $this->wrap($this->parser->message_provider->get('PROG_HELP_LINE',
-                array('progname' => $name))) . "\n";
+            $ret .= $this->wrap(
+                $this->parser->message_provider->get(
+                    'PROG_HELP_LINE',
+                    array('progname' => $name)
+                )
+            ) . "\n";
             if (count($this->parser->commands) > 0) {
-                $ret .= $this->wrap($this->parser->message_provider->get('COMMAND_HELP_LINE',
-                    array('progname' => $name))) . "\n";
+                $ret .= $this->wrap(
+                    $this->parser->message_provider->get(
+                        'COMMAND_HELP_LINE',
+                        array('progname' => $name)
+                    )
+                ) . "\n";
             }
         }
         return $ret;
@@ -139,10 +147,13 @@ class Renderer_Default implements Renderer
      */
     public function version()
     {
-        return $this->parser->message_provider->get('PROG_VERSION_LINE', array(
-            'progname' => $this->name(),
-            'version'  => $this->parser->version
-        )) . "\n";
+        return $this->parser->message_provider->get(
+            'PROG_VERSION_LINE',
+            array(
+                'progname' => $this->name(),
+                'version'  => $this->parser->version
+            )
+        ) . "\n";
     }
 
     // }}}
@@ -160,9 +171,12 @@ class Renderer_Default implements Renderer
         while ($parent) {
             if (count($parent->options) > 0) {
                 $name = '['
-                    . strtolower($this->parser->message_provider->get('OPTION_WORD',
-                          array('plural' => 's')))
-                    . '] ' . $name;
+                    . strtolower(
+                        $this->parser->message_provider->get(
+                            'OPTION_WORD',
+                            array('plural' => 's')
+                        )
+                    ) . '] ' . $name;
             }
             $name = $parent->name . ' ' . $name;
             $parent = $parent->parent;
@@ -241,8 +255,10 @@ class Renderer_Default implements Renderer
             if (!$hasArgs && count($command->args) > 0) {
                 $hasArgs = true;
             }
-            if (!$hasOptions && ($command->add_help_option ||
-                $command->add_version_option || count($command->options) > 0)) {
+            if (!$hasOptions && ($command->add_help_option
+                || $command->add_version_option
+                || count($command->options) > 0)
+            ) {
                 $hasOptions = true;
             }
         }

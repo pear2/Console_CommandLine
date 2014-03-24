@@ -7,17 +7,21 @@ cmd1 --help 2>&1
 
 require_once dirname(__FILE__) . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-class Renderer extends \PEAR2\Console\CommandLine\Renderer_Default {
-  protected function description() {
-    return $this->columnWrap($this->parser->description, 2);
-  }
+class Renderer extends \PEAR2\Console\CommandLine\Renderer_Default
+{
+    protected function description()
+    {
+        return $this->columnWrap($this->parser->description, 2);
+    }
 }
 
 $parser = new \PEAR2\Console\CommandLine();
 $parser->accept(new Renderer);
 $parser->renderer->line_width = 75;
-$parser->addCommand('cmd1', array(
-    'description' => '
+$parser->addCommand(
+    'cmd1',
+    array(
+        'description' => '
 Installs listed packages.
 
 local package.xml example:
@@ -40,7 +44,8 @@ php pyrus.phar install PackageName-beta
   installs PackageName from the default channel, beta or stable stability
 php pyrus.phar install PackageName-1.2.0
   installs PackageName from the default channel, version 1.2.0'
-));
+    )
+);
 $parser->parse();
 
 ?>

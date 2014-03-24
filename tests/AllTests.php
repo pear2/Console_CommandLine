@@ -16,13 +16,15 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @version   GIT: $Id$
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 1.0.0
  */
 
+namespace PEAR2\Console\CommandLine;
+
 if (!defined('PHPUnit_MAIN_METHOD')) {
-    define('PHPUnit_MAIN_METHOD', 'Console_CommandLine_AllTests::main');
+    define('PHPUnit_MAIN_METHOD', 'PEAR2\Console\CommandLine\AllTests::main');
 }
 
 require_once 'PHPUnit/Framework.php';
@@ -41,12 +43,11 @@ require_once 'PHPUnit/TextUI/TestRunner.php';
  * @package   PEAR2\Console\CommandLine
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
- * @license   http://opensource.org/licenses/mit-license.php MIT License 
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @license   http://opensource.org/licenses/mit-license.php MIT License
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 1.0.0
  */
-class PEAR2\Console\CommandLine_AllTests
+class AllTests
 {
     /**
      * Runs the test suite
@@ -72,7 +73,5 @@ class PEAR2\Console\CommandLine_AllTests
 }
 
 if (PHPUnit_MAIN_METHOD == 'Console_CommandLine_AllTests::main') {
-    PEAR2\Console\CommandLine_AllTests::main();
+    PEAR2\Console\CommandLine\AllTests::main();
 }
-
-?>

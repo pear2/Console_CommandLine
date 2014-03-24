@@ -1,7 +1,9 @@
 --TEST--
 Test for PEAR2\Console\CommandLine options defaults.
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --FILE--
 <?php
 

@@ -1,7 +1,9 @@
 --TEST--
 Test for PEAR2\Console\CommandLine::fromXmlFile() method.
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --ARGS--
 --help 2>&1
 --FILE--
@@ -9,7 +11,9 @@ Test for PEAR2\Console\CommandLine::fromXmlFile() method.
 
 require_once __DIR__ . DIRECTORY_SEPARATOR . 'tests.inc.php';
 
-$parser = PEAR2\Console\CommandLine::fromXmlFile(__DIR__ . DIRECTORY_SEPARATOR . 'test.xml');
+$parser = PEAR2\Console\CommandLine::fromXmlFile(
+    __DIR__ . DIRECTORY_SEPARATOR . 'test.xml'
+);
 $parser->parse();
 
 ?>

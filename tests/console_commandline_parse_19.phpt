@@ -3,7 +3,9 @@ Test for PEAR2\Console\CommandLine::parse() method (subcommand help 1).
 --STDIN--
 some_package
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --ARGS--
 -v instbis -f -
 --FILE--

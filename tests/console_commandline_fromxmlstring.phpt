@@ -1,7 +1,9 @@
 --TEST--
 Test for PEAR2\Console\CommandLine::fromXmlString() method.
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --ARGS--
 --help 2>&1
 --FILE--

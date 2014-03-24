@@ -20,10 +20,10 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   SVN: $Id$
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
+namespace PEAR2\Console;
 
 /**
  * Main class for parsing command line options and arguments.
@@ -46,13 +46,11 @@
  * @author    David JEAN LOUIS <izimobil@gmail.com>
  * @copyright 2007-2009 David JEAN LOUIS
  * @license   http://opensource.org/licenses/mit-license.php MIT License
- * @version   Release: @package_version@
- * @link      http://pear.php.net/package/Console_CommandLine
+ * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
  * @example   docs/examples/ex1.php
  * @example   docs/examples/ex2.php
  */
-namespace PEAR2\Console;
 class CommandLine
 {
     // Public properties {{{
@@ -193,7 +191,7 @@ class CommandLine
      * convenience.
      *
      * @var PEAR2\Console\CommandLine The parent instance
-     * @todo move PEAR2\Console\CommandLine::parent to PEAR2\Console\CommandLine\Command
+     * @todo move CommandLine::parent to CommandLine\Command
      */
     public $parent = false;
 
@@ -211,18 +209,42 @@ class CommandLine
      * @var array $actions List of valid actions
      */
     public static $actions = array(
-        'StoreTrue'   => array('PEAR2\\Console\\CommandLine\\Action\\StoreTrue', true),
-        'StoreFalse'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreFalse', true),
-        'StoreString' => array('PEAR2\\Console\\CommandLine\\Action\\StoreString', true),
-        'StoreInt'    => array('PEAR2\\Console\\CommandLine\\Action\\StoreInt', true),
-        'StoreFloat'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreFloat', true),
-        'StoreArray'  => array('PEAR2\\Console\\CommandLine\\Action\\StoreArray', true),
-        'Callback'    => array('PEAR2\\Console\\CommandLine\\Action\\Callback', true),
-        'Counter'     => array('PEAR2\\Console\\CommandLine\\Action\\Counter', true),
-        'Help'        => array('PEAR2\\Console\\CommandLine\\Action\\Help', true),
-        'Version'     => array('PEAR2\\Console\\CommandLine\\Action\\Version', true),
-        'Password'    => array('PEAR2\\Console\\CommandLine\\Action\\Password', true),
-        'List'        => array('PEAR2\\Console\\CommandLine\\Action_List', true),
+        'StoreTrue'   => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreTrue', true
+        ),
+        'StoreFalse'  => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreFalse', true
+        ),
+        'StoreString' => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreString', true
+        ),
+        'StoreInt'    => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreInt', true
+        ),
+        'StoreFloat'  => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreFloat', true
+        ),
+        'StoreArray'  => array(
+            'PEAR2\\Console\\CommandLine\\Action\\StoreArray', true
+        ),
+        'Callback'    => array(
+            'PEAR2\\Console\\CommandLine\\Action\\Callback', true
+        ),
+        'Counter'     => array(
+            'PEAR2\\Console\\CommandLine\\Action\\Counter', true
+        ),
+        'Help'        => array(
+            'PEAR2\\Console\\CommandLine\\Action\\Help', true
+        ),
+        'Version'     => array(
+            'PEAR2\\Console\\CommandLine\\Action\\Version', true
+        ),
+        'Password'    => array(
+            'PEAR2\\Console\\CommandLine\\Action\\Password', true
+        ),
+        'List'        => array(
+            'PEAR2\\Console\\CommandLine\\Action_List', true
+        ),
     );
 
     /**
@@ -621,15 +643,18 @@ class CommandLine
         }
         $this->options[$opt->name] = $opt;
         if (!empty($opt->choices) && $opt->add_list_option) {
-            $this->addOption('list_' . $opt->name, array(
-                'long_name'     => '--list-' . $opt->name,
-                'description'   => $this->message_provider->get(
-                    'LIST_OPTION_MESSAGE',
-                    array('name' => $opt->name)
-                ),
-                'action'        => 'List',
-                'action_params' => array('list' => $opt->choices),
-            ));
+            $this->addOption(
+                'list_' . $opt->name,
+                array(
+                    'long_name'     => '--list-' . $opt->name,
+                    'description'   => $this->message_provider->get(
+                        'LIST_OPTION_MESSAGE',
+                        array('name' => $opt->name)
+                    ),
+                    'action'        => 'List',
+                    'action_params' => array('list' => $opt->choices),
+                )
+            );
         }
         return $opt;
     }
@@ -682,7 +707,6 @@ class CommandLine
      * Displays the program version to the user via stdout and exit with
      * $exitCode if its value is not equals to false.
      *
-     *
      * @param int $exitCode The exit code number (default: 0). If set to
      *                      false, the exit() function will not be called
      *
@@ -715,8 +739,10 @@ class CommandLine
         }
         $matches = array();
         foreach ($this->options as $opt) {
-            if ($opt->short_name == $str || $opt->long_name == $str ||
-                $opt->name == $str) {
+            if ($opt->short_name == $str
+                || $opt->long_name == $str
+                || $opt->name == $str
+            ) {
                 // exact match
                 return $opt;
             }
@@ -795,9 +821,11 @@ class CommandLine
     {
         if (!isset(self::$actions[$name])) {
             if (!class_exists($class)) {
-                self::triggerError('action_class_does_not_exists',
+                self::triggerError(
+                    'action_class_does_not_exists',
                     E_USER_ERROR,
-                    array('{$name}' => $name, '{$class}' => $class));
+                    array('{$name}' => $name, '{$class}' => $class)
+                );
             }
             self::$actions[$name] = array($class, false);
         }
@@ -819,8 +847,11 @@ class CommandLine
     public static function triggerError($msgId, $level, $params=array())
     {
         if (isset(self::$errors[$msgId])) {
-            $msg = str_replace(array_keys($params),
-                array_values($params), self::$errors[$msgId]);
+            $msg = str_replace(
+                array_keys($params),
+                array_values($params),
+                self::$errors[$msgId]
+            );
             trigger_error($msg, $level);
         } else {
             trigger_error('unknown error', $level);
@@ -1088,8 +1119,12 @@ class CommandLine
                 if (!$opt->expectsArgument()) {
                     if ($nextopt = $this->findOption('-' . $next)) {
                         $this->_dispatchAction($opt, false, $result);
-                        $this->parseToken('-' . substr($token, 2), $result,
-                            $args, $last);
+                        $this->parseToken(
+                            '-' . substr($token, 2),
+                            $result,
+                            $args,
+                            $last
+                        );
                         return;
                     } else {
                         throw CommandLine\Exception::factory(
@@ -1182,7 +1217,9 @@ class CommandLine
                             $opt->short_name : $opt->long_name;
                         foreach ($value as $v) {
                             if ($opt->expectsArgument()) {
-                                $argv[] = isset($_REQUEST[$key]) ? urldecode($v) : $v;
+                                $argv[] = isset($_REQUEST[$key])
+                                    ? urldecode($v)
+                                    : $v;
                             } else if ($v == '0' || $v == 'false') {
                                 array_pop($argv);
                             }

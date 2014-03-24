@@ -1,7 +1,9 @@
 --TEST--
 Test for PEAR2\Console\CommandLine::parse() method (user errors 1).
 --SKIPIF--
-<?php if(php_sapi_name()!='cli') echo 'skip'; ?>
+<?php if (php_sapi_name()!='cli') {
+    echo 'skip';
+} ?>
 --ARGS--
 --float=foo foo bar
 --FILE--
