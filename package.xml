@@ -28,10 +28,16 @@ Main features:
   <email>saltybeagle@php.net</email>
   <active>yes</active>
  </helper>
- <date>2014-03-09</date>
- <time>22:21:25</time>
+ <helper>
+  <name>Vasil Rangelov</name>
+  <user>boen_robot</user>
+  <email>boen.robot@gmail.com</email>
+  <active>yes</active>
+ </helper>
+ <date>2014-06-22</date>
+ <time>23:21:23</time>
  <version>
-  <release>0.2.0</release>
+  <release>0.2.1</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -39,13 +45,13 @@ Main features:
   <api>alpha</api>
  </stability>
  <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
- <notes>Features and changes
- - Implemented feature request #18582 (From pear.php.net) add possibility to require a subcommand
- - Implemented feature request #18583 (From pear.php.net) default values for arguments
- - removed the enclosing &quot;&lt; &gt;&quot; on argument names (it looks better IMO).
-
-Bug Fixes
- - Fixed bug #18584 (From pear.php.net) optional arguments not shown as optional</notes>
+ <notes>* Added a composer.json, and this package to packagist.org.
+* Fixed GitHub issue #2: columnWrap() in Default Renderer eats up lines with only a EOL.
+* Fixed validation of XML definition files: The directory of the RNG schema was wrong.
+* Fixed test suite errors, including namespace related ones and adding Travis-CI configuration.
+* Removed PEAR2\Exception dependency - This package's exception directly inherits from the root Exception.
+* CS fixes.
+</notes>
  <contents>
   <dir name="/">
    <dir name="data" baseinstalldir="/">
