@@ -19,6 +19,7 @@
  * @version   GIT: $Id$
  * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
+ *
  * @filesource
  */
 
@@ -173,6 +174,7 @@ class Option extends Element
      * @param string $delim Delimiter to use between short and long option
      *
      * @return string The string representation of the option
+     * 
      * @todo use __toString() instead
      */
     public function toString($delim = ", ")
@@ -269,6 +271,7 @@ class Option extends Element
      *
      * @return void
      * @throws PEAR2\Console\CommandLine\Exception
+     * 
      * @todo use exceptions instead
      */
     public function validate()

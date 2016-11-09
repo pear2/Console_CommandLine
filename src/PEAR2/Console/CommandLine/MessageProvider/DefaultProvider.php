@@ -19,10 +19,14 @@
  * @version   GIT: $Id$
  * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
+ *
  * @filesource
  */
 
-namespace PEAR2\Console\CommandLine;
+namespace PEAR2\Console\CommandLine\MessageProvider;
+
+use PEAR2\Console\CommandLine\MessageProvider;
+use PEAR2\Console\CommandLine\CustomMessageProvider;
 
 /**
  * Lightweight class that manages messages used by PEAR2\Console\CommandLine package,
@@ -37,7 +41,7 @@ namespace PEAR2\Console\CommandLine;
  * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     Class available since release 0.1.0
  */
-class MessageProvider_Default
+class DefaultProvider
     implements MessageProvider,
     CustomMessageProvider
 {

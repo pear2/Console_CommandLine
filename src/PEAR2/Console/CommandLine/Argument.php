@@ -19,6 +19,7 @@
  * @version   GIT: $Id$
  * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
+ *
  * @filesource
  */
 
@@ -65,6 +66,7 @@ class Argument extends Element
      *
      * @return void
      * @throws PEAR2\Console\CommandLine\Exception
+     *
      * @todo use exceptions
      */
     public function validate()

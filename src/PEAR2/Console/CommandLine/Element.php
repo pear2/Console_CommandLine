@@ -19,6 +19,7 @@
  * @version   GIT: $Id$
  * @link      http://pear2.php.net/PEAR2_Console_CommandLine
  * @since     File available since release 0.1.0
+ *
  * @filesource
  */
 
@@ -92,7 +93,7 @@ abstract class Element
      * </code>
      *
      * @var array
-     * @see PEAR2\Console\CommandLine_MessageProvider_Default
+     * @see PEAR2\Console\CommandLine_MessageProvider\DefaultProvider
      */
     public $messages = array();
 
@@ -124,6 +125,7 @@ abstract class Element
      * Returns the string representation of the element.
      *
      * @return string The string representation of the element
+     *
      * @todo use __toString() instead
      */
     public function toString()

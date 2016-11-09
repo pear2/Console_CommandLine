@@ -1,0 +1,7 @@
+* Brought fixes from PEAR_Console_CommandLine 1.2.2, namely
+    - xmlschema.rng is looked for in more locations (though this package also includes a lookup first on Pyrus' folder layout, and also respects the PHP_PEAR_DATA_DIR environment variable's value, and fixes the error message when the file is not found in any location)
+    - Package dependencies include DOM (though this package includes it as an optional dependency, because it's only needed when getting definitions from an XML file; not when constructing them "manually; Also, the "xml" extension is not used, so it's not included here)
+    - Fixed comparrisons in PHP7
+    - Replaced static with private variables
+* Made this package PSR-4 compatible, while preserving PSR-0 compatibility by moving MessageProvider_Default into it's own MessageProvider sub-namespace, and renaming the class itself to DefaultProvider to avoid it having a reserved word ("default") as its name.
+* CS fixes.

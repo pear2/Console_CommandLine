@@ -51,6 +51,10 @@ $config = array(
             'type' => 'pear-config',
             'to' => 'php_dir'
         ),
+        '@data_dir@' => array(
+            'type' => 'pear-config',
+            'to' => 'data_dir'
+        ),
         'GIT: $Id$' => array(
             'type' => 'package-info',
             'to' => 'version'
@@ -75,7 +79,7 @@ $packageGen = function (
     $cTasksNs = $compatible ? $compatible->getTasksNs() : '';
     $oldCwd = getcwd();
     chdir(__DIR__);
-    $package->setRawRelease('php', null);
+    $package->setRawRelease('php', '');
     $release = $package->getReleaseToInstall('php');
     foreach (new RecursiveIteratorIterator(
         new RecursiveDirectoryIterator(
