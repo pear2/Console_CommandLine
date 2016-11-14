@@ -28,6 +28,7 @@ namespace PEAR2\Console\CommandLine;
 use PEAR2\Console\CommandLine;
 use DOMDocument;
 use DOMNode;
+use Phar;
 
 /**
  * Parser for command line xml definitions.
@@ -105,20 +106,28 @@ class XmlParser
      */
     public static function validate(DOMDocument $doc)
     {
-        $pkgRoot  = __DIR__ . '/../../';
-        $paths = array(
+        $paths = array();
+        if (!class_exists('Phar', false) || !Phar::running()) {
             // Pyrus
-            '@data_dir@/pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng',
-            // PEAR/Composer
-            getenv('PHP_PEAR_DATA_DIR') . '/Console_CommandLine/data/xmlschema.rng',
-            '@data_dir@/Console_CommandLine/data/xmlschema.rng',
-            // Composer
-            $pkgRoot . 'data/Console_CommandLine/data/xmlschema.rng',
-            $pkgRoot . 'data/console_commandline/data/xmlschema.rng',
-            // Git
-            $pkgRoot . 'data/xmlschema.rng',
-            'xmlschema.rng',
-        );
+            $paths[]
+                = '@data_dir@/pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng';
+            // PEAR
+            $pearDataDirEnv = getenv('PHP_PEAR_DATA_DIR');
+            if ($pearDataDirEnv) {
+                $paths[] = $pearDataDirEnv .
+                    '/PEAR2_Console_CommandLine/xmlschema.rng';
+            }
+            $paths[] = '@data_dir@/PEAR2_Console_CommandLine/xmlschema.rng';
+        }
+        $pkgData  = __DIR__ . '/../../../../data/';
+        // PHAR dep
+        $paths[] = $pkgData .
+            'pear2.php.net/PEAR2_Console_CommandLine/xmlschema.rng';
+        $paths[] = $pkgData . 'PEAR2_Console_CommandLine/xmlschema.rng';
+        $paths[] = $pkgData . 'pear2/console_commandline/xmlschema.rng';
+        // Git/Composer
+        $paths[] = $pkgData . 'xmlschema.rng';
+        $paths[] = 'xmlschema.rng';
 
         foreach ($paths as $path) {
             if (is_readable($path)) {
@@ -143,7 +152,8 @@ class XmlParser
      * @param DOMNode $node       The node to parse
      * @param bool    $isRootNode Whether it is a root node or not
      *
-     * @return mixed PEAR2\Console\CommandLine or PEAR2\Console\CommandLine_Command
+     * @return CommandLine|CommandLine\Command An instance of CommandLine for
+     *     root node, CommandLine\Command otherwise.
      */
     private static function _parseCommandNode(DOMNode $node, $isRootNode = false)
     {
@@ -200,11 +210,11 @@ class XmlParser
      * Parses an option node and returns the constructed
      * PEAR2\Console\CommandLine_Option instance.
      *
-     * @param DOMDocumentNode $node The node to parse
+     * @param DOMNode $node The node to parse
      *
      * @return PEAR2\Console\CommandLine\Option The built option
      */
-    private static function _parseOptionNode($node)
+    private static function _parseOptionNode(DOMNode $node)
     {
         $obj = new CommandLine\Option($node->getAttribute('name'));
         foreach ($node->childNodes as $cNode) {
