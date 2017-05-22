@@ -34,10 +34,10 @@ Main features:
   <email>boen.robot@gmail.com</email>
   <active>yes</active>
  </helper>
- <date>2016-11-09</date>
- <time>02:01:33</time>
+ <date>2017-05-22</date>
+ <time>14:40:46</time>
  <version>
-  <release>0.2.2</release>
+  <release>0.2.3</release>
   <api>0.1.0</api>
  </version>
  <stability>
@@ -45,13 +45,7 @@ Main features:
   <api>alpha</api>
  </stability>
  <license uri="http://opensource.org/licenses/mit-license.php">MIT License</license>
- <notes>* Brought fixes from PEAR_Console_CommandLine 1.2.2, namely
-    - xmlschema.rng is looked for in more locations (though this package also includes a lookup first on Pyrus' folder layout, and also respects the PHP_PEAR_DATA_DIR environment variable's value, and fixes the error message when the file is not found in any location)
-    - Package dependencies include DOM (though this package includes it as an optional dependency, because it's only needed when getting definitions from an XML file; not when constructing them &quot;manually; Also, the &quot;xml&quot; extension is not used, so it's not included here)
-    - Fixed comparrisons in PHP7
-    - Replaced static with private variables
-* Made this package PSR-4 compatible, while preserving PSR-0 compatibility by moving MessageProvider_Default into it's own MessageProvider sub-namespace, and renaming the class itself to DefaultProvider to avoid it having a reserved word (&quot;default&quot;) as its name.
-* CS fixes.</notes>
+ <notes>* Re-fixed the path to the RNG schema, now with all the new paths in mind.</notes>
  <contents>
   <dir name="/">
    <dir name="data" baseinstalldir="/">
